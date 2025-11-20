@@ -1,0 +1,15 @@
+.product-highlights {
+    padding-top: 22px;
+    padding-bottom: 22px;
+    margin-bottom: 50px;
+    width: 100vw;
+    margin-inline-start: calc(50% - 50vw);
+}
+
+@media (min-width: 769px) {
+    .product-highlights {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        margin-bottom: 90px;
+    }
+}

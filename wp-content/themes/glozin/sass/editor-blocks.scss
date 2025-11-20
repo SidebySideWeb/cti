@@ -1,0 +1,12 @@
+/*
+Theme Name: Glozin
+Description: Used to style the TinyMCE editor.
+*/
+
+// Import variables and mixins.
+@import "abstracts/abstracts";
+
+/*--------------------------------------------------------------
+# Gutenberg blocks
+--------------------------------------------------------------*/
+@import "components/blocks/blocks";

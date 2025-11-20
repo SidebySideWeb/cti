@@ -1,0 +1,58 @@
+.currency-popover {
+    &.popover--open {
+        .currency-dropdown {
+            opacity: 1;
+            visibility: visible;
+            position: static;
+            box-shadow: none;
+        }
+    }
+
+    .popover__content {
+        .current {
+            display: none;
+        }
+    }
+
+    .popover__backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .currency-dropdown {
+        li {
+            a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                width: auto;
+                height: auto;
+                margin: 0;
+                opacity: 1;
+            }
+
+            &.active {
+                a {
+                    font-weight: 600;
+                    color: var(--gz-color-dark);
+                }
+            }
+
+            .woocs-flag {
+                --gz-image-rounded: 100%;
+
+                display: inline-block;
+                width: 22px;
+                height: 22px;
+                position: relative;
+                top: -1px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+}

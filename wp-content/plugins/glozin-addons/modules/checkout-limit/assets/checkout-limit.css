@@ -1,0 +1,70 @@
+.glozin-checkout-limit:not(.glozin-checkout-limit--mini-cart) .glozin-checkout-limit__wrapper {
+    max-width: 803px;
+    border: 1px dashed var(--gz-color-primary);
+    background-color: rgba(208, 71, 62, 0.08);
+    color: var(--gz-color-dark);
+}
+
+.glozin-checkout-limit__wrapper .glozin-checkout-limit__icon {
+    margin-inline-end: 5px;
+}
+
+.glozin-checkout-limit__time .days,
+.glozin-checkout-limit__time .hours,
+.glozin-checkout-limit__time .divider {
+    display: none !important;
+}
+
+.cart-panel div.glozin-checkout-limit {
+    padding-top: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--gz-border-color);
+}
+
+.cart-panel .glozin-checkout-limit.hidden-minicart {
+    display: none !important;
+}
+
+.cart-panel .glozin-checkout-limit__wrapper {
+    padding-top: 0;
+}
+
+.cart-panel .glozin-checkout-limit__end-message {
+    font-size: 14px;
+}
+
+.cart-panel .glozin-checkout-limit__message {
+    line-height: 1;
+}
+
+.woocommerce-cart .glozin-checkout-limit {
+    margin-top: 0;
+}
+
+.woocommerce-checkout .cart-panel .glozin-checkout-limit {
+    padding-top: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--gz-border-color);
+}
+
+.woocommerce-checkout .cart-panel .glozin-checkout-limit .glozin-checkout-limit__wrapper {
+    justify-content: flex-start;
+    max-width: none;
+    background-color: transparent;
+    color: var(--gz-color-base);
+    border: none;
+    padding-top: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+}
+
+.glozin-checkout-limit__time .timer .text  {
+    padding-inline-start: 0;
+}
+@media (min-width: 768px) {
+    .glozin-checkout-limit:not(.glozin-checkout-limit--mini-cart) {
+        margin-bottom: 70px;
+    }
+}

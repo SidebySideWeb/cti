@@ -1,0 +1,9 @@
+.header-hamburger {
+	padding-top: 2px;
+	padding-inline-end: 20px;
+
+	.glozin-svg-icon {
+		@include font-size(22/16);
+		margin: 0;
+	}
+}

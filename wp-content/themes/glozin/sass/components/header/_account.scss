@@ -1,0 +1,24 @@
+.header-account {
+	a {
+		color: inherit
+	}
+}
+
+.header-account__icon {
+	--gz-button-icon-size: 16px;
+}
+
+.header-account__size-large {
+	--gz-button-icon-size: 24px;
+}
+
+.header-account-wrapper {
+	.gz-button {
+		--gz-button-font-size: 13px;
+		font-weight: 600;
+
+		&:first-child:not(:last-child) {
+			font-size: 11px;
+		}
+	}
+}

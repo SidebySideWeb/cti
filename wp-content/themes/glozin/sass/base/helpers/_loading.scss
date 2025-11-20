@@ -1,0 +1,40 @@
+.gz-loading-spin {
+	@include gz-loading();
+}
+
+.gz-lazy-load-image {
+    @include gz-lazy-load-image();
+}
+
+.gz-lazy-load {
+    img,
+    .gz-lazy-load-video {
+        opacity: 0.01;
+    }
+
+    .gz-lazy-load-image {
+        display: flex;
+    }
+}
+
+.gz-vibrate {
+	-webkit-animation-name: vibrate;
+	animation-name: vibrate;
+}
+
+.gz-fadeinup {
+    --gz-fadeinup-delay: 0.05s;
+
+    transition: opacity 0.25s, transform 0.25s;
+    transition-delay: var(--gz-fadeinup-delay);
+
+    &:not(.gz-animated) {
+        opacity: 1;
+		transform: translateY(0);
+    }
+
+    &.gz-animated {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}

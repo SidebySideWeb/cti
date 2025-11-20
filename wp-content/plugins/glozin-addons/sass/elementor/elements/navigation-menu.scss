@@ -1,0 +1,36 @@
+.glozin-navigation-menu__title {
+	&.active {
+		.glozin-navigation-menu__icon-default {
+			opacity: 0;
+		}
+
+		.glozin-navigation-menu__icon-active {
+			opacity: 1;
+		}
+	}
+}
+
+.glozin-navigation-menu__menu {
+	> li {
+		> .sub-menu {
+			padding-inline-start: 10px;
+		}
+	}
+
+	ul {
+		padding-inline-start: 0;
+	}
+
+	li {
+		padding: 0;
+	}
+
+	a {
+		line-height: 1.2;
+		color: var( --gz-color-base );
+
+		&:hover {
+			color: var( --gz-color-primary );
+		}
+	}
+}

@@ -1,0 +1,134 @@
+body {
+	.blockUI.blockOverlay {
+        position: relative;
+        background-color: rgba( 255, 255, 255, 0.6) !important;
+        background-image: none !important;
+    }
+}
+
+.offscreen-panel {
+	--gz-panel-content-width: 430px;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1100;
+	pointer-events: none;
+	display: block;
+
+	&.modal-above-panel {
+		z-index: 1050;
+	}
+
+	&.modal-above-panel__quickadd {
+		z-index: 999;
+	}
+}
+
+.offscreen-panel--open {
+	pointer-events: auto;
+	.panel__container {
+		transform: translateX(0);
+	}
+
+	.panel__backdrop {
+		cursor: var(--gz-cursor-close-icon) 25 25, auto;
+		visibility: visible;
+	}
+}
+
+.panel__backdrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba( 0, 0, 0, 0.5);
+	display: none;
+	transition-delay: 0.05s; 
+	visibility: hidden;
+}
+
+.panel__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 15px 30px;
+	margin: 0;
+	font-size: 18/16*1rem;
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 30px;
+		right: 30px;
+		border-bottom: 1px solid var(--gz-border-color);
+		width: calc( 100% - 60px );
+	}
+}
+
+.panel__content {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 30px;
+}
+
+.panel__button-close,
+.products-recommended__button-close {
+	cursor: pointer;
+	transition: var(--gz-transition);
+	font-size: 13px;
+	color: var(--gz-color-dark);
+	opacity: 0.7;
+	transition: transform .3s;
+
+	&:hover {
+		transform: rotate(180deg);
+		color: var(--gz-color-dark);
+		opacity: 1;
+	}
+}
+
+.panel__container {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	max-width: var(--gz-panel-content-width);
+	width: 100%;
+	margin: 0;
+	background-color: #fff;
+	transition: transform .6s cubic-bezier(.7,0,.2,1);
+	display: flex;
+	flex-direction: column;
+}
+
+.panel__footer {
+	border-top: 1px solid var(--gz-border-color);
+	margin-top: 10px;
+	padding: 15px 30px;
+
+	&:empty {
+		display: none;
+	}
+}
+
+.mobile-menu__divider {
+	background-color: var(--gz-border-color);
+	margin: 15px auto;
+    width: calc( 100% - 64px );
+}
+
+@media( max-width: 767px ) {
+	.panel__container {
+		--gz-panel-content-width: 100%;
+	}
+}
+
+@import 'account';
+@import 'cart';
+@import 'hamburger';

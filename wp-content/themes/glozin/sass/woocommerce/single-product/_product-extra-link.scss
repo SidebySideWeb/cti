@@ -1,0 +1,19 @@
+.single-product {
+    div.product {
+        .glozin-product-extra-link {
+            &:empty {
+                margin: 0;
+                padding: 0;
+                border: none
+            }
+
+            .glozin-svg-icon--question {
+                @include font-size(18/16);
+            }
+
+            .glozin-svg-icon--compare-color {
+                @include font-size(18/16);
+            }
+        }
+    }
+}

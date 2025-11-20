@@ -1,0 +1,142 @@
+.glozin-product-3d-viewer__item {
+	display: flex;
+    width: 100%;
+    position: relative;
+    align-items: stretch;
+    cursor: pointer;
+}
+
+.glozin-product-3d-viewer__item.fullscreen {
+    background-color: #fff;
+}
+
+.glozin-product-3d-viewer__item.fullscreen .glozin-product-3d-viewer__buttons > span.fullscreen {
+    display: none;
+}
+
+.glozin-product-3d-viewer__item.fullscreen .glozin-product-3d-viewer__buttons > span.exit-fullscreen {
+    display: inline-flex;
+}
+
+.glozin-product-3d-viewer__item.disable .glozin-product-3d-viewer__model {
+    pointer-events: none;
+}
+
+.glozin-product-3d-viewer__item::before {
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    padding-bottom: 100%;
+}
+
+.glozin-product-3d-viewer__item:not(.disable):hover .glozin-product-3d-viewer__buttons {
+    opacity: 1;
+}
+
+.glozin-product-3d-viewer__model {
+	display: block;
+    max-width: 100%;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.glozin-product-3d-viewer__button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 61px;
+    height: 61px;
+    font-size: 60px;
+    color: #000;
+    border-radius: 100px;
+    background-color: #fff;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.glozin-product-3d-viewer__item:not(.disable) .glozin-product-3d-viewer__button {
+    opacity: 0;
+}
+
+.glozin-i-3d-viewer {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 22px;
+	height: 22px;
+	background-color: var(--gz-color-dark);
+    color: #fff;
+    font-size: 11px;
+}
+
+.glozin-product-3d-viewer__buttons {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    opacity: 0;
+    border: 1px solid rgba( 0, 0, 0, 0.05 );
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1;
+    transition: opacity 0.1s linear;
+}
+
+.glozin-product-3d-viewer__buttons > span {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    height: 44px;
+    width: 44px;
+    font-size: 16px;
+    background: transparent;
+    color: #000;
+    cursor: pointer;
+}
+
+.glozin-product-3d-viewer__buttons > span.fullscreen,
+.glozin-product-3d-viewer__buttons > span.exit-fullscreen {
+    font-size: 44px;
+}
+
+.glozin-product-3d-viewer__buttons > span.exit-fullscreen {
+    display: none;
+}
+
+.glozin-product-3d-viewer__buttons > span::after {
+    position: absolute;
+    content: "";
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    width: calc( 100% - 16px );
+    bottom: 0px;
+    left: 8px;
+    right: 8px;
+}
+
+.glozin-product-3d-viewer__buttons > span:last-child::after {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .glozin-i-3d-viewer {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+}

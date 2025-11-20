@@ -1,0 +1,31 @@
+#woocommerce-product-data ul.wc-tabs li.product_variation_compare_options a::before {
+    content: "\f211";
+}
+
+#woocommerce-product-data ul.wc-tabs li.product_badges_options a::before {
+    content: "\f468";
+}
+
+#woocommerce-product-data ul.wc-tabs li.product_attributes_options a::before {
+	content: "\f157";
+}
+
+#woocommerce-product-data ul.wc-tabs li.product_product_video_options a::before {
+    content: "\f236";
+}
+
+#woocommerce-product-data ul.wc-tabs li.glozin_size_guide_options a::before {
+    content: "\f15b";
+}
+
+#woocommerce-product-data ul.wc-tabs li.product_product_3d_viewer_options a::before {
+    content: "\f504";
+}
+
+#woocommerce-product-data ul.wc-tabs li.product_product_360_options a::before {
+    content: "\f503";
+}
+
+#woocommerce-product-data ul.wc-tabs li.product_model_sizing_options a::before {
+    content: "\f183";
+}

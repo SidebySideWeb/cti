@@ -1,0 +1,51 @@
+.glozin-product-highlight-slider__content {
+	background-color: #f1f3f7;
+}
+
+.glozin-product-highlight-slider__title {
+	font-size: clamp(1.75rem, calc(1.75rem + 4 * var(--gz-responsive-rate)), 2rem);
+}
+
+.glozin-product-highlight-slider__product {
+	max-width: 600px;
+}
+
+.glozin-product-highlight-slider__product-image {
+    --gz-ratio-percent: 100%;
+	--gz-image-rounded: 0;
+}
+
+.glozin-product-highlight-slider__product-title {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 290px;
+	line-height: 18.15px;
+}
+
+.glozin-product-highlight-slider__product-price {
+	font-size: 20 / 16 * 1rem;
+
+	del {
+		font-size: 1rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.glozin-product-highlight-slider__product-inner {
+		border-radius: 100px;
+	}
+
+	.glozin-product-highlight-slider__product-image {
+		width: 65px;
+		height: 65px;
+	}
+}
+
+@media (max-width: 767px) {
+	.glozin-product-highlight-slider {
+		--col-width: 100%;
+	}
+}

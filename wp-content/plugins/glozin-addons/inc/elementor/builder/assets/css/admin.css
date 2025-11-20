@@ -1,0 +1,283 @@
+@keyframes glozinSpin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.glozin-template-tabs__sub {
+	display: block;
+	margin-top: 10px;
+}
+
+.glozin-template-tabs__tab {
+	display: inline-flex;
+	padding: 5px 15px;
+	text-decoration: none;
+	color: #000;
+	background-color: #d8d8d8;
+	transition: .4s;
+}
+
+.glozin-template-tabs__tab:hover,
+.glozin-template-tabs__tab.active {
+	color: #fff;
+	background-color: #0074a2;
+}
+
+.glozin-builder__field {
+    display: flex;
+}
+
+.glozin-builder__field:not(:last-of-type) {
+    margin: 0 0 24px;
+}
+
+.glozin-builder__label {
+	font-weight: 600;
+	width: 25%;
+}
+
+.glozin-builder--position .glozin-builder__radio {
+	display: none;
+}
+
+.glozin-builder--position .glozin-builder__radio + label {
+	display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin: 0 20px 20px 0;
+    border: 3px solid #d8d8d8;
+    border-radius: 3px;
+    padding: 2px;
+	text-align: center;
+}
+
+.glozin-builder--position .glozin-builder__radio:checked + label {
+    border-color: #0074a2;
+}
+
+.glozin-builder__number {
+	min-width: 300px;
+}
+
+.glozin-builder__select {
+	min-width: 300px;
+}
+
+.glozin-builder__delay-content {
+	margin-top: 10px;
+}
+
+/************
+Styles for toggle buttons
+************/
+.glozin-builder__toggle-button {
+	position: relative;
+	width: 36px;
+	height: 18px;
+}
+
+.glozin-builder__toggle-button label {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-color: #fff;
+	transition: background-color 0.2s ease;
+	border-radius: 9px;
+	border: 1px solid #1e1e1e;
+}
+
+.glozin-builder__toggle-button label::before {
+	position: absolute;
+	content: '';
+	height: 14px;
+	width: 14px;
+	left: 2px;
+	bottom: 1px;
+	background-color: #1e1e1e;
+	transition: 0.2s ease;
+	border-radius: 50%;
+}
+
+.glozin-builder__toggle-button input {
+	opacity: 0;
+	width: 36px;
+    height: 18px;
+    position: relative;
+    z-index: 9;
+}
+
+.glozin-builder__toggle-button input:focus + label {
+	box-shadow: -2px 2px 7px #2196f3;
+}
+
+.glozin-builder__toggle-button input:checked + label {
+	background-color: #9ab927;
+}
+
+.glozin-builder__toggle-button input:checked + label::before {
+	background-color: #fff;
+	transform: translateX(15px);
+}
+
+table.glozin-loading {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* Glozin builder template type */
+.glozin-builder-template-modal {
+	position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    z-index: 1100;
+}
+
+.glozin-builder-template-modal.modal--open {
+    visibility: visible;
+    z-index: 2000;
+}
+
+.glozin-builder-template-modal .modal__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.glozin-builder-template-modal .modal__button-close {
+	position: absolute;
+    top: 10px;
+    right: 10px;
+	font-size: 16px;
+    cursor: pointer;
+}
+
+.glozin-builder-template-modal .modal__button-close svg {
+	vertical-align: -0.125em;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    display: inline-block;
+}
+
+.glozin-builder-template-modal .modal__content {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    max-width: 400px;
+    width: 100%;
+    opacity: 0;
+    transition: .5s;
+	padding: 40px;
+}
+
+.glozin-builder-template-modal.modal--open .modal__content{
+    opacity: 1;
+}
+
+.glozin-builder-template-modal .modal-content-form__title {
+	color: #1d2128;
+	font-size: 24px;
+	margin-bottom: 20px;
+	font-weight: 500;
+}
+
+.glozin-builder-template-modal .elementor-form-field {
+	margin-bottom: 20px;
+}
+
+.glozin-builder-template-modal .elementor-form-field__select,
+.glozin-builder-template-modal .elementor-form-field__text {
+	width: 100%;
+	max-width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #dadfe3;
+	padding: 12px 22px;
+	margin-top: 5px;
+}
+
+.glozin-builder-template-modal .elementor-button {
+	width: 100%;
+	background-color: #25b865 !important;
+	color: #fff !important;
+	padding: 19px 22px;
+	position: relative;
+	height: 54px;
+}
+
+.glozin-builder-template-modal .elementor-button:hover {
+	color: #fff;
+}
+
+.glozin-builder-template-modal .modal-content-form-message {
+	color: red;
+}
+
+.glozin-builder-template-modal .elementor-button.glozin-loading span {
+	display: none;
+}
+
+.glozin-builder-template-modal .elementor-button.glozin-loading:before {
+    content: "";
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+    border-radius: 50%;
+    border: 2px solid;
+    border-top-color: transparent;
+    animation: glozinSpin infinite 1s linear;
+    transition: width .2s;
+	color: #fff !important;
+	display: inline-block;
+}
+
+tbody#the-list.loading {
+	position: relative;
+}
+
+tbody#the-list.loading::before {
+	position: absolute;
+	content: "";
+    display: inline-block;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	background-color: rgba(255, 255, 255, .6);
+	z-index: 99;
+}
+
+tbody#the-list.loading::after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	content: "";
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+    border-radius: 50%;
+    border: 2px solid;
+    border-top-color: transparent;
+    animation: glozinSpin infinite 1s linear;
+    transition: width .2s;
+	color: #000;
+	display: inline-block;
+	z-index: 99;
+}

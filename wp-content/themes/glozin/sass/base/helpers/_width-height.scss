@@ -1,0 +1,77 @@
+.w-100 {
+	width: 100%;
+}
+
+.w-75 {
+	width: 75%;
+}
+
+.w-50 {
+	width: 50%;
+}
+
+.w-25 {
+	width: 25%;
+}
+
+.w-20 {
+	width: 20%;
+}
+
+.w-auto {
+	width: auto;
+}
+
+.h-100 {
+	height: 100%;
+}
+
+.h-75 {
+	height: 75%;
+}
+
+.h-50 {
+	height: 50%;
+}
+
+.h-25 {
+	height: 25%;
+}
+
+.h-auto {
+	height: auto;
+}
+
+.m-w-450 {
+	max-width: 450px;
+}
+
+.m-w-340 {
+	max-width: 340px;
+}
+
+.w-custom {
+	width: var(--custom-width);
+}
+
+.min-w-200 {
+	min-width: 200px;
+}
+
+.min-w-180 {
+	min-width: 180px;
+}
+
+@media (min-width: 768px) {
+	.w-auto-md {
+		width: auto;
+	}
+
+	.w-custom-md {
+		width: var(--custom-width);
+	}
+
+	.w-50-md {
+		width: 50%;
+	}
+}

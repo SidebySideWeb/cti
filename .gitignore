@@ -1,0 +1,20 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# LocalWP exports
+*.sql
+*.zip
+*.tar.gz
+
+# Logs
+*.log
+
+# WP cache folders
+wp-content/cache/
+wp-content/uploads/cache/
+wp-content/backups/
+wp-content/upgrade/
+
+# Local settings
+local-phpinfo.php

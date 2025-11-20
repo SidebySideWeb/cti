@@ -1,0 +1,119 @@
+.glozin-buy-x-get-y {
+    --gz-border-color: #111111;
+
+    padding: 24px;
+}
+
+.glozin-buy-x-get-y__heading {
+    letter-spacing: -0.4px;
+}
+
+.glozin-buy-x-get-y__line::after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    height: 1px;
+    border-bottom: 1px dashed #ebebeb;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+.glozin-buy-x-get-y__line span {
+    padding: 8px;
+    background-color: #000;
+    width: 29px;
+    height: 29px;
+}
+
+.glozin-buy-x-get-y__line span::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 12px;
+    height: 1.5px;
+    border-radius: 9999em;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.glozin-buy-x-get-y__line span::after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 1.5px;
+    height: 12px;
+    border-radius: 9999em;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.glozin-buy-x-get-y__product.out-of-stock {
+    opacity: 0.6;
+}
+
+.glozin-buy-x-get-y__product .product-thumbnail.change img {
+    opacity: 0;
+}
+
+.glozin-buy-x-get-y__product .product-thumbnail.change img.product-thumbnail__new {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+}
+
+.glozin-buy-x-get-y__product img {
+    max-width: 100px;
+}
+
+.glozin-buy-x-get-y__product .woocommerce-loop-product__title {
+    letter-spacing: -0.3px;
+}
+
+.glozin-buy-x-get-y__product .woocommerce-loop-product__title .stock {
+	color: #db1215;
+	font-weight: 600;
+}
+
+.glozin-buy-x-get-y__product .price {
+     line-height: 1;
+}
+
+.glozin-buy-x-get-y__product .price .badges {
+    display: none;
+}
+
+.glozin-buy-x-get-y__product .price-label {
+    letter-spacing: -0.3px;
+}
+
+.glozin-buy-x-get-y__product .attributes select {
+    padding: 8px 25px 8px 10px;
+    background-position: calc(100% - 10px) center;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 118px;
+}
+
+.glozin-buy-x-get-y__button button {
+    --gz-button-border-color: var(--gz-color-primary);
+    --gz-button-border-color-hover: var(--gz-color-primary);
+    --gz-button-bg-color: var(--gz-color-primary);
+    --gz-button-bg-color-hover: var(--gz-color-primary);
+    --gz-button-color: var(--gz-text-color-on-primary);
+    --gz-button-color-hover: var(--gz-text-color-on-primary);
+
+    width: 100%;
+    letter-spacing: -0.3px;
+}
+
+@media (max-width: 768px) {
+    .glozin-buy-x-get-y__product .attributes select {
+        font-size: 14px;
+    }
+}

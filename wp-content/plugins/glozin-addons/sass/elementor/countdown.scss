@@ -1,0 +1,54 @@
+.glozin-time-countdown__wrapper {
+    display: inline-flex;
+}
+
+.glozin-time-countdown {
+    .glozin-time-countdown__wrapper {
+        gap: 25px;
+    }
+
+    .timer{
+        color: var( --gz-color-dark );
+        position: relative;
+        min-width: 75px;
+
+        .text{
+            font-size: 16 / 16 * 1rem;
+            text-transform: lowercase;
+            line-height: 22px; 
+        }
+
+        .divider{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            inset-inline-end: -20px;
+            font-size: 24 / 16 * 1rem;
+            line-height: 1;
+            font-weight: 500;
+        }
+    }
+
+    .digits{
+        font-size: 36 / 16 * 1rem;
+        line-height: 1;
+        font-weight: 500;
+        display: block;
+        min-width: auto;
+    }
+
+    .days,
+    .weeks {
+        .digits{
+            min-width: auto;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .glozin-time-countdown {
+        .digits{
+            font-size: 32 / 16 * 1rem;
+        }
+    }
+}

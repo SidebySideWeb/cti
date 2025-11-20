@@ -1,0 +1,19 @@
+.custom-information-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+
+.custom-information-item__title {
+    padding: 0 10px;
+}
+
+.custom-information-item input:first-child {
+    width: 150px;
+}
+
+.add-custom-information {
+    margin: 0 10px 20px !important;
+}

@@ -1,0 +1,84 @@
+@media (max-width: 1024px) and (min-width: 768px) {
+	.elementor .elementor-element.glozin-tablet-column--column_lg .e-con.e-child {
+		flex: 1 0 100%;
+		width: 100%
+	}
+
+	.elementor .elementor-element.glozin-tablet-column--column_md .e-con.e-child {
+		flex: 1 0 75%;
+		width: 75%
+	}
+
+	.elementor .elementor-element.glozin-tablet-column--column_sm .e-con.e-child {
+		flex: 1 0 50%;
+		width: 50%
+	}
+
+	.elementor .elementor-element.glozin-tablet-column--column_xs .e-con.e-child {
+		flex: 1 0 40%;
+		width: 40%
+	}
+
+	.elementor .elementor-element.glozin-tablet-column--column_xxs .e-con.e-child {
+		flex: 1 0 30%;
+		width: 30%
+	}
+
+	.elementor .elementor-element.glozin-tablet-column--column_xxxs .e-con.e-child {
+		flex: 1 0 22.5%;
+		width: 22.5%
+	}
+
+	.glozin-responsive-column:not( .glozin-tablet-column--default ).e-con-full,
+	.glozin-responsive-column:not( .glozin-tablet-column--default ) .e-con-inner {
+		flex-wrap: nowrap !important;
+		overflow-y: hidden;
+		overflow-x: auto;
+		scroll-behavior: smooth;
+		justify-content: space-between;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.elementor .elementor-element.glozin-mobile-column--column_lg .e-con.e-child {
+		flex: 1 0 100%;
+		width: 100%
+	}
+
+	.elementor .elementor-element.glozin-mobile-column--column_md .e-con.e-child {
+		flex: 1 0 75%;
+		width: 75%
+	}
+
+	.elementor .elementor-element.glozin-mobile-column--column_sm .e-con.e-child {
+		flex: 1 0 50%;
+		width: 50%
+	}
+
+	.elementor .elementor-element.glozin-mobile-column--column_xs .e-con.e-child {
+		flex: 1 0 40%;
+		width: 40%
+	}
+
+	.elementor .elementor-element.glozin-mobile-column--column_xxs .e-con.e-child {
+		flex: 1 0 30%;
+		width: 30%
+	}
+
+	.glozin-responsive-column:not( .glozin-mobile-column--default ).e-con-full,
+	.glozin-responsive-column:not( .glozin-mobile-column--default ) .e-con-inner {
+		flex-wrap: nowrap !important;
+		overflow-y: hidden;
+		overflow-x: auto;
+		scroll-behavior: smooth;
+		justify-content: space-between;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+}

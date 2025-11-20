@@ -1,0 +1,1 @@
+echo '<span class="entry-meta__comments">' . get_comments_number() . ' ' . _n('Comment', 'Comments', get_comments_number(), 'glozin') . '</span>'; 

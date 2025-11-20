@@ -1,0 +1,16 @@
+.glozin-recent-posts-widget {
+	li {
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.post-thumbnail {
+		max-width: 75px;
+	}
+
+	.post-thumbnail,
+	.post-thumbnail img {
+		border-radius: calc(min(5px, var(--gz-image-rounded) ) );
+	}
+}

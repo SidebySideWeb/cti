@@ -1,0 +1,26 @@
+@mixin input(){
+	color: var(--gz-input-color);
+	border-width: var(--gz-input-border-width);
+	border-style: solid;
+	border-color: var(--gz-input-border-color);
+	outline: none;
+	transition: 0.4s;
+	font-family: var(--gz-body-font);
+	font-size: var(--gz-input-font-size);
+	padding: var(--gz-input-padding-y) var(--gz-input-padding-x);
+	background-color: var(--gz-input-bg-color);
+	border-radius: var(--gz-input-rounded);
+	-webkit-appearance: none;
+	line-height: normal;
+
+	&:hover,
+	&:active,
+	&:focus {
+		border-color: var(--gz-input-border-color-hover);
+	}
+
+	&::placeholder {
+		font-size: var(--gz-input-placeholder-font-size);
+		color: var(--gz-input-placeholder-color);
+	}
+}

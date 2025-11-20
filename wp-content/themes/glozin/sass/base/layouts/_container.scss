@@ -1,0 +1,27 @@
+:where(.container, .container-xxl, .container-fluid) {
+    padding-left: var(--gz-gutter-x, 15px);
+    padding-right: var(--gz-gutter-x, 15px);
+    margin-inline: auto;
+    width: 100%;
+}
+
+@media (min-width: 1025px) {
+    .container {
+        max-width: calc(var(--gz-container-width) + var(--gz-gutter-x)* 2);
+    }
+
+	.container-xxl {
+		max-width: calc(var(--gz-container-xxl-width) + var(--gz-gutter-x) * 2);
+	}
+
+    .container,
+    .container-xxl,
+    .container-fluid {
+        --gz-gutter-x: 30px;
+    }
+}
+
+.site-content {
+	padding-top: 3.375rem;
+	padding-bottom: 5.625rem;
+}

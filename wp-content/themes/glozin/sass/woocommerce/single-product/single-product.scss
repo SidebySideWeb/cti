@@ -1,0 +1,44 @@
+// Mixins.
+@import "abstracts/mixins/mixins";
+
+// WooCommerce.
+@import "product-navigation";
+@import "meta";
+@import "related-upsell-recently";
+@import "zoom";
+@import "product-extra-link";
+@import "shipping-promotions";
+@import "product-highlights";
+@import "advanced-product-field";
+
+.single-product {
+    .site-content {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .woocommerce-notices-wrapper:not(:empty) {
+        margin-top: 30px;
+    }
+}
+
+@media (min-width: 768px) {
+    .single-product {
+        div.product {
+            .product-gallery-summary {
+                margin-bottom: 90px;
+            }
+
+            .woocommerce-product-gallery {
+                top: 50px;
+            }
+
+            .entry-summary {
+                position: -webkit-sticky;
+				position: sticky;
+				top: 50px;
+                align-self: flex-start;
+            }
+        }
+    }
+}

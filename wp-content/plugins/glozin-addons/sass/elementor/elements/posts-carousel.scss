@@ -1,0 +1,13 @@
+.glozin-posts-carousel {
+    .entry-title {
+        letter-spacing: var(--gz-heading-letter-spacing);
+
+        a {
+			display: -webkit-box;
+			-webkit-line-clamp: var(--gz-line-clamp-count, 'none');
+			-webkit-box-orient: vertical;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+    }
+}

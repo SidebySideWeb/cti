@@ -1,0 +1,71 @@
+.glozin-content-preview-tabs {
+    --col-width: 50%;
+    --col-gap: 30px;
+
+    gap: var(--col-gap);
+}
+
+.glozin-content-preview-tabs__title {
+    --gz-link-color-hover: var(--gz-link-color);
+
+    a, span {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 1px;
+            left: auto;
+            right: 0;
+            bottom: 0;
+            background-color: currentColor;
+            transition: width .5s cubic-bezier(.3, 1, .3, 1);
+            transform-origin: right left;
+        }
+
+        &:hover {
+            &::after {
+                left: 0;
+                right: auto;
+                width: 100%;
+                transform-origin: left right;
+            }
+        }
+    }
+
+    &[data-active="true"] {
+        a, span {
+            &::after {
+                left: 0;
+                right: auto;
+                width: 100%;
+                transform-origin: left right;
+            }
+        }
+    }
+}
+
+.glozin-content-preview-tabs__image {
+    transition: opacity 0.8s ease;
+
+    &[data-active="false"] {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    &[data-active="true"] {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}

@@ -1,0 +1,36 @@
+@media (min-width: 1025px) {
+	:root {
+		--gz-col-gap-desktop: 60px;
+	}
+
+	.content-sidebar,
+	.sidebar-content {
+		.content-area {
+			flex: 0 0 calc(100% - var(--gz-col-width) - var(--gz-col-gap-desktop));
+			width: calc(100% - var(--gz-col-width) - var(--gz-col-gap-desktop));
+		}
+
+		.widget-area {
+			flex: 0 0 auto;
+			width: var(--gz-col-width, 50%);
+		}
+	}
+
+	.sidebar-content {
+		.site-content-container {
+			flex-direction: row-reverse;
+		}
+	}
+
+	.content-sidebar {
+		.site-content-container {
+			flex-direction: row;
+		}
+	}
+
+	.no-sidebar {
+		.site-content-container {
+			justify-content: center;
+		}
+	}
+}

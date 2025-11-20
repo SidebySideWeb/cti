@@ -1,0 +1,20 @@
+.single-product {
+    div.product {
+        .product_meta {
+            margin-bottom: 20px;
+            color: var(--gz-color-dark);
+
+            .meta__label {
+                display: inline-block;
+                color: var(--gz-color-base);
+                min-width: clamp(90 / 16 * 1rem, 5vw, 120 / 16 * 1rem);
+            }
+
+            > span {
+                display: block;
+                font-weight: 400;
+                margin-bottom: 2px;
+            }
+        }
+    }
+}

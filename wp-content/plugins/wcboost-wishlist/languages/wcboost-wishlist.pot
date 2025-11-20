@@ -1,0 +1,905 @@
+# Copyright (C) 2025 WCBoost
+# This file is distributed under the GPLv3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: WCBoost - Wishlist 1.2.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wcboost-wishlist\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-10-01T05:16:50+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: wcboost-wishlist\n"
+
+#. Plugin Name of the plugin
+#: wcboost-wishlist.php
+msgid "WCBoost - Wishlist"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: wcboost-wishlist.php
+msgid "https://wcboost.com/plugin/woocommerce-wishlist/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash"
+msgstr ""
+
+#. Description of the plugin
+#: wcboost-wishlist.php
+msgid "Our WooCommerce Wishlist plugin enables customers to create personalized collections of products that they like but aren't ready to purchase immediately. Enhance the shopping experience by saving products for further consideration, making decisions easier than ever."
+msgstr ""
+
+#. Author of the plugin
+#: wcboost-wishlist.php
+#: includes/customizer/customizer.php:551
+msgid "WCBoost"
+msgstr ""
+
+#. Author URI of the plugin
+#: wcboost-wishlist.php
+msgid "https://wcboost.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash"
+msgstr ""
+
+#: includes/admin/settings.php:26
+#: includes/helper.php:182
+#: includes/integrations/elementor/wishlist-widget.php:38
+#: includes/integrations/elementor/wishlist-widget.php:90
+#: includes/widgets/wishlist.php:27
+#: includes/widgets/wishlist.php:31
+msgid "Wishlist"
+msgstr ""
+
+#: includes/admin/settings.php:53
+msgid "General"
+msgstr ""
+
+#: includes/admin/settings.php:54
+msgid "This section controls how the wishlist work."
+msgstr ""
+
+#: includes/admin/settings.php:58
+msgid "Guest wishlists"
+msgstr ""
+
+#: includes/admin/settings.php:59
+msgid "Allow guests to create wishlists"
+msgstr ""
+
+#: includes/admin/settings.php:65
+msgid "Guest behaviour"
+msgstr ""
+
+#: includes/admin/settings.php:70
+msgid "Redirect to My Account page"
+msgstr ""
+
+#: includes/admin/settings.php:71
+msgid "Display a message"
+msgstr ""
+
+#: includes/admin/settings.php:75
+msgid "Guest message"
+msgstr ""
+
+#: includes/admin/settings.php:77
+#: includes/ajax-handler.php:54
+#: includes/form-handler.php:60
+msgid "You need to login to add products to your wishlist"
+msgstr ""
+
+#: includes/admin/settings.php:82
+msgid "Merge guest wishlist"
+msgstr ""
+
+#: includes/admin/settings.php:83
+msgid "Allow merging guest wishlist after a user login"
+msgstr ""
+
+#: includes/admin/settings.php:90
+msgid "Automatically empty guest wishlist after merging"
+msgstr ""
+
+#: includes/admin/settings.php:97
+msgid "Add variations"
+msgstr ""
+
+#: includes/admin/settings.php:98
+msgid "Allow adding variations to the wishlist"
+msgstr ""
+
+#: includes/admin/settings.php:104
+msgid "AJAX loading"
+msgstr ""
+
+#: includes/admin/settings.php:105
+msgid "Loads wishlist items via AJAX to bypass the cache"
+msgstr ""
+
+#: includes/admin/settings.php:111
+msgid "Auto removal"
+msgstr ""
+
+#: includes/admin/settings.php:112
+msgid "Automatically delete products from the wishlist"
+msgstr ""
+
+#: includes/admin/settings.php:117
+msgid "Never"
+msgstr ""
+
+#: includes/admin/settings.php:118
+msgid "On added to cart"
+msgstr ""
+
+#: includes/admin/settings.php:119
+msgid "On checkout"
+msgstr ""
+
+#: includes/admin/settings.php:129
+#: includes/integrations/elementor/wishlist-button-widget.php:103
+#: includes/integrations/elementor/wishlist-button-widget.php:125
+msgid "Wishlist button"
+msgstr ""
+
+#. translators: %s: URL to the Customizer section
+#: includes/admin/settings.php:131
+#, php-format
+msgid "This section controls how the wishlist button is displayed and worked. Some visual settings can be configured in the <a href=\"%s\" target=\"_blank\">Customizer</a>."
+msgstr ""
+
+#: includes/admin/settings.php:135
+msgid "Add to wishlist behaviour"
+msgstr ""
+
+#: includes/admin/settings.php:136
+msgid "Redirect to the wishlist page after successful addition"
+msgstr ""
+
+#: includes/admin/settings.php:143
+msgid "Enable AJAX add to wishlist"
+msgstr ""
+
+#: includes/admin/settings.php:150
+msgid "Button display for exists items"
+msgstr ""
+
+#: includes/admin/settings.php:151
+msgid "Choose how to display the button with products that are already in the wishlist."
+msgstr ""
+
+#: includes/admin/settings.php:156
+msgid "Hide button"
+msgstr ""
+
+#: includes/admin/settings.php:157
+#: includes/customizer/customizer.php:341
+#: includes/form-handler.php:111
+#: includes/frontend.php:521
+#: includes/helper.php:208
+msgid "View wishlist"
+msgstr ""
+
+#: includes/admin/settings.php:158
+#: includes/customizer/customizer.php:332
+#: includes/helper.php:207
+msgid "Remove from wishlist"
+msgstr ""
+
+#: includes/admin/settings.php:162
+#: includes/customizer/customizer.php:210
+msgid "Button position"
+msgstr ""
+
+#: includes/admin/settings.php:163
+#: includes/customizer/customizer.php:211
+msgid "Choose where to show \"Add to wishlist\" button on the product page."
+msgstr ""
+
+#: includes/admin/settings.php:164
+#: includes/admin/settings.php:179
+msgid "Manually use the button shortcode: [wcboost_wishlist_button]"
+msgstr ""
+
+#: includes/admin/settings.php:169
+#: includes/admin/settings.php:185
+#: includes/customizer/customizer.php:215
+#: includes/customizer/customizer.php:244
+msgid "Before \"Add to cart\" button"
+msgstr ""
+
+#: includes/admin/settings.php:170
+#: includes/admin/settings.php:186
+#: includes/customizer/customizer.php:216
+#: includes/customizer/customizer.php:245
+msgid "After \"Add to cart\" button"
+msgstr ""
+
+#: includes/admin/settings.php:171
+#: includes/customizer/customizer.php:217
+msgid "After product name"
+msgstr ""
+
+#: includes/admin/settings.php:172
+#: includes/customizer/customizer.php:218
+msgid "After product short description"
+msgstr ""
+
+#: includes/admin/settings.php:173
+#: includes/admin/settings.php:187
+#: includes/customizer/customizer.php:219
+#: includes/customizer/customizer.php:246
+msgid "Manually use shortcode"
+msgstr ""
+
+#: includes/admin/settings.php:177
+#: includes/customizer/customizer.php:238
+msgid "Button in loop"
+msgstr ""
+
+#: includes/admin/settings.php:178
+#: includes/customizer/customizer.php:239
+msgid "Choose where to show \"Add to wishlist\" button on the product catalog pages."
+msgstr ""
+
+#: includes/admin/settings.php:184
+#: includes/customizer/customizer.php:243
+msgid "Hide the button"
+msgstr ""
+
+#: includes/admin/settings.php:197
+#: includes/customizer/customizer.php:61
+msgid "Wishlist Page"
+msgstr ""
+
+#. translators: %s: URL to the Customizer section
+#: includes/admin/settings.php:199
+#, php-format
+msgid "This section controls how the wishlist page is displayed. Some visual settings can be configured in the <a href=\"%s\" target=\"_blank\">Customizer</a>."
+msgstr ""
+
+#: includes/admin/settings.php:203
+msgid "Page"
+msgstr ""
+
+#: includes/admin/settings.php:204
+msgid "Page content: [wcboost_wishlist]"
+msgstr ""
+
+#: includes/admin/settings.php:217
+msgid "The default wishlist title"
+msgstr ""
+
+#: includes/admin/settings.php:220
+#: includes/data-stores/wishlist.php:39
+msgid "My Wishlist"
+msgstr ""
+
+#: includes/admin/settings.php:223
+#: includes/customizer/customizer.php:148
+msgid "Table columns"
+msgstr ""
+
+#: includes/admin/settings.php:224
+#: includes/customizer/customizer.php:128
+msgid "Product price"
+msgstr ""
+
+#: includes/admin/settings.php:232
+#: includes/customizer/customizer.php:129
+#: templates/wishlist/wishlist-table.php:36
+#: templates/wishlist/wishlist-table.php:132
+msgid "Stock status"
+msgstr ""
+
+#: includes/admin/settings.php:240
+#: includes/customizer/customizer.php:130
+#: templates/wishlist/wishlist-table.php:33
+#: templates/wishlist/wishlist-table.php:111
+msgid "Quantity"
+msgstr ""
+
+#: includes/admin/settings.php:248
+msgid "Added date"
+msgstr ""
+
+#: includes/admin/settings.php:256
+#: includes/customizer/customizer.php:132
+msgid "Add to cart"
+msgstr ""
+
+#: includes/admin/settings.php:264
+msgid "Social share"
+msgstr ""
+
+#: includes/admin/settings.php:265
+msgid "Show sharing buttons at the bottom of wishlist"
+msgstr ""
+
+#: includes/admin/settings.php:266
+msgid "These buttons will be displayed on public and shareable wishlists only"
+msgstr ""
+
+#: includes/admin/settings.php:272
+msgid "Social media"
+msgstr ""
+
+#: includes/admin/settings.php:273
+msgid "Facebook"
+msgstr ""
+
+#: includes/admin/settings.php:281
+msgid "Twitter"
+msgstr ""
+
+#: includes/admin/settings.php:289
+msgid "Linkedin"
+msgstr ""
+
+#: includes/admin/settings.php:297
+msgid "Tumble"
+msgstr ""
+
+#: includes/admin/settings.php:305
+msgid "Reddit"
+msgstr ""
+
+#: includes/admin/settings.php:313
+msgid "StumbleUpon"
+msgstr ""
+
+#: includes/admin/settings.php:321
+msgid "Telegram"
+msgstr ""
+
+#: includes/admin/settings.php:329
+msgid "Whatsapp"
+msgstr ""
+
+#: includes/admin/settings.php:337
+msgid "Pocket"
+msgstr ""
+
+#: includes/admin/settings.php:345
+msgid "Digg"
+msgstr ""
+
+#: includes/admin/settings.php:353
+msgid "VK"
+msgstr ""
+
+#: includes/admin/settings.php:361
+msgid "Email"
+msgstr ""
+
+#: includes/admin/settings.php:369
+#: includes/helper.php:304
+msgid "Copy link"
+msgstr ""
+
+#: includes/admin/settings.php:403
+msgid "Wishlist Endpoints"
+msgstr ""
+
+#: includes/admin/settings.php:404
+msgid "Endpoints are appended to the page URL to handle specific actions on the wishlist page. They should be unique."
+msgstr ""
+
+#: includes/admin/settings.php:408
+#: includes/frontend.php:338
+msgid "Edit wishlist"
+msgstr ""
+
+#: includes/admin/settings.php:409
+msgid "Endpoint for the \"Wishlist &rarr; Edit wishlist\" page."
+msgstr ""
+
+#. translators: %s Theme name
+#: includes/admin/templates-notice.php:58
+#, php-format
+msgid "<strong>Your theme (%s) contains outdated copies of some template files from the WBoost - Wishlist plugin.</strong> These files may need updating to ensure they are compatible with the current version of WCBoost - Wishlist."
+msgstr ""
+
+#. translators: %s: product name
+#: includes/ajax-handler.php:101
+#: includes/form-handler.php:104
+#, php-format
+msgid "%s has been added to your wishlist"
+msgstr ""
+
+#: includes/customizer/customizer.php:62
+msgid "These options let you change the appearance of the wishlist page."
+msgstr ""
+
+#: includes/customizer/customizer.php:71
+#: includes/integrations/elementor/wishlist-button-widget.php:46
+msgid "Wishlist Button"
+msgstr ""
+
+#: includes/customizer/customizer.php:72
+msgid "These options let you change the appearance of the wishlist button."
+msgstr ""
+
+#: includes/customizer/customizer.php:101
+msgid "Show the wishlist title"
+msgstr ""
+
+#: includes/customizer/customizer.php:121
+msgid "Show the wishlist description"
+msgstr ""
+
+#: includes/customizer/customizer.php:131
+msgid "Date added"
+msgstr ""
+
+#: includes/customizer/customizer.php:149
+msgid "Choose wishlist table columns"
+msgstr ""
+
+#: includes/customizer/customizer.php:264
+msgid "Button icon"
+msgstr ""
+
+#: includes/customizer/customizer.php:268
+msgid "No icon"
+msgstr ""
+
+#: includes/customizer/customizer.php:269
+msgid "Heart"
+msgstr ""
+
+#: includes/customizer/customizer.php:270
+msgid "Star"
+msgstr ""
+
+#: includes/customizer/customizer.php:271
+msgid "Bookmark"
+msgstr ""
+
+#: includes/customizer/customizer.php:272
+#: includes/customizer/customizer.php:300
+msgid "Custom icon"
+msgstr ""
+
+#: includes/customizer/customizer.php:301
+msgid "Default icon."
+msgstr ""
+
+#: includes/customizer/customizer.php:313
+msgid "Added icon."
+msgstr ""
+
+#: includes/customizer/customizer.php:323
+#: includes/helper.php:206
+#: templates/loop/add-to-wishlist.php:26
+#: templates/single-product/add-to-wishlist.php:26
+msgid "Add to wishlist"
+msgstr ""
+
+#: includes/customizer/customizer.php:350
+msgid "Button text"
+msgstr ""
+
+#: includes/customizer/customizer.php:351
+msgid "Button add"
+msgstr ""
+
+#: includes/customizer/customizer.php:360
+msgid "Button remove"
+msgstr ""
+
+#: includes/customizer/customizer.php:369
+msgid "Button view"
+msgstr ""
+
+#: includes/customizer/customizer.php:389
+msgid "Button type"
+msgstr ""
+
+#: includes/customizer/customizer.php:393
+msgid "Normal button"
+msgstr ""
+
+#: includes/customizer/customizer.php:394
+msgid "Text button"
+msgstr ""
+
+#: includes/customizer/customizer.php:395
+msgid "Custom button"
+msgstr ""
+
+#: includes/customizer/customizer.php:439
+msgid "Button"
+msgstr ""
+
+#: includes/customizer/customizer.php:440
+#: includes/customizer/customizer.php:508
+msgid "Background color"
+msgstr ""
+
+#: includes/customizer/customizer.php:451
+#: includes/customizer/customizer.php:519
+msgid "Border color"
+msgstr ""
+
+#: includes/customizer/customizer.php:462
+#: includes/customizer/customizer.php:530
+msgid "Text color"
+msgstr ""
+
+#: includes/customizer/customizer.php:507
+msgid "Button Hover"
+msgstr ""
+
+#: includes/data-stores/wishlist-item.php:157
+msgid "Invalid item."
+msgstr ""
+
+#: includes/data-stores/wishlist-item.php:169
+msgid "No item found with given id."
+msgstr ""
+
+#: includes/data-stores/wishlist.php:235
+msgid "Required wishlist ID or token."
+msgstr ""
+
+#: includes/data-stores/wishlist.php:257
+msgid "No wishlist found."
+msgstr ""
+
+#: includes/data-stores/wishlist.php:301
+msgid "Invalid wishlist."
+msgstr ""
+
+#: includes/form-handler.php:108
+msgid "Continue shopping"
+msgstr ""
+
+#. translators: %s: product name
+#: includes/form-handler.php:132
+#, php-format
+msgid "%s already exists in your wishlist"
+msgstr ""
+
+#. translators: %s: product name
+#: includes/form-handler.php:137
+#, php-format
+msgid "%s cannot be added to the wishlist"
+msgstr ""
+
+#. translators: %s: product name
+#: includes/form-handler.php:142
+#, php-format
+msgid "Failed to add %s to your wishlist"
+msgstr ""
+
+#. translators: %s: product name
+#: includes/form-handler.php:170
+#, php-format
+msgid "%s is removed from the wishlist."
+msgstr ""
+
+#: includes/form-handler.php:171
+#: includes/form-handler.php:351
+msgid "Undo?"
+msgstr ""
+
+#: includes/form-handler.php:187
+msgid "You are not allowed to remove this item"
+msgstr ""
+
+#: includes/form-handler.php:191
+msgid "Failed to remove the wishlist item"
+msgstr ""
+
+#: includes/form-handler.php:226
+msgid "You are not allowed to restore this item"
+msgstr ""
+
+#: includes/form-handler.php:230
+msgid "Failed to restore the wishlist item"
+msgstr ""
+
+#: includes/form-handler.php:308
+msgid "Wishlist updated"
+msgstr ""
+
+#: includes/form-handler.php:331
+msgid "You cannot delete the default wishlist"
+msgstr ""
+
+#: includes/form-handler.php:333
+msgid "You cannot delete this wishlist"
+msgstr ""
+
+#. translators: %s: wishlist title
+#: includes/form-handler.php:344
+#, php-format
+msgid "The wishlist \"%s\" is deleted"
+msgstr ""
+
+#: includes/form-handler.php:348
+msgid "The wishlist is deleted"
+msgstr ""
+
+#: includes/form-handler.php:368
+msgid "Failed to delete the wishlist"
+msgstr ""
+
+#: includes/form-handler.php:394
+msgid "The wishlist is restored"
+msgstr ""
+
+#: includes/form-handler.php:410
+msgid "Failed to restore the wishlist"
+msgstr ""
+
+#. translators: %d: number of items
+#: includes/form-handler.php:442
+#, php-format
+msgid "%d item has been added to your wishlist"
+msgid_plural "%d items have been added to your wishlist"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/form-handler.php:446
+msgid "All items in the temporary wishlist have been added to your wishlist"
+msgstr ""
+
+#: includes/frontend.php:151
+msgid "The wishlist link is copied to clipboard"
+msgstr ""
+
+#: includes/frontend.php:152
+msgid "Close"
+msgstr ""
+
+#: includes/frontend.php:316
+msgid "Share"
+msgstr ""
+
+#: includes/frontend.php:369
+#: templates/wishlist/form-delete-wishlist.php:31
+msgid "Delete wishlist"
+msgstr ""
+
+#: includes/frontend.php:370
+msgid "Delete the wishlist and all items it contains"
+msgstr ""
+
+#: includes/frontend.php:391
+msgid "Delete"
+msgstr ""
+
+#: includes/helper.php:278
+msgid "I have some thing to share with you"
+msgstr ""
+
+#. translators: %s social name
+#: includes/helper.php:312
+#, php-format
+msgid "Share on %s"
+msgstr ""
+
+#: includes/install.php:186
+msgctxt "Page slug"
+msgid "wishlist"
+msgstr ""
+
+#: includes/install.php:188
+msgctxt "Page title"
+msgid "Wishlist"
+msgstr ""
+
+#: includes/install.php:235
+msgid "View wishlist documentation"
+msgstr ""
+
+#: includes/install.php:235
+msgid "Docs"
+msgstr ""
+
+#: includes/install.php:236
+msgid "Visit community forums"
+msgstr ""
+
+#: includes/install.php:236
+msgid "Community support"
+msgstr ""
+
+#: includes/install.php:261
+msgid "WCBoost - Wishlist (Free) has been automatically deactivated as you now have the Pro version installed."
+msgstr ""
+
+#: includes/integrations/elementor/wishlist-button-widget.php:111
+msgid "Product ID"
+msgstr ""
+
+#: includes/integrations/elementor/wishlist-button-widget.php:113
+msgid "Leave empty to use the current product."
+msgstr ""
+
+#. translators: %s: Customizer link
+#: includes/integrations/elementor/wishlist-widget.php:102
+#, php-format
+msgid "To customize the wishlist layout, please use the global wishlist settings in the <a href=\"%s\" target=\"_blank\">Customizer</a>."
+msgstr ""
+
+#: includes/integrations/elementor/wishlist-widget.php:114
+msgid "Wishlist title"
+msgstr ""
+
+#: includes/integrations/elementor/wishlist-widget.php:122
+msgid "Alignment"
+msgstr ""
+
+#: includes/integrations/elementor/wishlist-widget.php:126
+msgid "Left"
+msgstr ""
+
+#: includes/integrations/elementor/wishlist-widget.php:130
+msgid "Center"
+msgstr ""
+
+#: includes/integrations/elementor/wishlist-widget.php:134
+msgid "Right"
+msgstr ""
+
+#: includes/integrations/elementor/wishlist-widget.php:148
+msgid "Text Color"
+msgstr ""
+
+#: includes/plugin.php:60
+#: includes/plugin.php:67
+msgid "Foul!"
+msgstr ""
+
+#: includes/session.php:218
+msgid "No, keep separate and dismiss this notice"
+msgstr ""
+
+#: includes/session.php:219
+msgid "No"
+msgstr ""
+
+#: includes/session.php:228
+msgid "Yes, merge with the guest wishlist"
+msgstr ""
+
+#: includes/session.php:229
+msgid "Yes"
+msgstr ""
+
+#. translators: %s product name
+#: includes/templates.php:120
+#, php-format
+msgid "Add %s to the wishlist"
+msgstr ""
+
+#. translators: %s product name
+#: includes/templates.php:156
+#, php-format
+msgid "Remove %s from the wishlist"
+msgstr ""
+
+#: includes/templates.php:162
+msgid "Open the wishlist"
+msgstr ""
+
+#: includes/widgets/wishlist.php:25
+msgid "Display the customer wishlist."
+msgstr ""
+
+#: includes/widgets/wishlist.php:32
+msgid "Title"
+msgstr ""
+
+#: includes/widgets/wishlist.php:37
+msgid "Hide if wishlist is empty"
+msgstr ""
+
+#: includes/wishlist.php:541
+msgid "This item already exists"
+msgstr ""
+
+#: includes/wishlist.php:550
+msgid "A product has been removed from your wishlist because it does not exist anymore."
+msgstr ""
+
+#. translators: %s product name
+#: includes/wishlist.php:553
+#, php-format
+msgid "The product \"%s\" has been removed from your wishlist because it can no longer be purchased."
+msgstr ""
+
+#: includes/wishlist.php:592
+#: includes/wishlist.php:624
+msgid "You are not allowed to edit the wishlist"
+msgstr ""
+
+#: includes/wishlist.php:596
+#: includes/wishlist.php:635
+msgid "Invalid wishlist item"
+msgstr ""
+
+#: templates/wishlist/form-edit-wishlist.php:21
+msgid "Edit Wishlist"
+msgstr ""
+
+#: templates/wishlist/form-edit-wishlist.php:30
+msgid "Wishlist name"
+msgstr ""
+
+#: templates/wishlist/form-edit-wishlist.php:42
+msgid "Description"
+msgstr ""
+
+#: templates/wishlist/form-edit-wishlist.php:57
+msgid "Privacy settings"
+msgstr ""
+
+#: templates/wishlist/form-edit-wishlist.php:59
+msgid "Public - Anyone can view this list. Everyone can share this list."
+msgstr ""
+
+#: templates/wishlist/form-edit-wishlist.php:60
+msgid "Shared - Only people with the link can view this list. Only you can share this list."
+msgstr ""
+
+#: templates/wishlist/form-edit-wishlist.php:61
+msgid "Private - Only you can view this list."
+msgstr ""
+
+#: templates/wishlist/form-edit-wishlist.php:71
+msgid "Save changes"
+msgstr ""
+
+#: templates/wishlist/form-edit-wishlist.php:72
+msgid "Cancel"
+msgstr ""
+
+#: templates/wishlist/share.php:19
+msgid "Share the wishlist"
+msgstr ""
+
+#: templates/wishlist/wishlist-empty.php:18
+msgid "The wishlist is empty."
+msgstr ""
+
+#: templates/wishlist/wishlist-empty.php:28
+msgid "Return to shop"
+msgstr ""
+
+#: templates/wishlist/wishlist-none.php:18
+msgid "This wishlist is not available."
+msgstr ""
+
+#: templates/wishlist/wishlist-table.php:28
+#: templates/wishlist/wishlist-table.php:88
+msgid "Product"
+msgstr ""
+
+#: templates/wishlist/wishlist-table.php:30
+#: templates/wishlist/wishlist-table.php:105
+msgid "Price"
+msgstr ""
+
+#: templates/wishlist/wishlist-table.php:39
+msgid "Added Date"
+msgstr ""
+
+#: templates/wishlist/wishlist-table.php:68
+msgid "Remove this item"
+msgstr ""
+
+#: templates/wishlist/wishlist-table.php:135
+#: templates/wishlist/wishlist-widget.php:65
+msgid "In Stock"
+msgstr ""
+
+#: templates/wishlist/wishlist-table.php:169
+msgid "Update wishlist"
+msgstr ""
+
+#: templates/wishlist/wishlist-widget.php:103
+msgid "No products in the wishlist"
+msgstr ""

@@ -1,0 +1,52 @@
+.gallery {
+	margin-bottom: 1.5em;
+	display: grid;
+	grid-gap: 5px;
+}
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+	margin: 0;
+
+	a {
+		display: flex;
+		width: 100%;
+		position: relative;
+
+		&:before {
+			content: '';
+			width: 0;
+			height: 0;
+			display: block;
+			padding-bottom: var(--gz-ratio-percent);
+		}
+
+		img {
+			display: block;
+			max-width: 100%;
+			position: absolute;
+			margin: 0;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			object-position: center;
+			border-radius: calc(min(5px, var(--gz-image-rounded) ) );
+		}
+	}
+}
+
+// Loops to enumerate the classes for gallery columns.
+@for $i from 2 through 9 {
+
+	.gallery-columns-#{$i} {
+		grid-template-columns: repeat($i, 1fr);
+	}
+}
+
+.gallery-caption {
+	display: block;
+}

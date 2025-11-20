@@ -1,0 +1,23 @@
+.header-wishlist {
+	.gz-button-icon {
+		--gz-button-icon-size: 19px;
+		color: inherit;
+	}
+
+	.glozin-svg-icon {
+		display: inline-flex;
+	}
+}
+
+.header-wishlist__size-large {
+	.gz-button-icon {
+		--gz-button-icon-size: 27px;
+	}
+
+	.glozin-svg-icon-original {
+		svg {
+			width: 27px;
+			height: auto;
+		}
+	}
+}

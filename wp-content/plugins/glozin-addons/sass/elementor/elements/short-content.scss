@@ -1,0 +1,19 @@
+.glozin-short-content__content {
+    transition: max-height 0.3s ease-out;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 61px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+    }
+
+    &.show {
+        &::after {
+            opacity: 0;
+        }
+    }
+}

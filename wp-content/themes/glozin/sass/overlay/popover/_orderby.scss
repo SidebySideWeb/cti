@@ -1,0 +1,13 @@
+.mobile-orderby-popover {
+	.popover__backdrop {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+}
+
+.mobile-orderby-popover-opened {
+	.catalog-toolbar__orderby-button {
+		.glozin-svg-icon {
+			transform: rotate(-180deg);
+		}
+	}
+}

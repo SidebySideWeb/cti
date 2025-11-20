@@ -1,0 +1,122 @@
+.topbar {
+	--gz-background-color: var(--gz-color-dark);
+	--gz-text-color: var(--gz-color-light);
+	--gz-text-hover-color: #999;
+
+	background-color: var(--gz-background-color);
+	color: var(--gz-text-color);
+	min-height: 42px;
+	position: relative;
+	z-index: 12;
+
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: var(--gz-topbar-border-width, 0);
+		width: 100%;
+		background-color: var(--gz-topbar-border-color, var(--gz-border-color));
+		z-index: 1;
+	}
+}
+
+.topbar-container {
+	height: 100%;
+	min-height: inherit;
+
+	&:before,
+	&:after {
+		display: none;
+	}
+}
+
+.topbar-items {
+	line-height: 42px;
+	flex: 1;
+}
+
+.topbar-slides {
+	max-width: 400px;
+	width: 100%;
+
+	.navigation-merged {
+		background-color: var(--gz-background-color);
+	}
+
+	.swiper {
+		.swiper-button-text {
+			--gz-arrow-width: 26px;
+			--gz-arrow-height: 25px;
+			--gz-arrow-color: rgba(255, 255, 255, 0.5);
+			--gz-arrow-color-hover: var(--gz-color-light);
+			--gz-arrow-bg-color: var(--gz-background-color);
+			--gz-arrow-bg-color-hover: var(--gz-background-color);
+		}
+	}
+}
+
+.topbar-slides__item {
+	background-color: var(--gz-background-color);
+
+	a {
+		font-weight: 600;
+		color: inherit;
+		display: inline-block;
+		line-height: 1;
+
+		svg {
+			margin-inline-start: 5px;
+		}
+
+		&:hover {
+			color: var(--gz-text-hover-color);
+		}
+	}
+}
+
+.topbar-menu {
+	height: 100%;
+
+	.nav-menu {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		gap: 25px;
+
+		> li {
+			padding: 0;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			position: relative;
+
+			> a {
+				@include font-size(13/16);
+				color: inherit;
+				white-space: nowrap;
+				transition: 0.4s;
+				background: none;
+
+				.glozin-svg-icon,
+				.menu-item-icon {
+					@include font-size(10/16);
+					margin: 2px 8px 0 0;
+				}
+
+				.menu-icon-item-position--right {
+					margin: 2px 0 0 8px;
+				}
+
+				&:hover {
+					color: var(--gz-text-hover-color);
+				}
+
+				&:after {
+					display: none;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,83 @@
+@import 'single-product/gallery';
+@import 'single-product/title';
+@import 'single-product/rating';
+@import 'single-product/price';
+@import 'single-product/description';
+@import 'single-product/variations';
+@import 'single-product/quantity';
+@import 'single-product/countdown';
+@import 'single-product/add-to-cart-button';
+@import 'single-product/featured-icons';
+@import 'single-product/product-type';
+@import 'single-product/tabs';
+@import 'single-product/review';
+
+.single-product {
+    div.product {
+        .entry-summary:not(.elementor-widget) {
+            > *:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .gz-buy-now-button {
+            --gz-button-bg-color: var(--gz-color-primary);
+            --gz-button-border-color: var(--gz-color-primary);
+            --gz-button-bg-color-hover: var(--gz-color-primary);
+            --gz-button-border-color-hover: var(--gz-color-primary);
+            margin-bottom: 20px;
+            width: 100%;
+        }
+    }
+
+    // vendor
+    .sold-by-meta {
+        margin-bottom: 20px;
+
+        img {
+            max-height: 16px;
+            max-width: 16px;
+            margin-inline-end: 8px;
+            border-radius: 100%;
+        }
+
+        .vendor-name {
+            position: relative;
+            top: 1px;
+        }
+    }
+
+    .vendor-type-text {
+        font-weight: 400;
+
+        a {
+            color: var( --gz-color-base );
+
+            &:hover {
+                color: var( --gz-color-primary );
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .single-product {
+        div.product {
+            .woocommerce-product-gallery {
+                width: 50%;
+
+                &.woocommerce-product-gallery--grid-2 {
+                    width: 55%;
+
+                    ~ .entry-summary {
+                        width: calc(45% - 30px);
+                    }
+                }
+            }
+
+            .entry-summary {
+                width: calc(50% - 30px);
+            }
+        }
+    }
+}

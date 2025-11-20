@@ -1,0 +1,316 @@
+<wpml-config>
+	<taxonomies>
+		<taxonomy translate="1">product_brand</taxonomy>
+	</taxonomies>
+	<elementor-widgets>
+		<widget name="glozin-button">
+			<fields>
+				<field>button_text</field>
+				<field editor_type="LINK">button_link>url</field>
+			</fields>
+		</widget>
+		<widget name="glozin-accordion">
+			<fields-in-item items_of="tabs">
+				<field>tab_title</field>
+				<field editor_type="AREA">tab_content</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-banner-carousel">
+			<fields-in-item items_of="banners">
+				<field>sub_title</field>
+				<field>title</field>
+				<field editor_type="LINK">button_link>url</field>
+				<field>button_text</field>
+				<field editor_type="AREA">description</field>
+			</fields>
+		</widget>
+		<widget name="glozin-banner-products">
+			<fields>
+				<field>sub_title</field>
+				<field>title</field>
+				<field>products_title</field>
+				<field editor_type="AREA">description</field>
+			</fields>
+		</widget>
+		<widget name="glozin-banner">
+			<fields>
+				<field>title</field>
+				<field>sub_title</field>
+				<field editor_type="LINK">button_link>url</field>
+				<field>button_text</field>
+				<field editor_type="AREA">description</field>
+			</fields>
+		</widget>
+		<widget name="glozin-categories-carousel">
+			<fields>
+				<field>view_all_btn_title</field>
+				<field>view_all_btn_text</field>
+				<field editor_type="LINK">view_all_btn_link>url</field>
+			</fields>
+			<fields-in-item items_of="items">
+				<field>product_cat_title</field>
+				<field editor_type="AREA">product_cat_description</field>
+			</fields>
+		</widget>
+		<widget name="glozin-categories-grid">
+			<fields>
+				<field>pagination_text</field>
+			</fields>
+		</widget>
+		<widget name="glozin-code-discount">
+			<fields>
+				<field editor_type="AREA">code</field>
+			</fields>
+		</widget>
+		<widget name="glozin-contact-form">
+			<fields>
+				<field editor_type="AREA">form_shortcode</field>
+			</fields>
+		</widget>
+		<widget name="glozin-content-preview-tabs">
+			<fields>
+				<field>heading</field>
+			</fields>
+			<fields-in-item items_of="content_tabs">
+				<field>title</field>
+				<field editor_type="LINK">link>url</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-counter">
+			<fields>
+				<field>prefix</field>
+				<field>suffix</field>
+			</fields>
+		</widget>
+		<widget name="glozin-dual-image">
+			<fields>
+				<field editor_type="LINK">primary_link_to>url</field>
+				<field editor_type="LINK">primary_link>url</field>
+				<field editor_type="LINK">secondary_link_to>url</field>
+				<field editor_type="LINK">secondary_link>url</field>
+				<field editor_type="LINK">third_link_to>url</field>
+				<field editor_type="LINK">third_link>url</field>
+			</fields>
+		</widget>
+		<widget name="glozin-flash-sale">
+			<fields>
+				<field>title</field>
+			</fields>
+		</widget>
+		<widget name="glozin-heading">
+			<fields>
+				<field editor_type="AREA">title</field>
+			</fields>
+		</widget>
+		<widget name="glozin-icon-box-carousel">
+			<fields-in-item items_of="icons_box">
+				<field>icon_url</field>
+				<field>title</field>
+				<field editor_type="AREA">description</field>
+				<field editor_type="LINK">link>url</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-icon-box">
+			<fields>
+				<field>icon_url</field>
+				<field>title</field>
+				<field editor_type="AREA">description</field>
+				<field editor_type="LINK">link>url</field>
+			</fields>
+		</widget>
+		<widget name="glozin-image-before-after">
+			<fields>
+				<field>before_text</field>
+				<field>after_text</field>
+			</fields>
+		</widget>
+		<widget name="glozin-image-box-carousel">
+			<fields-in-item items_of="items">
+				<field>title</field>
+				<field>button_text</field>
+				<field editor_type="AREA">description</field>
+				<field editor_type="LINK">link>url</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-image-box">
+			<fields>
+				<field>title</field>
+				<field>button_text</field>
+				<field editor_type="AREA">description</field>
+				<field editor_type="LINK">link>url</field>
+			</fields>
+		</widget>
+		<widget name="glozin-image-carousel">
+			<fields-in-item items_of="items">
+				<field editor_type="LINK">link>url</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-lookbook-products">
+			<fields>
+				<field>title</field>
+				<field>sub_title</field>
+			</fields>
+		</widget>
+		<widget name="glozin-marquee">
+			<fields-in-item items_of="items">
+				<field editor_type="AREA">text</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-navigation-bar-item">
+			<fields>
+				<field>icon_url</field>
+				<field>title</field>
+				<field editor_type="LINK">custom_url>url</field>
+			</fields>
+		</widget>
+		<widget name="glozin-navigation-menu">
+			<fields>
+				<field editor_type="AREA">title</field>
+			</fields>
+			<fields-in-item items_of="menu_items">
+				<field>title_menu</field>
+				<field editor_type="LINK">link_menu>url</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-product-deals">
+			<fields>
+				<field>title</field>
+				<field editor_type="AREA">countdown_offer_text</field>
+			</fields>
+		</widget>
+		<widget name="glozin-product-category-tabs">
+			<fields-in-item items_of="categories">
+				<field>custom_text</field>
+				<field editor_type="LINK">custom_link>url</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-product-grid">
+			<fields>
+				<field>pagination_text</field>
+			</fields>
+		</widget>
+		<widget name="glozin-product-highlight-slider">
+			<fields>
+				<field>sub_title</field>
+				<field>title</field>
+				<field editor_type="AREA">description</field>
+			</fields>
+		</widget>
+		<widget name="glozin-product-recently-viewed-carousel">
+			<fields>
+				<field>title</field>
+				<field editor_type="AREA">description</field>
+			</fields>
+		</widget>
+		<widget name="glozin-product-recently-viewed">
+			<fields>
+				<field>title</field>
+				<field editor_type="AREA">description</field>
+			</fields>
+		</widget>
+		<widget name="glozin-product-sale-tabs">
+			<fields-in-item items_of="tabs">
+				<field>heading</field>
+			</fields>
+		</widget>
+		<widget name="glozin-product-tabs-carousel">
+			<fields-in-item items_of="tabs">
+				<field>heading</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-product-tabs">
+			<fields-in-item items_of="tabs">
+				<field>heading</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-products-bundle">
+			<fields>
+				<field>bundle_title</field>
+				<field editor_type="AREA">bundle_description</field>
+			</fields>
+		</widget>
+		<widget name="glozin-promo-card">
+			<fields>
+				<field>promo_card_subtle</field>
+				<field>promo_card_title</field>
+				<field>promo_card_code_label</field>
+				<field>promo_card_code_value</field>
+				<field editor_type="AREA">promo_card_description</field>
+			</fields>
+		</widget>
+		<widget name="glozin-shoppable-images-carousel">
+			<fields-in-item items_of="images">
+				<field editor_type="LINK">link>url</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-shoppable-images">
+			<fields-in-item items_of="images">
+				<field>tag</field>
+				<field editor_type="LINK">link>url</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-short-content">
+			<fields>
+				<field>show</field>
+				<field>hide</field>
+			</fields>
+		</widget>
+		<widget name="glozin-slides">
+			<fields-in-item items_of="slides">
+				<field>before_title</field>
+				<field>title</field>
+				<field>sub_description_text</field>
+				<field>button_second_text</field>
+				<field editor_type="AREA">description</field>
+				<field editor_type="LINK">button_second_link>url</field>
+				<field editor_type="LINK">button_link>url</field>
+				<field>button_text</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-social-icons">
+			<fields-in-item items_of="social_icon_list">
+				<field>external_url</field>
+				<field>name</field>
+				<field editor_type="LINK">link>url</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-store-locations">
+			<fields>
+				<field>access_token</field>
+			</fields>
+			<fields-in-item items_of="locations">
+				<field>title</field>
+				<field>address</field>
+				<field>phone</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-subscribe-box">
+			<fields>
+				<field editor_type="AREA">form_shortcode</field>
+			</fields>
+		</widget>
+		<widget name="glozin-subscribe-group">
+			<fields>
+				<field editor_type="AREA">form_shortcode</field>
+				<field editor_type="AREA">description</field>
+				<field editor_type="AREA">after_description</field>
+				<field>title</field>
+			</fields>
+		</widget>
+		<widget name="glozin-testimonial-carousel">
+			<fields-in-item items_of="testimonials">
+				<field>testimonial_name</field>
+				<field>testimonial_icon_url</field>
+				<field>testimonial_text</field>
+				<field editor_type="AREA">testimonial_content</field>
+			</fields-in-item>
+		</widget>
+		<widget name="glozin-timeline">
+			<fields-in-item items_of="timeline">
+				<field>year</field>
+				<field>title</field>
+				<field editor_type="AREA">description</field>
+			</fields-in-item>
+		</widget>
+	</elementor-widgets>
+</wpml-config>

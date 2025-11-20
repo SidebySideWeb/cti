@@ -1,0 +1,38 @@
+/*
+Theme Name: Glozin
+Description: Used to style the TinyMCE editor.
+*/
+
+/**
+ * Table of Contents:
+ *
+ * 1.0 - Body
+ * 2.0 - Typography
+ * 3.0 - Elements
+ * 4.0 - Alignment
+ * 5.0 - Galleries
+ */
+
+ // Import variables and mixins.
+@import "abstracts/variables/css";
+@import "abstracts/abstracts";
+
+
+/* Base
+--------------------------------------------- */
+@import "base/base";
+
+
+/* Widgets
+--------------------------------------------- */
+@import "components/widgets/widgets";
+@import "woocommerce/widgets";
+
+.editor-styles-wrapper select {
+	background: #fff url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E) no-repeat right 5px top 55%;
+}
+
+.editor-styles-wrapper input[type="checkbox"] {
+	-webkit-appearance: auto;
+	appearance: auto;
+}

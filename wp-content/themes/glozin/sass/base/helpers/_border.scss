@@ -1,0 +1,62 @@
+.border-none {
+	border: none;
+}
+
+.border {
+	border: 1px solid var(--gz-border-color);
+}
+
+.border-top {
+	border-top: 1px solid var(--gz-border-color);
+}
+
+.border-start {
+	border-inline-start: 1px solid var(--gz-border-color);
+}
+
+.border-bottom {
+	border-bottom: 1px solid var(--gz-border-color);
+}
+
+.border-end {
+	border-inline-end: 1px solid var(--gz-border-color);
+}
+
+.border-dashed {
+	border: 1px dashed var(--gz-border-color);
+}
+
+.border-top-dashed {
+	border-top: 1px dashed var(--gz-border-color);
+}
+
+.border-bottom-dashed {
+	border-bottom: 1px dashed var(--gz-border-color);
+}
+
+.border-end-dashed {
+	border-inline-end: 1px dashed var(--gz-border-color);
+}
+
+.border-last-0 {
+	&:last-child,
+	&:last-of-type {
+		border: 0;
+	}
+}
+
+@media (min-width: 768px) {
+	.border-md-none {
+		border: none;
+	}
+
+	.border-md-end {
+		border-inline-end: 1px solid var(--gz-border-color);
+	}
+}
+
+@media (min-width: 992px) {
+	.border-lg-start {
+		border-inline-start: 1px solid var(--gz-border-color);
+	}
+}

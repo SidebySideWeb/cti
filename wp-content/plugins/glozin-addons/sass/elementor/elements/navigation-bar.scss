@@ -1,0 +1,25 @@
+.glozin-mobile-navigation-bar {
+	z-index: 10;
+}
+
+.glozin-navigation-bar-item .header-counter {
+	top: -6px;
+	inset-inline-end: -8px;
+}
+
+.glozin-navigation-bar__title {
+	margin-top: 1px;
+}
+
+.glozin-navigation-bar__elementor-edit .elementor-edit-area {
+	max-width: 375px;
+	margin: 100px auto 0;
+}
+
+.glozin-navigation-bar__elementor-edit,
+.glozin-mobile-navigation-bar {
+	.elementor .e-parent > .e-con-inner {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

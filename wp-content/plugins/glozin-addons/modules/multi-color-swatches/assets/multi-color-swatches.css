@@ -1,0 +1,28 @@
+.wcboost-variation-swatches__item--multi-color {
+    position: relative;
+}
+
+.wcboost-variation-swatches__item--multi-color .wcboost-variation-swatches__name,
+.product-variation-item__multi-color .wcboost-variation-swatches__name {
+    position: relative;
+    overflow: hidden;
+}
+
+.wcboost-variation-swatches__item--multi-color .wcboost-variation-swatches__secondary-color,
+.product-variation-item__multi-color .wcboost-variation-swatches__name::before {
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 200%;
+    height: 200%;
+    background: var(--wcboost-swatches-item-color-secondary);
+    transform: rotate(45deg);
+}
+
+.product-variation-item__multi-color .wcboost-variation-swatches__name::before {
+    content: '';
+    display: block;
+    top: 25%;
+    left: 25%;
+}

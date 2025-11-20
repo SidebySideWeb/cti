@@ -1,0 +1,395 @@
+.single-product {
+	div.product {
+		.woocommerce-Reviews {
+			position: relative;
+
+			.woocommerce-Reviews-title {
+				margin-bottom: clamp(24 / 16 * 1rem, 4vw, 36 / 16 * 1rem);
+			}
+
+			.glozin-product-rating {
+				margin-bottom: 24px;
+			}
+
+			.glozin-product-rating__count {
+				.glozin-svg-icon {
+					@include font-size(16/16);
+				}
+			}
+
+			.glozin-product-rating__bar {
+				gap: 7px;
+
+				.star-item {
+					display: inline-flex;
+					align-items: center;
+
+					.sbar {
+						margin-inline-start: 15px;
+						margin-inline-end: 15px;
+						width: 200px;
+					}
+
+					.bar-content {
+						position: relative;
+						width: 100%;
+						height: 6px;
+						background-color: var(--gz-border-color);
+						border-radius: 3px;
+
+						span {
+							background-color: #FF9C05;
+							display: block;
+							height: 100%;
+							border-radius: 3px;
+						}
+					}
+
+					.bar-star {
+						opacity: 0;
+
+						&.active {
+							opacity: 1;
+						}
+					}
+
+					.bar-star--4 {
+						width: 75%;
+					}
+
+					.bar-star--3 {
+						width: 50%;
+					}
+
+					.bar-star--2 {
+						width: 25%;
+					}
+
+					.bar-star--1 {
+						width: 5%;
+					}
+
+					.glozin-svg-icon {
+						@include font-size(12/16);
+					}
+				}
+			}
+
+			.glozin-product-rating__button {
+				width: 100%;
+
+				button {
+					width: 100%;
+				}
+			}
+
+			.glozin-review-form {
+				.comment-respond {
+					text-align: center;
+					margin: 0 auto;
+					padding: 0;
+					max-width: 600px;
+				}
+			}
+
+			.comment-respond {
+				margin: 0;
+				padding: 0;
+
+				.comment-form {
+					margin: 0;
+				}
+
+				label {
+					display: block;
+					margin-bottom: 8px;
+				}
+
+				p {
+					padding: 0;
+					margin-bottom: 24px;
+				}
+
+				.comment-reply-title {
+					@include font-size(24/16);
+					font-weight: 600;
+					color: var(--gz-color-dark);
+					display: block;
+					margin-bottom: 16px;
+					text-transform: inherit;
+				}
+
+				.comment-notes {
+					display: block;
+				}
+
+				.comment-form-author {
+					width: 100%;
+					float: none;
+				}
+
+				.comment-form-rating {
+					margin-bottom: 24px;
+				}
+
+				.comment-form {
+					p.stars {
+						margin: 0;
+						padding: 0;
+
+						a {
+							position: relative;
+							display: inline-block;
+							padding: 0;
+							color: #DCDCDC;
+							font-size: 0;
+							text-indent: 0;
+							overflow: hidden;
+
+							span {
+								@include font-size(30/16);
+							}
+
+							&::before {
+								display: block;
+								content: '';
+
+								mask-image: url("data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyBpZD0ic3RhciIgdmlld0JveD0iMCAwIDEwIDEwIiBmaWxsPSJjdXJyZW50Q29sb3IiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik05Ljk3NjM1IDMuNzgxNDNDMTAuMDA4OSAzLjg4MzM1IDEwLjAxMjIgMy45ODg2OCA5Ljk4NjExIDQuMDk3NEM5Ljk2MDA3IDQuMjA2MTIgOS45MDQ3MyA0LjI5Nzg1IDkuODIwMSA0LjM3MjU5TDcuNjQyMzYgNi4zNzAzM0w4LjI4Njg5IDkuMzI2MTZDOC4zMDY0MiA5LjQzNDg4IDguMjk2NjYgOS41NDAyIDguMjU3NiA5LjY0MjEzQzguMjI1MDQgOS43NDQwNSA4LjE2NjQ1IDkuODI4OTkgOC4wODE4MSA5Ljg5Njk0QzcuOTkwNjcgOS45NjQ4OSA3Ljg5MzAxIDkuOTk4ODcgNy43ODg4NSA5Ljk5ODg3QzcuNjg0NjggMTAuMDA1NyA3LjU4NzAyIDkuOTgxODggNy40OTU4OCA5LjkyNzUyTDUuMDA1NjQgOC4zNjgwNkwyLjUxNTQxIDkuOTI3NTJDMi40NzYzNSA5Ljk0NzkxIDIuNDMwNzcgOS45NjQ4OSAyLjM3ODY5IDkuOTc4NDhDMi4zMzMxMiA5Ljk5MjA3IDIuMjg3NTQgOS45OTg4NyAyLjI0MTk3IDkuOTk4ODdDMi4xODk4OSA5Ljk5ODg3IDIuMTM0NTUgOS45ODg2OCAyLjA3NTk1IDkuOTY4MjlDMi4wMjM4NyA5Ljk1NDcgMS45NzUwNCA5LjkzMDkyIDEuOTI5NDcgOS44OTY5NEMxLjg0NDg0IDkuODI4OTkgMS43ODI5OSA5Ljc0NDA1IDEuNzQzOTIgOS42NDIxM0MxLjcxMTM3IDkuNTQwMiAxLjcwNDg2IDkuNDM0ODggMS43MjQzOSA5LjMyNjE2TDIuMzY4OTIgNi4zNzAzM0wwLjE5MTE4OSA0LjM3MjU5QzAuMTA2NTU0IDQuMjk3ODUgMC4wNTEyMTUzIDQuMjA2MTIgMC4wMjUxNzM2IDQuMDk3NEMtMC4wMDA4NjgwNTYgMy45ODg2OCAwLjAwMjM4NzE1IDMuODgzMzUgMC4wMzQ5MzkyIDMuNzgxNDNDMC4wNjc0OTEzIDMuNjcyNzEgMC4xMjI4MyAzLjU4NDM3IDAuMjAwOTU1IDMuNTE2NDJDMC4yODU1OSAzLjQ0ODQ3IDAuMzc5OTkxIDMuNDA3NyAwLjQ4NDE1OCAzLjM5NDExTDMuMzc0NzggMy4xMjkxMUw0LjUxNzM2IDAuMzM2MzUzQzQuNTU2NDIgMC4yMzQ0MjggNC42MjE1MyAwLjE1Mjg4OCA0LjcxMjY3IDAuMDkxNzMyN0M0LjgwMzgyIDAuMDMwNTc3NiA0LjkwMTQ4IDAgNS4wMDU2NCAwQzUuMTA5ODEgMCA1LjIwNzQ3IDAuMDMwNTc3NiA1LjI5ODYxIDAuMDkxNzMyN0M1LjM4OTc2IDAuMTUyODg4IDUuNDU0ODYgMC4yMzQ0MjggNS40OTM5MiAwLjMzNjM1M0w2LjYzNjUgMy4xMjkxMUw5LjUyNzEzIDMuMzk0MTFDOS42MzEyOSAzLjQwNzcgOS43MjI0NCAzLjQ0ODQ3IDkuODAwNTYgMy41MTY0MkM5Ljg4NTIgMy41ODQzNyA5Ljk0Mzc5IDMuNjcyNzEgOS45NzYzNSAzLjc4MTQzWiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPg==");
+								mask-repeat: no-repeat;
+								mask-size: 100%;
+								-webkit-mask-image: url("data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyBpZD0ic3RhciIgdmlld0JveD0iMCAwIDEwIDEwIiBmaWxsPSJjdXJyZW50Q29sb3IiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik05Ljk3NjM1IDMuNzgxNDNDMTAuMDA4OSAzLjg4MzM1IDEwLjAxMjIgMy45ODg2OCA5Ljk4NjExIDQuMDk3NEM5Ljk2MDA3IDQuMjA2MTIgOS45MDQ3MyA0LjI5Nzg1IDkuODIwMSA0LjM3MjU5TDcuNjQyMzYgNi4zNzAzM0w4LjI4Njg5IDkuMzI2MTZDOC4zMDY0MiA5LjQzNDg4IDguMjk2NjYgOS41NDAyIDguMjU3NiA5LjY0MjEzQzguMjI1MDQgOS43NDQwNSA4LjE2NjQ1IDkuODI4OTkgOC4wODE4MSA5Ljg5Njk0QzcuOTkwNjcgOS45NjQ4OSA3Ljg5MzAxIDkuOTk4ODcgNy43ODg4NSA5Ljk5ODg3QzcuNjg0NjggMTAuMDA1NyA3LjU4NzAyIDkuOTgxODggNy40OTU4OCA5LjkyNzUyTDUuMDA1NjQgOC4zNjgwNkwyLjUxNTQxIDkuOTI3NTJDMi40NzYzNSA5Ljk0NzkxIDIuNDMwNzcgOS45NjQ4OSAyLjM3ODY5IDkuOTc4NDhDMi4zMzMxMiA5Ljk5MjA3IDIuMjg3NTQgOS45OTg4NyAyLjI0MTk3IDkuOTk4ODdDMi4xODk4OSA5Ljk5ODg3IDIuMTM0NTUgOS45ODg2OCAyLjA3NTk1IDkuOTY4MjlDMi4wMjM4NyA5Ljk1NDcgMS45NzUwNCA5LjkzMDkyIDEuOTI5NDcgOS44OTY5NEMxLjg0NDg0IDkuODI4OTkgMS43ODI5OSA5Ljc0NDA1IDEuNzQzOTIgOS42NDIxM0MxLjcxMTM3IDkuNTQwMiAxLjcwNDg2IDkuNDM0ODggMS43MjQzOSA5LjMyNjE2TDIuMzY4OTIgNi4zNzAzM0wwLjE5MTE4OSA0LjM3MjU5QzAuMTA2NTU0IDQuMjk3ODUgMC4wNTEyMTUzIDQuMjA2MTIgMC4wMjUxNzM2IDQuMDk3NEMtMC4wMDA4NjgwNTYgMy45ODg2OCAwLjAwMjM4NzE1IDMuODgzMzUgMC4wMzQ5MzkyIDMuNzgxNDNDMC4wNjc0OTEzIDMuNjcyNzEgMC4xMjI4MyAzLjU4NDM3IDAuMjAwOTU1IDMuNTE2NDJDMC4yODU1OSAzLjQ0ODQ3IDAuMzc5OTkxIDMuNDA3NyAwLjQ4NDE1OCAzLjM5NDExTDMuMzc0NzggMy4xMjkxMUw0LjUxNzM2IDAuMzM2MzUzQzQuNTU2NDIgMC4yMzQ0MjggNC42MjE1MyAwLjE1Mjg4OCA0LjcxMjY3IDAuMDkxNzMyN0M0LjgwMzgyIDAuMDMwNTc3NiA0LjkwMTQ4IDAgNS4wMDU2NCAwQzUuMTA5ODEgMCA1LjIwNzQ3IDAuMDMwNTc3NiA1LjI5ODYxIDAuMDkxNzMyN0M1LjM4OTc2IDAuMTUyODg4IDUuNDU0ODYgMC4yMzQ0MjggNS40OTM5MiAwLjMzNjM1M0w2LjYzNjUgMy4xMjkxMUw5LjUyNzEzIDMuMzk0MTFDOS42MzEyOSAzLjQwNzcgOS43MjI0NCAzLjQ0ODQ3IDkuODAwNTYgMy41MTY0MkM5Ljg4NTIgMy41ODQzNyA5Ljk0Mzc5IDMuNjcyNzEgOS45NzYzNSAzLjc4MTQzWiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPg==");
+								-webkit-mask-repeat: no-repeat;
+								-webkit-mask-size: 100%;
+								background-color: #C4C4C4;
+								width: 24px;
+								height: 24px;
+
+								transition: .4s;
+							}
+
+							&:hover ~ a {
+								color: #C4C4C4;
+
+								&::before {
+									background-color: #C4C4C4;
+								}
+							}
+						}
+
+						&:hover {
+							a {
+								color: #FF9C05;
+
+								&::before {
+									background-color: #FF9C05;
+								}
+							}
+						}
+
+						&.selected {
+							a {
+								&.active {
+									color: #FF9C05;
+
+									&::before {
+										background-color: #FF9C05;
+									}
+
+									~ a {
+										color: #C4C4C4;
+
+										&::before {
+											background-color: #C4C4C4;
+										}
+									}
+								}
+
+								&:not(.active) {
+									color: #FF9C05;
+
+									&::before {
+										background-color: #FF9C05;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				.comment-form-email {
+					width: 100%;
+					float: none;
+				}
+
+				.comment-form-cookies-consent {
+					label {
+						display: inline;
+						text-transform: inherit;
+					}
+				}
+
+				.form-submit {
+					margin-top: 20px;
+					margin-bottom: 0;
+
+					.submit,
+					.glozin-form-review {
+						--gz-button-padding-left: calc(30 / 16* 1rem);
+    					--gz-button-padding-right: calc(30 / 16* 1rem);
+					}
+				}
+			}
+
+			ol.commentlist {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+
+				li {
+					display: block;
+					position: relative;
+					padding: 25px 0;
+					border-top: 1px solid var(--gz-border-color);
+
+					&:last-child {
+						padding-bottom: 0;
+					}
+
+					img.avatar {
+						width: 50px;
+						height: 50px;
+						border: none;
+						padding: 0;
+						border-radius: 50%;
+					}
+
+					.star-rating {
+						@include font-size(16/16);
+					}
+
+					p.meta {
+						margin: 0;
+					}
+
+					.woocommerce-review__author {
+						display: block;
+						font-weight: 600;
+						@include font-size(16/16);
+						color: var(--gz-color-dark);
+					}
+
+					.woocommerce-review__dash {
+						display: none;
+					}
+
+					.woocommerce-review__published-date {
+						color: rgba(17, 17, 16, 0.6);
+					}
+
+					.description p {
+						margin-top: 0;
+						margin-bottom: 10px;
+					}
+				}
+			}
+
+			.woocommerce-noreviews {
+				margin-top: 24px;
+				margin-bottom: 0;
+			}
+
+			.star-rating {
+				--gz-rating-spacing: 4px;
+
+				@include font-size(14/16);
+
+				span {
+					&:last-child {
+						margin-inline-end: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.single-product {
+		div.product {
+			.woocommerce-Reviews {
+				.comment-respond {
+					.comment-form {
+						.form-submit {
+							.submit,
+							.glozin-form-review {
+								--gz-button-padding-left: calc(55 / 16* 1rem);
+    							--gz-button-padding-right: calc(55 / 16* 1rem);
+							}
+						}
+					}
+				}
+
+				.glozin-review-form {
+					.comment-respond {
+						padding: 0 16px;
+					}
+				}
+
+				.glozin-product-rating__button {
+					width: auto;
+					
+					button {
+						min-width: 240px;
+					}
+				}
+
+				.glozin-form-review {
+					min-width: 240px;
+				}
+			}
+		}
+	}
+}
+@media (min-width: 992px) {
+	.single-product {
+		div.product {
+			.glozin-product-rating__count {
+				padding-inline-end: 31px;
+			}
+
+			.glozin-product-rating__bar {
+				padding-inline-start: 40px;
+				padding-inline-end: 40px;
+			}
+
+			.glozin-product-rating__button {
+				padding-inline-start: 31px;
+			}
+
+			.woocommerce-Reviews {
+				.glozin-product-rating {
+					margin-bottom: 38px;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.single-product {
+		div.product {
+			.glozin-product-rating__count {
+				padding-inline-end: 76px;
+			}
+
+			.glozin-product-rating__bar {
+				padding-inline-start: 55 / 16 * 1rem;;
+				padding-inline-end: 55 / 16 * 1rem;;
+			}
+
+			.glozin-product-rating__button {
+				padding-inline-start: 77 / 16 * 1rem;
+			}
+		}
+	}
+}

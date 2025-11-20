@@ -1,0 +1,22 @@
+.glozin-lookbook-products {
+    --col-width: calc(50% - 10px);
+    --col-gap: 20px;
+
+    gap: var(--col-gap);
+}
+
+.glozin-lookbook-products__thumbnail {
+    --gz-image-rounded: 0px;
+}
+
+.glozin-lookbook-products__hotspot {
+    .gz-button {
+        --gz-button-width: 30px;
+        --gz-button-height: 30px;
+        --gz-button-font-size: 10px;
+    }
+}
+
+.glozin-lookbook-products__summary {
+    background-color: #f6f6f6;
+}

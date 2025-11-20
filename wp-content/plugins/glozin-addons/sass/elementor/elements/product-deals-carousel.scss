@@ -1,0 +1,28 @@
+.glozin-product-deals__title {
+	font-size: clamp(1.75rem, calc(1.75rem + 2 * var(--gz-responsive-rate)), 1.875rem);
+}
+
+.glozin-product-deals__countdown {
+	.glozin-countdown {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+
+		.text,
+		.divider {
+			display: none;
+		}
+
+		.digits {
+			min-width: 50px;
+			min-height: 36px;
+			border-radius: 3px;
+			font-weight: 600;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			background-color: var(--gz-color-primary);
+			color: var(--gz-color-light);
+		}
+	}
+}

@@ -1,0 +1,197 @@
+.dynamic-pricing-discount__switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 64px;
+    height: 30px;
+}
+
+.dynamic-pricing-discount__switch--column {
+    width: 58px;
+    height: 26px;
+}
+
+.dynamic-pricing-discount__switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.dynamic-pricing-discount__switch .switch {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.dynamic-pricing-discount__switch .switch:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 30px;
+    left: 4px;
+    bottom: 4px;
+    border-radius: 10px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.dynamic-pricing-discount__switch--column .switch:before {
+    height: 20px;
+    width: 27px;
+    bottom: 3px;
+}
+
+.dynamic-pricing-discount__switch input:checked + .switch {
+    background-color: #2196F3;
+}
+
+.dynamic-pricing-discount__switch input:focus + .switch {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+.dynamic-pricing-discount__switch input:checked + .switch:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.dynamic-pricing-discount__switch--column input:checked + .switch:before {
+    -webkit-transform: translateX(22px);
+    -ms-transform: translateX(22px);
+    transform: translateX(22px);
+}
+
+.dynamic-pricing-discount__switch .text {
+    padding-left: 60px;
+    font-weight: 700;
+}
+
+#glozin-dynamic-pricing-discount hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.glozin-dynamic-pricing-discounts-display .form-field,
+.glozin-dynamic-pricing-discounts {
+    display: flex;
+    gap: 30px;
+}
+
+.glozin-dynamic-pricing-discounts h3 {
+    width: 100%;
+    margin-top: 0;
+}
+
+.glozin-dynamic-pricing-discounts-display .form-field.hidden {
+    display: none;
+}
+
+.glozin-dynamic-pricing-discounts-display .form-field label,
+.glozin-dynamic-pricing-discounts > label {
+    width: 20%;
+}
+
+.glozin-dynamic-pricing-discounts__items {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #ebebeb;
+}
+
+.glozin-dynamic-pricing-discounts__items .form-field.hidden {
+    display: none;
+}
+
+.glozin-dynamic-pricing-discounts__items input {
+    max-width: 100px;
+}
+
+.glozin-dynamic-pricing-discount__group,
+.glozin-dynamic-pricing-discount__group--clone {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.glozin-dynamic-pricing-discount__group p,
+.glozin-dynamic-pricing-discount__group--clone p {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    margin: 0;
+}
+
+.glozin-dynamic-pricing-discount__group--clone {
+    margin-top: 10px;
+}
+
+.column-pricing_discount_status {
+    width: 14%;
+    vertical-align: middle !important;
+}
+
+.glozin-dynamic-pricing-discounts__items .form-field__thumbnail {
+    display: block;
+    max-width: 80px;
+    width: 100%;
+}
+
+.glozin-dynamic-pricing-discounts__items .glozin-dynamic-pricing-discount__thumbnail {
+    display: block;
+    width: 100%;
+}
+
+.glozin-dynamic-pricing-discounts__items .glozin-dynamic-pricing-discount__thumbnail img {
+    width: 100%;
+    height: auto;
+}
+
+.glozin-dynamic-pricing-discounts__items .form-field__thumbnail a,
+.glozin-dynamic-pricing-discounts__items .form-field__thumbnail a:active,
+.glozin-dynamic-pricing-discounts__items .form-field__thumbnail a:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.glozin-dynamic-pricing-discount__thumbnail {
+    position: relative;
+}
+
+.glozin-dynamic-pricing-discount__thumbnail.has-thumnail #remove-thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba( 0, 0, 0, 0.5 );
+    color: #fff;
+    opacity: 0;
+    transition: .4s;
+}
+
+.glozin-dynamic-pricing-discount__thumbnail.has-thumnail:hover #remove-thumbnail {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .glozin-dynamic-pricing-discounts-display .form-field,
+    .glozin-dynamic-pricing-discounts {
+        flex-direction: column;
+    }
+
+    .glozin-dynamic-pricing-discount__group,
+    .glozin-dynamic-pricing-discount__group--clone {
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+}

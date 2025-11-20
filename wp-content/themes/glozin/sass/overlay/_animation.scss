@@ -1,0 +1,169 @@
+@keyframes moveUp {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	to {
+		opacity: 1;
+	  	transform: translateY(0);
+	}
+}
+
+@keyframes moveDown {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	to {
+		opacity: 0;
+	  	transform: translateY(10px);
+	}
+}
+
+@keyframes moveLeftToRight {
+	from {
+		opacity: 0;
+		transform: translateX(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes moveRightToLeft {
+	from {
+		opacity: 0;
+		transform: translateX(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes spin {
+	0% {
+	  	transform: rotate(0deg);
+	}
+	100% {
+	  	transform: rotate(360deg);
+	}
+}
+
+@keyframes moving {
+	50% {
+		width: 100%;
+	}
+	100% {
+		width: 0;
+		inset-inline-end: 0;
+		left: unset;
+	}
+}
+
+@keyframes text-underlined  {
+	0% {
+		transform: scaleX(1);
+		transform-origin: var(--transform-origin-end);
+	}
+	50% {
+		transform: scaleX(0);
+		transform-origin: var(--transform-origin-end);
+	}
+	51% {
+		transform-origin: var(--transform-origin-start);
+	}
+	100% {
+		transform: scaleX(1);
+	}
+
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes zoomInCenter {
+	0% {
+	  transform: translate( -50%, -50% ) scale(0.8) ;
+	  opacity: 0;
+	}
+	100% {
+	  transform: translate( -50%, -50% ) scale(1);
+	  opacity: 1;
+	}
+}
+
+@keyframes zoomOutCenter {
+	0% {
+		transform: translate( -50%, -50% ) scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: translate( -50%, -50% ) scale(0.8);
+		opacity: 0;
+	}
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes pulse {
+	50% {
+		opacity: 0.5;
+	}
+}
+
+@keyframes fadeInSticky {
+	0% {
+		opacity: 0;
+		top: calc(var(--gz-header-height, 100%) * -1);
+	}
+	100% {
+		opacity: 1;
+		top: var(--gz-admin-bar-height, 0);
+	}
+}
+
+@keyframes fadeOutSticky {
+	0% {
+		opacity: 1;
+		top: var(--gz-admin-bar-height, 0);
+	}
+	100% {
+		opacity: 0;
+		top: calc(var(--gz-header-height, 100%) * -1);
+	}
+}

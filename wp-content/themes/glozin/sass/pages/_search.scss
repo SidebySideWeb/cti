@@ -1,0 +1,42 @@
+.search-results {
+	article,
+	.glozin-pagination--blog {
+		width: 100%;
+	}
+	
+
+	.wp-block-heading {
+		font-size: 1rem;
+		letter-spacing: -0.544px;
+	}
+
+	.wp-block-latest-posts__list {
+		a {
+			font-weight: 400;
+			color: var(--gz-color-base);
+		}
+	}
+
+	.wp-block-search__inside-wrapper {
+		display: flex;
+		gap: 10px;
+	}
+
+	.site-main {
+		article {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			gap: 1.875rem;
+			padding-left: var(--gz-col-gap);
+    		padding-right: var(--gz-col-gap);
+			flex: 0 0 100%;
+			max-width: 100%;
+
+			@media (max-width: 768px) {
+				flex-direction: column;
+			}
+		}
+	}
+	
+}

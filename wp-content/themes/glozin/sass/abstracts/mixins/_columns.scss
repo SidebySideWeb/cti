@@ -1,0 +1,23 @@
+@import "abstracts/variables/columns";
+// Center block
+@mixin center-block {
+	display: block;
+	margin-inline-start: auto;
+	margin-inline-end: auto;
+}
+
+// Column width with margin
+@mixin column-width($numberColumns: 3, $columns__margin: $columns__margin) {
+	width: map-get($columns, $numberColumns) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
+}
+
+// Column width with margin in swiper
+@mixin column-width-swiper($numberColumns: 3, $columns__margin: $columns__margin ) {
+	width: calc( #{map-get($columns, $numberColumns)} - ( ( #{$columns__margin} * ( #{$numberColumns} - 1 ) ) / #{$numberColumns} ) );
+	margin-inline-end: $columns__margin;
+}
+
+@mixin column-width-swiper-auto($numberColumns: 3, $columns__margin: $columns__margin, $width: 0%) {
+	width: calc( #{$width} - ( ( #{$columns__margin} * ( #{$numberColumns} - 1 ) ) / #{$numberColumns} ) );
+	margin-inline-end: $columns__margin;
+}

@@ -1,0 +1,11 @@
+@import "abstracts/mixins/mixins";
+@import "page-header";
+@import "top-categories";
+@import "product-grid";
+@import "filter-horizontal";
+
+.glozin-catalog-page:not(.content-sidebar):not(.sidebar-content) {
+	.content-area {
+		width: 100%;
+	}
+}

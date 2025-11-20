@@ -1,0 +1,11 @@
+.single-product div.product {
+    .woocommerce-product-rating {
+        line-height: normal;
+        margin-bottom: 24px;
+
+        .woocommerce-review-link {
+            color: var(--gz-color-base);
+            margin-inline-start: 10px;
+        }
+    }
+}

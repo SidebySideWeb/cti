@@ -1,0 +1,10 @@
+@mixin scrollbar() {
+	flex-wrap: nowrap;
+	overflow-y: hidden;
+	overflow-x: auto;
+	scroll-behavior: smooth;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}

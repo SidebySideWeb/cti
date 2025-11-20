@@ -1,0 +1,15 @@
+.single-product {
+    div.product {
+        .quantity {
+            --gz-quantity-width: 38px;
+            --gz-quantity-height: 50px;
+            --gz-quantity-button-padding: 17px;
+
+            &.quantity-outline {
+                --gz-quantity-height: 35px;
+                --gz-quantity-width: 20px;
+                --gz-quantity-button-padding: 11.5px;
+            }
+        }
+    }
+}

@@ -1,0 +1,84 @@
+.woocommerce-pagination {
+	text-align: center;
+	margin-top: 15px;
+
+	ul {
+		display: flex;
+		justify-content: center;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		flex-wrap: wrap;
+		gap: 10px;
+
+		.page-numbers {
+			@include button();
+			@include button-outline();
+			@include button-icon();
+			--gz-button-width: 44px;
+			--gz-button-height: 44px;
+			--gz-button-font-size: 15px;
+			--gz-button-font-weight: 400;
+			--gz-button-color: var(--gz-color-base);
+			--gz-button-color-hover: var(--gz-color-light);
+			--gz-button-bg-color-hover: var(--gz-color-dark);
+			position: relative;
+
+			&.current {
+				--gz-button-bg-color: var(--gz-color-dark);
+				--gz-button-bg-color-hover: var(--gz-color-dark);
+				--gz-button-border-color: var(--gz-color-dark);
+				--gz-button-color: var(--gz-color-light);
+				--gz-button-color-hover: var(--gz-color-light);
+
+				cursor: default;
+			}
+
+			&.current {
+				&:hover,
+				&:focus,
+				&:focus-visible {
+					outline: none;
+				}
+
+				&:after {
+					display: none;
+				}
+			}
+
+			&.dots {
+				cursor: pointer;
+				border: none;
+				position: relative;
+				bottom: 5px;
+			}
+
+			&.prev,
+			&.next {
+				--gz-button-icon-size: 9px;
+			}
+		}
+	}
+}
+
+.woocommerce-pagination-button {
+	&.gz-loading-spin {
+		--gz-animation-state: paused;
+
+		&::before {
+			opacity: 0;
+		}
+	}
+
+	&.loading {
+		--gz-animation-state: running;
+
+		span {
+			opacity: 0;
+		}
+
+		&::before {
+			opacity: 1;
+		}
+	}
+}

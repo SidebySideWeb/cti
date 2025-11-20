@@ -1,0 +1,234 @@
+// Button
+@mixin button() {
+	font-size: var(--gz-button-font-size);
+	background-color: var(--gz-button-bg-color);
+	color: var(--gz-button-color);
+	border: var(--gz-button-border-width) solid var(--gz-button-border-color);
+	padding: var(--gz-button-padding-top) var(--gz-button-padding-right) var(--gz-button-padding-bottom) var(--gz-button-padding-left);
+	line-height: var(--gz-button-line-height);
+	border-radius: var(--gz-button-rounded);
+	font-weight: var(--gz-button-font-weight);
+	gap: var(--gz-button-icon-spacing);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.4s;
+	cursor: pointer;
+	vertical-align: middle;
+	letter-spacing: calc(var(--gz-heading-letter-spacing) + 0.01em);
+
+	transition: 0.25s;
+
+	&:hover,
+	&:active  {
+		color: var(--gz-button-color-hover);
+		background-color: var(--gz-button-bg-color-hover);
+		border-color: var(--gz-button-border-color-hover);
+	}
+
+	&:hover:after {
+		animation: shine 0.75s cubic-bezier(0.01, 0.56, 1, 1);
+	}
+
+	&.disabled,
+	&:disabled {
+		opacity: 0.3;
+		pointer-events: none;
+		cursor: not-allowed;
+	}
+
+	.glozin-svg-icon {
+		font-size: var( --gz-button-icon-size );
+	}
+
+	&.pswp__button {
+		&::after {
+			display: none;
+		}
+	}
+
+	&.loading {
+		--gz-loading-color: var(--gz-button-color);
+		@include gz-loading();
+
+		&:hover,
+		&.added,
+		&:active {
+			--gz-loading-color: var(--gz-button-color-hover);
+		}
+
+		&:after {
+			display: none;
+		}
+	}
+}
+
+@mixin button-primary() {
+	--gz-button-color: var(--gz-text-color-on-primary);
+	--gz-button-color-hover: var(--gz-text-color-on-primary);
+	--gz-button-bg-color: var(--gz-color-primary);
+	--gz-button-bg-color-hover: var(--gz-color-primary);
+	--gz-button-padding-top: 17.5px;
+	--gz-button-padding-bottom: 17.5px;
+	border: none;
+}
+
+@mixin button-light() {
+	--gz-button-bg-color: #ffffff;
+	--gz-button-bg-color-hover: #111111;
+	--gz-button-color: #111111;
+	--gz-button-color-hover: #fff;
+	--gz-button-padding-top: 17.5px;
+	--gz-button-padding-bottom: 17.5px;
+	border: none;
+}
+
+@mixin button-outline() {
+	--gz-button-color: #111111;
+	--gz-button-color-hover: #111111;
+	--gz-button-bg-color: transparent;
+	--gz-button-bg-color-hover: transparent;
+	--gz-button-border-color: var(--gz-border-color);
+	--gz-button-border-color-hover: #111111;
+}
+
+@mixin button-hover-dark() {
+	&:hover {
+		--gz-button-bg-color-hover: var(--gz-color-dark);
+		--gz-button-border-color-hover: var(--gz-color-dark);
+		--gz-button-color-hover: #ffffff;
+	}
+}
+
+@mixin button-outline-dark() {
+	--gz-button-color: #111111;
+	--gz-button-color-hover: #ffffff;
+	--gz-button-bg-color: #ffffff;
+	--gz-button-border-color: #111111;
+ 
+	&.loading {
+		&:hover {
+			--gz-loading-color: #fff;
+		}
+	}
+}
+
+@mixin button-subtle() {
+	--gz-button-color: #111111;
+	--gz-button-color-hover: var(--gz-button-color);
+	--gz-button-bg-color: transparent;
+	--gz-button-bg-color-hover: transparent;
+	--gz-button-padding-top: 0;
+	--gz-button-padding-right: 0;
+	--gz-button-padding-bottom: 3px;
+	--gz-button-padding-left: 0;
+	--gz-button-rounded: 0;
+	--gz-button-border-color: currentColor;
+	--gz-button-border-color-hover: currentColor;
+	--transform-origin-end: right;
+    --transform-origin-start: left;
+	border: none;
+	position: relative;
+
+	&:before {
+		display: none;
+	}
+
+	&:after {
+		content: "";
+		width: 100%;
+		height: var(--gz-button-border-width);
+		background: var(--gz-button-border-color);
+		position: absolute;
+		inset-inline-start: 0;
+		bottom: 0;
+		transform: scaleX(1);
+		transform-origin: var(--transform-origin-end);
+	}
+
+	&:hover:after {
+		background: var(--gz-button-border-color-hover);
+		transform: scaleX(1);
+    	transform-origin: var(--transform-origin-start);
+    	animation: text-underlined .8s cubic-bezier(0.01, 0.56, 1, 1);
+	}
+}
+
+@mixin button-text() {
+	--gz-button-color: #111111;
+	--gz-button-color-hover: var(--gz-color-primary);
+	--gz-button-bg-color: transparent;
+	--gz-button-bg-color-hover: transparent;
+	--gz-button-padding-top: 0;
+	--gz-button-padding-right: 0;
+	--gz-button-padding-bottom: 0;
+	--gz-button-padding-left: 0;
+	--gz-button-rounded: 0;
+	--transform-origin-end: right;
+    --transform-origin-start: left;
+	border: none;
+}
+
+@mixin button-icon() {
+	--gz-button-width: 40px;
+	--gz-button-height: 40px;
+	--gz-button-font-size: 13px;
+	--gz-button-icon-size: var(--gz-button-font-size);
+
+	padding: 0;
+	width: var(--gz-button-width);
+	height: var(--gz-button-height);
+
+	.glozin-button-text {
+		display: none;
+	}
+
+	.glozin-svg-icon {
+		padding-bottom: 0;
+	}
+}
+
+@mixin button-hover-effect() {
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+
+	&:after,
+	&:before {
+		content: '';
+		z-index: -1;
+		transition: transform 0.4s cubic-bezier(0.75, 0, 0.125, 1);
+		position: absolute;
+		top: -5px;
+		bottom: -5px;
+		left: -5px;
+		right: -5px;
+		transform: translate(-100%);
+	}
+
+	&:before {
+		background-color: var(--gz-button-eff-bg-color-hover);
+	}
+
+	&:after {
+		background-color: var(--gz-button-bg-color-hover);
+	}
+
+	&:hover {
+		&:before {
+			transform: translate(0);
+		}
+
+		&:after {
+			transform: translate(0);
+			transition-delay: 0.175s;
+		}
+	}
+}
+
+@mixin button-no-icon() {
+	.glozin-svg-icon,
+	.glozin-svg-icon-original {
+		display: none;
+	}
+}

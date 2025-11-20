@@ -1,0 +1,33 @@
+.account-panel__name {
+	text-transform: capitalize;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+
+	img {
+		max-width: 20px;
+		border-radius: 100%;
+	}
+}
+
+.account-panel__links {
+	list-style: none;
+	padding: 10px 0;
+	margin: 0;
+
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	li {
+		padding: 5px 0;
+	}
+
+	a {
+		font-size: calc( 16/16 * 1rem );
+		font-weight: 500;
+	}
+
+}

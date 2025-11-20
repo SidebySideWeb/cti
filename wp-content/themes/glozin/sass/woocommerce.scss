@@ -1,0 +1,81 @@
+/*
+Theme Name: _e
+
+WooCommerce styles override
+*/
+
+// Import variables and mixins
+@import "abstracts/mixins/mixins";
+
+/**
+ * Components
+ */
+@import "woocommerce/components";
+
+/**
+ * Products Card
+ */
+@import "woocommerce/product-card";
+
+/**
+ * My Account
+ */
+ @import "woocommerce/my-account";
+
+ /**
+ * Badges
+ */
+@import "woocommerce/badges";
+
+/**
+ * Pagination
+ */
+@import "woocommerce/pagination";
+
+/**
+ * WooCommerce widgets
+ */
+@import "woocommerce/widgets";
+
+/**
+ * Compare
+ */
+ @import "woocommerce/compare";
+
+/**
+ * Wishlist
+ */
+ @import "woocommerce/wishlist";
+
+/**
+ * Tracking Order
+ */
+ @import "woocommerce/track-order";
+
+/**
+ * Catalog
+ */
+@import "woocommerce/catalog/toolbar";
+@import "woocommerce/catalog/product-filter";
+@import "woocommerce/catalog/sidebar-panel";
+
+/**
+ * Single Product
+ */
+@import "woocommerce/single-product";
+
+
+/**
+ * Recently viewed
+ */
+@import "woocommerce/recently-viewed";
+
+/**
+ * Marquee
+ */
+@import "woocommerce/marquee";
+
+/**
+ * Responsive
+ */
+@import "woocommerce/responsive/responsive";

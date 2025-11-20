@@ -1,0 +1,39 @@
+a {
+	color: var(--gz-link-color);
+	text-decoration: none;
+	transition: 0.4s;
+
+	&:focus {
+		outline: 0;
+	}
+
+	&:hover,
+	&:active {
+		outline: 0;
+		color: var(--gz-link-color-hover);
+	}
+}
+
+@media (min-width: 1025px) {
+    .nav-menu li.menu-item > a,
+	.hover-underline-effect {
+		--gz-transform-origin-start: left;
+		--gz-transform-origin-end: right;
+		--gz-animation-default: .5s cubic-bezier(.3, 1, .3, 1);
+		--gz-reversed-link-gap: 1px;
+		background: linear-gradient(to var(--gz-transform-origin-end), currentColor, currentColor) 0 var(--gz-reversed-link-gap) / 0 var(--gz-reversed-link-gap) no-repeat;
+		background-position-x: var(--gz-transform-origin-end);
+		background-position-y: bottom;
+		transition: background-size var(--gz-animation-default);
+
+    }
+
+	@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) { 
+		.nav-menu li.menu-item > a:hover,
+		.hover-underline-effect:hover {
+			background-position-x: var(--gz-transform-origin-start);
+			background-size: 100% var(--gz-reversed-link-gap);
+			background-position-y: bottom;
+		}
+	}
+}

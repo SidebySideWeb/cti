@@ -1,0 +1,25 @@
+.single-product {
+    .product {
+        .woocommerce-grouped-product-list__thumbnail {
+            width: 90px;
+
+            img {
+                border-radius: var(--gz-rounded-product-image-sm);
+            }
+        }
+
+        .woocommerce-grouped-product-list__title {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .woocommerce-grouped-product-list__quantity {
+            select {
+                --gz-input-padding-y: 7.5px;
+                border-radius: calc(min( 5px, var(--gz-input-rounded) ));
+                max-width: 220px;
+            }
+        }
+    }
+}

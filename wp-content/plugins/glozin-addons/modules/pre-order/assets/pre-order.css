@@ -1,0 +1,5 @@
+.glozin-pre-orders__table th,
+.glozin-pre-orders__table td {
+    white-space: nowrap;
+    padding: 10px;
+}

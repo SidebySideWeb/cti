@@ -1,0 +1,10 @@
+.rich__text-m0 p:only-child {
+    margin-block: 0;
+}
+
+.clamp-text {
+    display: -webkit-box;
+    -webkit-line-clamp: var(--gz-page-header-description-lines);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

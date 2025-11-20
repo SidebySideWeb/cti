@@ -1,0 +1,63 @@
+@mixin gz-loading() {
+	--gz-animation-state: running;
+
+	position: relative;
+	color: transparent;
+	cursor: default;
+
+	&::before {
+		display: inline-block;
+		content: "";
+		width: 14px;
+		height: 14px;
+		mask-image: url('data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyBpZD0iaWNvbi1sb2FkIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0IiB2aWV3Qm94PSIwIDAgMTQgMTQiPgogICAgICA8cGF0aCBkPSJNNy4zNDM5NSAzLjI3NTA0QzguMjkyNzcgMy4yNzUwNCA5LjA2MTkzIDIuNTQxOSA5LjA2MTkzIDEuNjM3NTJDOS4wNjE5MyAwLjczMzE0MyA4LjI5Mjc3IDAgNy4zNDM5NSAwQzYuMzk1MTQgMCA1LjYyNTk4IDAuNzMzMTQzIDUuNjI1OTggMS42Mzc1MkM1LjYyNTk4IDIuNTQxOSA2LjM5NTE0IDMuMjc1MDQgNy4zNDM5NSAzLjI3NTA0WiIgPjwvcGF0aD48cGF0aCBkPSJNNy4zNDQxNSAxNC4wMDAyQzcuOTEzMzggMTQuMDAwMiA4LjM3NDgyIDEzLjU2MDQgOC4zNzQ4MiAxMy4wMTc4QzguMzc0ODIgMTIuNDc1MiA3LjkxMzM4IDEyLjAzNTQgNy4zNDQxNSAxMi4wMzU0QzYuNzc0OTIgMTIuMDM1NCA2LjMxMzQ4IDEyLjQ3NTIgNi4zMTM0OCAxMy4wMTc4QzYuMzEzNDggMTMuNTYwNCA2Ljc3NDkyIDE0LjAwMDIgNy4zNDQxNSAxNC4wMDAyWiIgPjwvcGF0aD48cGF0aCBkPSJNMy4xMjI0NiA0Ljc3NzcxQzMuOTc2NDUgNC43Nzc3MSA0LjY2ODc1IDQuMTE3ODMgNC42Njg3NSAzLjMwMzgzQzQuNjY4NzUgMi40ODk4MyAzLjk3NjQ1IDEuODI5OTYgMy4xMjI0NiAxLjgyOTk2QzIuMjY4NDcgMS44Mjk5NiAxLjU3NjE3IDIuNDg5ODMgMS41NzYxNyAzLjMwMzgzQzEuNTc2MTcgNC4xMTc4MyAyLjI2ODQ3IDQuNzc3NzEgMy4xMjI0NiA0Ljc3NzcxWiIgPjwvcGF0aD48cGF0aCBkPSJNMTEuNTY1IDEyLjE2OTJDMTIuMDM5NCAxMi4xNjkyIDEyLjQyNCAxMS44MDI3IDEyLjQyNCAxMS4zNTA1QzEyLjQyNCAxMC44OTgzIDEyLjAzOTQgMTAuNTMxNyAxMS41NjUgMTAuNTMxN0MxMS4wOTA2IDEwLjUzMTcgMTAuNzA2MSAxMC44OTgzIDEwLjcwNjEgMTEuMzUwNUMxMC43MDYxIDExLjgwMjcgMTEuMDkwNiAxMi4xNjkyIDExLjU2NSAxMi4xNjkyWiIgPjwvcGF0aD48cGF0aCBkPSJNMS4zNzQwNSA4LjYzNzc0QzIuMTMyOTEgOC42Mzc3NCAyLjc0ODA5IDguMDUxMzcgMi43NDgwOSA3LjMyODA0QzIuNzQ4MDkgNi42MDQ3MSAyLjEzMjkxIDYuMDE4MzQgMS4zNzQwNSA2LjAxODM0QzAuNjE1MTgyIDYuMDE4MzQgMCA2LjYwNDcxIDAgNy4zMjgwNEMwIDguMDUxMzcgMC42MTUxODIgOC42Mzc3NCAxLjM3NDA1IDguNjM3NzRaIiA+PC9wYXRoPjxwYXRoIGQ9Ik0xMy4zMTM3IDcuOTgxOTNDMTMuNjkzIDcuOTgxOTMgMTQuMDAwNCA3LjY4ODg2IDE0LjAwMDQgNy4zMjczNEMxNC4wMDA0IDYuOTY1ODMgMTMuNjkzIDYuNjcyNzYgMTMuMzEzNyA2LjY3Mjc2QzEyLjkzNDQgNi42NzI3NiAxMi42MjcgNi45NjU4MyAxMi42MjcgNy4zMjczNEMxMi42MjcgNy42ODg4NiAxMi45MzQ0IDcuOTgxOTMgMTMuMzEzNyA3Ljk4MTkzWiIgPjwvcGF0aD48cGF0aCBkPSJNMi4yNzEzOCAxMC41NDEzQzEuODAxNDcgMTAuOTg5MiAxLjgwMTQ3IDExLjcxMzkgMi4yNzEzOCAxMi4xNjE4QzIuNzQwNzMgMTIuNjA5NyAzLjUwMjE2IDEyLjYwOTcgMy45NzE1MSAxMi4xNjE4QzQuNDQxNDIgMTEuNzEzOSA0LjQ0MTQyIDEwLjk4OTIgMy45NzE1MSAxMC41NDEzQzMuNTAyMTYgMTAuMDkyOCAyLjc0MTI4IDEwLjA4ODYgMi4yNzEzOCAxMC41NDEzWiIgPjwvcGF0aD48cGF0aCBkPSJNMTEuNTY0OSAzLjc5NDY1QzExLjg0OTMgMy43OTQ2NSAxMi4wNzk5IDMuNTc0ODUgMTIuMDc5OSAzLjMwMzcxQzEyLjA3OTkgMy4wMzI1NyAxMS44NDkzIDIuODEyNzcgMTEuNTY0OSAyLjgxMjc3QzExLjI4MDQgMi44MTI3NyAxMS4wNDk4IDMuMDMyNTcgMTEuMDQ5OCAzLjMwMzcxQzExLjA0OTggMy41NzQ4NSAxMS4yODA0IDMuNzk0NjUgMTEuNTY0OSAzLjc5NDY1WiIgPjwvcGF0aD4KICA8L3N2Zz4=');
+        mask-size: 100%;
+        background-color: var(--gz-loading-color);
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		animation: spin .8s infinite linear var(--gz-animation-state);
+		transform: none;
+	}
+}
+
+@mixin gz-lazy-load-image() {
+	--gz-loading-bg-color: rgba(39, 39, 39, 0.05);
+    --gz-loading-color: #171717;
+    --gz-loading-color-active: #fafafa;
+    --gz-loading-width: 50px;
+    --gz-loading-height: 2px;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: var(--gz-loading-bg-color);
+
+    .gz-lazy-load-image__loader {
+        position: relative;
+        width: var(--gz-loading-width);
+        height: var(--gz-loading-height);
+        background-color: var(--gz-loading-color);
+
+        &::before {
+            content: '';
+            display: inline-flex;
+            position: absolute;
+            background-color: var(--gz-loading-color-active);
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            animation: moving 1.2s ease-in-out infinite;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+.header-cart {
+	.gz-button-icon {
+		--gz-button-icon-size: 16px;
+		color: inherit;
+	}
+
+	.glozin-price-saved {
+		display: none;
+	}
+
+	.price {
+		color: inherit;
+	}
+
+	.glozin-svg-icon--shopping-cart {
+		--gz-button-icon-size: 20px;
+
+		&.shopping-cart {
+			--gz-button-icon-size: 24px;
+		}
+	}
+}
+
+.header-cart__size-large {
+	.gz-button-icon {
+		--gz-button-icon-size: 27px;
+	}
+
+	.glozin-svg-icon--shopping-cart {
+		--gz-button-icon-size: 30px;
+
+		&.shopping-cart {
+			--gz-button-icon-size: 34px;
+		}
+	}
+
+	.glozin-svg-icon-original {
+		svg {
+			width: 27px;
+			height: auto;
+		}
+	}
+
+	&.gz-button-icon {
+		--gz-button-width: 58px;
+	}
+}

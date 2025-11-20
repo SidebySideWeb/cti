@@ -1,0 +1,42 @@
+/* Header
+--------------------------------------------- */
+@import "header/header";
+
+/* Posts and pages
+--------------------------------------------- */
+@import "content/navigation.scss";
+@import "content/page-header.scss";
+@import "content/contact-form-7.scss";
+
+/* Widgets
+--------------------------------------------- */
+@import "widgets/widgets";
+
+/* Comments
+--------------------------------------------- */
+@import "comments/comments";
+
+/* Media
+--------------------------------------------- */
+@import "media/media";
+
+/* Captions
+--------------------------------------------- */
+@import "media/captions";
+
+/* Galleries
+--------------------------------------------- */
+@import "media/galleries";
+
+
+/* Elementor
+--------------------------------------------- */
+@import "elementor/elementor";
+
+/* Blocks
+--------------------------------------------- */
+@import "blocks/blocks";
+
+/* Responsive
+--------------------------------------------- */
+@import "responsive/responsive";

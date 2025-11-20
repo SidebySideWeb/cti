@@ -1,0 +1,160 @@
+@keyframes fadeInLeft {
+	from {
+		opacity: 0;
+		-webkit-transform: translate3d(-100%, 0, 0);
+		transform: translate3d(-100%, 0, 0);
+	}
+
+	to {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes fadeInRight {
+	from {
+		opacity: 0;
+		-webkit-transform: translate3d(100%, 0, 0);
+		transform: translate3d(100%, 0, 0);
+	}
+
+	to {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes fadeOutLeft {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+		-webkit-transform: translate3d(-100%, 0, 0);
+		transform: translate3d(-100%, 0, 0);
+	}
+}
+
+@keyframes fadeOutRight {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+		-webkit-transform: translate3d(100%, 0, 0);
+		transform: translate3d(100%, 0, 0);
+	}
+}
+
+@keyframes progressBar {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+.live-sales-notification {
+	--live-sales-notification-progress-bar-duration: 6s;
+
+	z-index: 1000;
+	min-width: 350px;
+	max-width: 400px;
+	transition: .4s;
+	animation-duration: .4s;
+}
+
+.glozin-atc-sticky-height-open .live-sales-notification {
+	bottom: calc( var(--gz-atc-sticky-height) + 10px)
+}
+
+.live-sales-notification.off {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.offcanvas-opened .live-sales-notification,
+.modal-opened .live-sales-notification,
+.popover-opened .live-sales-notification {
+	z-index: 1;
+}
+
+.live-sales-notification__close {
+	cursor: pointer;
+}
+
+.live-sales-notification__close:hover {
+	opacity: 0.85;
+}
+
+.live-sales-notification__thumbnail {
+	max-width: 80px;
+}
+
+.live-sales-notification__thumbnail img {
+	border-radius: var(--gz-rounded-product-image-sm);	
+}
+
+.live-sales-notification__name span span {
+	color: #666666;
+}
+
+.live-sales-notification__progress-bar {
+	height: 2px;
+}
+
+.live-sales-notification__progress-bar-inner {
+	animation: progressBar var(--live-sales-notification-progress-bar-duration) linear;
+}
+
+.animate__fadeInLeft {
+	-webkit-animation-name: fadeInLeft;
+	animation-name: fadeInLeft;
+}
+
+.rtl .animate__fadeInLeft {
+	-webkit-animation-name: fadeInRight;
+	animation-name: fadeInRight;
+}
+
+.animate__fadeOutLeft {
+	-webkit-animation-name: fadeOutLeft;
+	animation-name: fadeOutLeft;
+}
+
+.rtl .animate__fadeOutLeft {
+	-webkit-animation-name: fadeOutRight;
+	animation-name: fadeOutRight;
+}
+
+@media ( max-width: 1200px ) {
+	.live-sales-notification {
+		max-width: 50%;
+	}
+}
+
+@media ( max-width: 991px ) {
+	.live-sales-notification {
+		max-width: 60%;
+	}
+}
+
+@media ( max-width: 767px ) {
+	.live-sales-notification {
+		max-width: 400px;
+		min-width: auto;
+	}
+
+	.mobile-has-navigation-bar .live-sales-notification {
+		bottom: calc(var(--gz-navigation-bar-height) + 10px)
+	}
+	
+	.glozin-atc-sticky-height-open.mobile-has-navigation-bar .live-sales-notification {
+		bottom: calc(var(--gz-navigation-bar-height) + var(--gz-atc-sticky-height) + 10px)
+	}
+}

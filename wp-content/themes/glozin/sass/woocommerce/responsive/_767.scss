@@ -1,0 +1,71 @@
+@media (min-width: 768px) {
+    ul.products {
+        margin-inline-start: -15px;
+        margin-inline-end: -15px;
+
+		li.product {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+    ul.products {
+        @for $i from 1 through 6 {
+            &.mobile-col-#{$i} {
+                li.product {
+                    $columns__margin: 0;
+                    @include column-width( $i, $columns__margin );
+                }
+            }
+        }
+
+    }
+
+    .woocommerce-message a.button, .woocommerce-info a.button, .woocommerce-error a.button, .woocommerce-noreviews a.button, p.no-comments a.button {
+        float: left;
+        padding: 3px 10px 0 0;
+    }
+
+	ul.products {
+        margin-inline-start: -7.5px;
+        margin-inline-end: -7.5px;
+
+        li.product {
+            padding-left: 7.5px;
+            padding-right: 7.5px;
+            margin-bottom: 30px;
+
+            .product-summary--relative {
+                padding: 10px 35px 15px 5px;
+
+                .glozin-rating {
+                    margin-top: 0;
+                }
+            }
+
+            .gz-button-addtocart--absolute {
+                --gz-button-height: 32px;
+                --gz-button-width: 32px;
+
+                top: 32px;
+            }
+        }
+
+    }
+
+    .woocommerce {
+        ul.order_details {
+            flex-direction: column;
+        }
+    }
+
+    .woocommerce-order-pay {
+        table.shop_table {
+            .product-name {
+                gap: 15px;
+            }
+        }
+    }
+}

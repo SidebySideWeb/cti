@@ -1,0 +1,86 @@
+.login-modal {
+	--gz-modal-content-width: 540px;
+
+	&.woocommerce-account {
+		.woocommerce-form-login,
+		.woocommerce-customer-register,
+		form.woocommerce-ResetPassword {
+			max-width: 100%;
+		}
+	}
+
+	.woocommerce-customer-register:not(.active) {
+		display: none;
+	}
+
+	.woocommerce-customer-login:not(.active) {
+		display: none;
+	}
+
+	.woocommerce-form .woocommerce-form-row {
+		margin-bottom: 10px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.gz-col {
+		flex: 0 0 100%;
+        max-width: 100%;
+	}
+
+	&.modal .woocommerce-form-login {
+		max-width: 100%;
+	}
+
+	.woocommerce-privacy-policy-text {
+		a {
+			text-decoration: underline;
+		}
+	}
+
+	.woocommerce-button {
+		--gz-loading-color: #ffffff;
+
+		&.gz-loading-spin  {
+			pointer-events: none;
+		}
+	}
+
+	.login-modal-notices {
+		margin-top: 15px;
+		margin-bottom: 0;
+	}
+
+	.woocommerce-notices-wrapper {
+		display: none !important;
+	}
+
+	.form-row-register-desc {
+		display: none;
+	}
+
+	.gz-button-login-mode {
+		white-space: nowrap;
+	}
+
+	.woocommerce-notices-wrapper {
+
+		ul {
+			margin: 0;
+		}
+	}
+
+}
+
+@media (max-width: 767px) {
+	.login-modal .woocommerce-form--register-button .woocommerce-form-register__submit {
+		width: 100%;
+	}
+
+	.login-modal .woocommerce-form--register-button {
+		flex-direction: column;
+		gap: 15px;
+	}
+}

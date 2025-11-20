@@ -1,0 +1,366 @@
+# Copyright (C) 2025 WCBoost
+# This file is distributed under the GPLv3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: WCBoost - Products Compare 1.0.9\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wcboost-products-compare\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-10-02T09:48:21+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.10.0\n"
+"X-Domain: wcboost-products-compare\n"
+
+#. Plugin Name of the plugin
+#: wcboost-products-compare.php
+msgid "WCBoost - Products Compare"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: wcboost-products-compare.php
+msgid "https://wcboost.com/plugin/woocommerce-products-compare/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash"
+msgstr ""
+
+#. Description of the plugin
+#: wcboost-products-compare.php
+msgid "This extension introduces detailed comparison tables that highlight the most significant product details, giving customers the ability to quickly compare products side by side. As you quickly review features, specifications, and more, you can make well-informed decisions."
+msgstr ""
+
+#. Author of the plugin
+#: wcboost-products-compare.php
+#: includes/customizer.php:200
+msgid "WCBoost"
+msgstr ""
+
+#. Author URI of the plugin
+#: wcboost-products-compare.php
+msgid "https://wcboost.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash"
+msgstr ""
+
+#. translators: %s Theme name
+#: includes/admin/notices.php:93
+msgid "<strong>Your theme (%s) contains outdated copies of some template files of WBoost - Products Compare.</strong> These files may need updating to ensure they are compatible with the current version of WCBoost - Products Compare."
+msgstr ""
+
+#: includes/admin/settings.php:37
+#: includes/customizer.php:50
+#: includes/widgets/products-compare.php:30
+#: includes/widgets/products-compare.php:37
+msgid "Products Compare"
+msgstr ""
+
+#: includes/admin/settings.php:43
+msgid "Compare page"
+msgstr ""
+
+#: includes/admin/settings.php:44
+msgid "Page content: [wcboost_compare]"
+msgstr ""
+
+#: includes/admin/settings.php:56
+msgid "Added to compare behaviour"
+msgstr ""
+
+#: includes/admin/settings.php:61
+msgid "No additional action"
+msgstr ""
+
+#: includes/admin/settings.php:62
+msgid "Redirect to the compare page"
+msgstr ""
+
+#: includes/admin/settings.php:63
+#: includes/admin/settings.php:75
+#: includes/widgets/products-compare.php:101
+msgid "Open the compare popup"
+msgstr ""
+
+#: includes/admin/settings.php:67
+msgid "Existing products behaviour"
+msgstr ""
+
+#: includes/admin/settings.php:68
+msgid "Select how the button work with products that are already in the compare list"
+msgstr ""
+
+#: includes/admin/settings.php:73
+msgid "Remove from the compare list"
+msgstr ""
+
+#: includes/admin/settings.php:74
+msgid "View the compare page"
+msgstr ""
+
+#: includes/admin/settings.php:76
+msgid "Hide the button"
+msgstr ""
+
+#: includes/admin/settings.php:80
+msgid "AJAX Loading"
+msgstr ""
+
+#: includes/admin/settings.php:81
+msgid "Load the list and buttons via AJAX to bypass the cache"
+msgstr ""
+
+#: includes/admin/settings.php:87
+msgid "Comparision data tracking"
+msgstr ""
+
+#: includes/admin/settings.php:88
+msgid "Monitor user comparison statistics."
+msgstr ""
+
+#: includes/admin/settings.php:89
+msgid "This data gives insights into product performance, user interests, and is used to calculate similar products. Enabling this option may add additional meta data to products."
+msgstr ""
+
+#. translators: %s: product name
+#: includes/ajax-handler.php:57
+#: includes/form-handler.php:49
+msgid "%s has been added to the compare list"
+msgstr ""
+
+#: includes/customizer.php:75
+msgid "Button icon"
+msgstr ""
+
+#: includes/customizer.php:79
+msgid "No icon"
+msgstr ""
+
+#: includes/customizer.php:80
+msgid "Arrows"
+msgstr ""
+
+#: includes/customizer.php:81
+msgid "Plus"
+msgstr ""
+
+#: includes/customizer.php:82
+msgid "Checkbox"
+msgstr ""
+
+#: includes/customizer.php:83
+msgid "Code compare"
+msgstr ""
+
+#: includes/customizer.php:91
+#: includes/form-handler.php:56
+#: includes/helper.php:179
+#: templates/loop/add-to-compare.php:28
+#: templates/single-product/add-to-compare.php:28
+msgid "Compare"
+msgstr ""
+
+#: includes/customizer.php:100
+#: includes/helper.php:180
+msgid "Remove compare"
+msgstr ""
+
+#: includes/customizer.php:109
+#: includes/helper.php:181
+msgid "Browse compare"
+msgstr ""
+
+#: includes/customizer.php:118
+msgid "Button text"
+msgstr ""
+
+#: includes/customizer.php:119
+msgid "Button add"
+msgstr ""
+
+#: includes/customizer.php:128
+msgid "Button remove"
+msgstr ""
+
+#: includes/customizer.php:137
+msgid "Button view"
+msgstr ""
+
+#: includes/customizer.php:155
+msgid "Compare Bar"
+msgstr ""
+
+#: includes/customizer.php:156
+msgid "Display a bar of comparing products"
+msgstr ""
+
+#: includes/customizer.php:160
+msgid "Disable"
+msgstr ""
+
+#: includes/customizer.php:161
+msgid "Display at bottom"
+msgstr ""
+
+#: includes/customizer.php:178
+msgid "Bar button behavior"
+msgstr ""
+
+#: includes/customizer.php:182
+msgid "Open compare page"
+msgstr ""
+
+#: includes/customizer.php:183
+msgid "Open the compage popup"
+msgstr ""
+
+#: includes/form-handler.php:53
+msgid "Continue shopping"
+msgstr ""
+
+#. translators: %s: product name
+#: includes/form-handler.php:72
+msgid "%s was added to the compare list"
+msgstr ""
+
+#. translators: %s: product name
+#: includes/form-handler.php:97
+msgid "%s is removed from the compare list."
+msgstr ""
+
+#: includes/form-handler.php:105
+msgid "Failed to remove the product from the compare list"
+msgstr ""
+
+#: includes/form-handler.php:132
+msgid "The compare list is emptied"
+msgstr ""
+
+#. translators: %s Product name
+#: includes/frontend.php:213
+msgid "Compare %s"
+msgstr ""
+
+#. translators: %s Product name
+#: includes/frontend.php:233
+msgid "Remove %s from the compare list"
+msgstr ""
+
+#: includes/frontend.php:239
+#: includes/frontend.php:245
+msgid "Open the compare list"
+msgstr ""
+
+#: includes/frontend.php:379
+msgid "Clear list"
+msgstr ""
+
+#: includes/frontend.php:429
+#: includes/frontend.php:475
+msgid "Compare products"
+msgstr ""
+
+#: includes/frontend.php:442
+msgid "Close"
+msgstr ""
+
+#: includes/frontend.php:473
+msgid "View compared products"
+msgstr ""
+
+#: includes/frontend.php:520
+msgid "Rating"
+msgstr ""
+
+#: includes/frontend.php:521
+msgid "Price"
+msgstr ""
+
+#: includes/frontend.php:522
+msgid "Availability"
+msgstr ""
+
+#: includes/frontend.php:523
+msgid "SKU"
+msgstr ""
+
+#: includes/frontend.php:524
+msgid "Dimensions"
+msgstr ""
+
+#: includes/frontend.php:525
+msgid "Weight"
+msgstr ""
+
+#: includes/frontend.php:630
+msgid "Remove this item"
+msgstr ""
+
+#: includes/frontend.php:666
+msgid "In stock"
+msgstr ""
+
+#: includes/frontend.php:671
+#: includes/frontend.php:678
+#: includes/frontend.php:686
+msgid "N/A"
+msgstr ""
+
+#: includes/install.php:72
+msgctxt "Page slug"
+msgid "compare"
+msgstr ""
+
+#: includes/install.php:74
+msgctxt "Page title"
+msgid "Compare"
+msgstr ""
+
+#: includes/install.php:100
+msgid "View documentation"
+msgstr ""
+
+#: includes/install.php:100
+msgid "Docs"
+msgstr ""
+
+#: includes/install.php:101
+msgid "Visit community forums"
+msgstr ""
+
+#: includes/install.php:101
+msgid "Community support"
+msgstr ""
+
+#: includes/plugin.php:47
+#: includes/plugin.php:54
+msgid "Foul!"
+msgstr ""
+
+#: includes/widgets/products-compare.php:40
+msgid "Displays the compare list"
+msgstr ""
+
+#: includes/widgets/products-compare.php:88
+msgid "Title:"
+msgstr ""
+
+#: includes/widgets/products-compare.php:94
+msgid "Hide if the compare list empty"
+msgstr ""
+
+#: includes/widgets/products-compare.php:98
+msgid "Compare button behaviour"
+msgstr ""
+
+#: includes/widgets/products-compare.php:100
+msgid "Open the compare page"
+msgstr ""
+
+#: templates/compare/compare-empty.php:17
+msgid "There is no product to compare."
+msgstr ""
+
+#: templates/compare/compare-empty.php:27
+msgid "Return to shop"
+msgstr ""
+
+#: templates/compare/compare-widget.php:62
+msgid "No products in the compare list"
+msgstr ""

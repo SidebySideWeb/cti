@@ -1,0 +1,25 @@
+.glozin-currency-language-elementor {
+    .currency-dropdown {
+        border-radius: var(--gz-rounded-sm);
+        top: auto;
+        bottom: calc(100% + 30px);
+        width: max-content;
+        min-width: 100px;
+		display: none;
+
+        &.active {
+			top: auto;
+			bottom: calc(100% + 10px);
+		}
+    }
+}
+
+@media (min-width: 768px) {
+	.glozin-currency-language-elementor {
+		.currency-dropdown {
+			inset-inline-start: 0;
+			inset-inline-end: auto;
+			display: block; 
+		}
+	}
+}

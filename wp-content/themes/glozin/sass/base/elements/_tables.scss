@@ -1,0 +1,20 @@
+table {
+	margin: 0 0 1.5em;
+	width: 100%;
+	border: none;
+}
+
+th,
+td {
+	padding: 10px 0;
+	border: none;
+	border-bottom: 1px solid var(--gz-border-color);
+}
+
+th {
+	text-align: start;
+
+	a {
+		text-decoration: none;
+	}
+}

@@ -1,0 +1,128 @@
+@media (max-width: 767px) {
+	body {
+		--gz-input-font-size: 16px;
+
+		padding-bottom: var(--gz-navigation-bar-height, 0);
+
+		&.admin-bar{
+			--gz-admin-bar-height: 0;
+		}
+
+		&.mobile-has-navigation-bar.glozin-atc-sticky-height-open {
+			padding-bottom: calc(var(--gz-navigation-bar-height, 0) + var(--gz-atc-sticky-height));
+		}
+	}
+
+	.campaign-bar-type--slides .campaign-bar__text {
+		text-transform: lowercase;
+	}
+
+	.campaign-bar-type--slides .campaign-bar__text:first-letter {
+		text-transform: uppercase;
+	}
+
+	.topbar:not(.topbar-mobile) {
+		display: none;
+	}
+
+	.topbar-mobile .topbar-items {
+		flex: 0 1 auto;
+	}
+
+	.topbar-mobile--keep-left {
+		.topbar-right-items {
+			display: none;
+		}
+	}
+
+	.topbar-mobile--keep-right {
+		.topbar-left-items {
+			display: none;
+		}
+
+		.topbar-items {
+			overflow: hidden;
+			overflow-x: auto;
+		}
+	}
+
+	div.topbar-mobile--keep-left,
+	div.topbar-mobile--keep-right {
+		.topbar-slides {
+			max-width: 100vw;
+		}
+	}
+
+	.topbar-slides {
+		padding: 0 15px;
+
+		.swiper-button-next {
+			right: 0;
+		}
+
+		.swiper-button-prev {
+			left: 0;
+			right: auto;
+		}
+	}
+
+	.topbar-slides__item {
+		overflow: hidden;
+		white-space: inherit;
+		height: 100%;
+		line-height: var(--gz-body-line-height);
+		margin-top: auto;
+        margin-bottom: auto;
+	}
+
+	.campaign-bar__close {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.comment-list .children {
+		margin-inline-start: 0;
+	}
+
+	.comment-respond .comment-form-author, .comment-respond .comment-form-email {
+		width: 100%;
+	}
+
+	.site-content {
+		padding-top: 30/16*1rem;
+		padding-bottom: 50/16*1rem;
+	}
+
+	.mobile-shop-navigation {
+		ul.menu {
+			> li.menu-item-has-icon {
+				> ul.sub-menu {
+					margin-inline-start: 20px;
+				}
+			}
+		}
+
+		.sub-menu {
+			margin-inline-start: 15px;
+		}
+	}
+
+	.min-w-200 {
+		min-width: 180px;
+	}
+}
+
+@media ( max-width: 600px ) {
+	.glozin-header-sticky.admin-bar .site-header.minimized {
+		top: 0;
+	}
+}
+
+@media ( max-width: 480px ) {
+	.topbar-mobile--keep-left,
+	.topbar-mobile--keep-right {
+		.topbar-items {
+			justify-content: flex-start;
+		}
+	}
+}

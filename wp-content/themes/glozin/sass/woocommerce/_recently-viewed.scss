@@ -1,0 +1,14 @@
+.recently-viewed-products {
+    &.ajax-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include gz-loading();
+        --gz-loading-color: var(--gz-color-dark);
+        min-height: 200px;
+
+        & + .recently-viewed-products__clear {
+            display: none;
+        }
+    }
+}

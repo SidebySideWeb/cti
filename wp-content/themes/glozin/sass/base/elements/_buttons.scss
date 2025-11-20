@@ -1,0 +1,96 @@
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button {
+	@include button();
+}
+
+.gz-button {
+	@include button();
+}
+
+.gz-button-light {
+	@include button-light();
+}
+
+.gz-button-primary {
+	@include button-primary();
+}
+
+.gz-button-outline {
+	@include button-outline();
+}
+
+.gz-button-hover-dark {
+	@include button-hover-dark();
+}
+
+.gz-button-outline-dark {
+	@include button-outline-dark();
+}
+
+.gz-button-subtle {
+	@include button-subtle();
+}
+
+.gz-button-text {
+	@include button-text();
+}
+
+.gz-button-icon {
+	@include button-icon();
+}
+
+.gz-button-icon-light {
+	@include button-icon();
+
+	--gz-button-color: var(--gz-color-light);
+	--gz-button-bg-color: var(--gz-color-dark);
+	--gz-button-hover-bg-color: var(--gz-color-dark);
+	--gz-button-hover-color: var(--gz-color-light);
+}
+
+.gz-button-no-icon {
+	@include button-no-icon();
+}
+
+.gz-button-round {
+	--gz-button-rounded: 10px;
+}
+
+.gz-button-circle {
+	--gz-button-rounded: 30px;
+}
+
+.gz-button-icon-hover {
+	--gz-button-icon-size: 9px;
+	gap: 0;
+
+	.glozin-button-text + .glozin-svg-icon,
+    .glozin-svg-icon {
+		transition: transform .3s, width .3s;
+		transform: scale(0);
+		width: 0;
+		margin: 0;
+	}
+
+	&:hover {
+		gap: var(--gz-button-icon-spacing);
+
+		.glozin-svg-icon {
+			transform: scale(1);
+			width: var(--gz-button-icon-size);
+		}
+	}
+}
+
+@media (min-width: 1025px) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+	body:not(.button-eff-hover-disabled) {
+		.gz-button-hover-effect {
+			&:not(.loading) {
+				@include button-hover-effect();
+			}
+		}
+	}
+}

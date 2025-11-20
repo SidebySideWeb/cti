@@ -1,0 +1,105 @@
+.fw-inherit {
+	font-weight: inherit;
+}
+
+.fw-normal {
+	font-weight: 400;
+}
+
+.fw-medium {
+	font-weight: 500;
+}
+
+.fw-semibold {
+	font-weight: 600;
+}
+
+.fw-bold {
+	font-weight: 700;
+}
+
+.fst-normal {
+	font-style: normal;
+}
+
+.fs-inherit {
+	font-size: inherit;
+}
+
+.fs-9 {
+	font-size: 9 / 16 * 1rem;
+}
+
+.fs-10 {
+	font-size: 10 / 16 * 1rem;
+}
+
+.fs-11 {
+	font-size: 11 / 16 * 1rem;
+}
+
+.fs-12 {
+	font-size: 12 / 16 * 1rem;
+}
+
+.fs-13 {
+	font-size: 13 / 16 * 1rem;
+}
+
+.fs-14 {
+	font-size: 14 / 16 * 1rem;
+}
+
+.fs-15 {
+	font-size: 15 / 16 * 1rem;
+}
+
+.fs-16 {
+	font-size: 16 / 16 * 1rem;
+}
+
+.fs-18 {
+	font-size: 18 / 16 * 1rem;
+}
+
+.fs-20 {
+	font-size: 20 / 16 * 1rem;
+}
+
+.fs-22 {
+	font-size: 22 / 16 * 1rem;
+}
+
+.fs-24 {
+	font-size: 24 / 16 * 1rem;
+}
+
+.fs-28 {
+	font-size: 28 / 16 * 1rem;
+}
+
+.fs-30 {
+	font-size: 30 / 16 * 1rem;
+}
+
+.fs-32 {
+	font-size: 32 / 16 * 1rem;
+}
+
+.fs-36 {
+	font-size: 36 / 16 * 1rem;
+}
+
+.fs-40 {
+	font-size: 40 / 16 * 1rem;
+}
+
+.fs-60 {
+	font-size: 60 / 16 * 1rem;
+}
+
+@media (min-width: 768px) {
+	.fs-24-md {
+		font-size: 24 / 16 * 1rem;
+	}
+}

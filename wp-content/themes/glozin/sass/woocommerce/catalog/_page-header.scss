@@ -1,0 +1,31 @@
+.page-header__description:not(.shop-header__description),
+.shop-header__description .shop-header__description-inner {
+    display: -webkit-box;
+    -webkit-line-clamp: var(--gz-page-header-description-lines);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.shop-header__more-wrapper:not(.less) {
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        transform: translateY(-100%);
+        transform-origin: center;
+        height: 61px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+    }
+}
+
+.shop-header__description-inner {
+    transition: max-height 0.3s ease-out;
+
+    p {
+       margin-top: 0;
+    }
+}

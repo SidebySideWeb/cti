@@ -1,0 +1,23 @@
+.modal {
+	display: none;
+}
+
+.panel__container {
+	transform: translateX(100%);
+}
+
+.offscreen-panel--side-left {
+	.panel__container {
+		left: 0;
+		right: auto;
+		transform: translateX(-100%); 
+	}
+}
+
+.popover {
+	display: none;
+}
+
+.offscreen-panel {
+	display: none;
+}

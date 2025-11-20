@@ -1,0 +1,11 @@
+.single-product div.product {
+    .product-gallery-summary {
+        margin-bottom: 50px;
+        .entry-title {
+            @include font-size(26/16);
+            margin-top: 0;
+            margin-bottom: 11px;
+            letter-spacing: var(--gz-heading-letter-spacing);
+        }
+    }
+}

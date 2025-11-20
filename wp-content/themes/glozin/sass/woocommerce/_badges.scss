@@ -1,0 +1,80 @@
+.woocommerce-badges {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+.woocommerce-badge {
+	--gz-badge-background-color: var(--gz-color-dark);
+	background-color: var(--gz-badge-background-color);
+	padding: 0 15px;
+	height: 29px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	align-self: start;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1;
+	text-align: center;
+	color: #fff;
+	border-radius: 30px;
+	margin: 0;
+	text-transform: capitalize;
+
+	&.in-stock {
+		--gz-badge-background-color: #14854e;
+	}
+
+	&.onsale {
+		--gz-badge-background-color: #d0473e;
+	}
+
+	&.featured {
+		--gz-badge-background-color: #ff7402;
+	}
+
+	&.new {
+		--gz-badge-background-color: #3357D8;
+	}
+
+	&.sold-out {
+		--gz-badge-background-color: #666666;
+	}
+
+	&.pre-order {
+		--gz-badge-background-color: #6a33d8;
+	}
+
+	&.custom {
+		--id--badge-custom-bg: #14854e;
+		--id--badge-custom-color: #fff;
+		background-color: var(--id--badge-custom-bg);
+		color: var(--id--badge-custom-color);
+
+		.custom-icon-image {
+			transform: translateY(-1px);
+		}
+	}
+
+	&.badge-small {
+		height: auto;
+		padding: 4px 8px;
+		font-size: 10px;
+	}
+}
+
+.woocommerce-badges--single {
+    flex-direction: row;
+    flex-wrap: wrap;
+	gap: 0;
+
+	.woocommerce-badge:not(:empty) {
+		margin-inline-end: 3px;
+		margin-bottom: 10px;
+
+		&.in-stock {
+			display: none;
+		}
+	}
+}

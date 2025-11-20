@@ -1,0 +1,37 @@
+.text-inherit {
+	color: inherit;
+}
+
+.text-base {
+	color: var(--gz-color-base);
+}
+
+.text-dark {
+	color: var(--gz-color-dark);
+}
+
+.text-light {
+	color: var(--gz-color-light);
+}
+
+.text-primary {
+	color: var(--gz-color-primary);
+}
+
+.text-gray {
+	color: var(--gz-color-grey);
+}
+
+.text-dark-grey {
+	color: var(--gz-color-dark-grey);
+}
+
+.text-hover-color {
+	&:hover {
+		color: var(--gz-color-dark);
+	}
+}
+
+.text-on-primary {
+	color: var(--gz-text-color-on-primary);
+}

@@ -1,0 +1,15 @@
+@media (min-width: 1025px) {
+    .topbar-slides {
+        .swiper .swiper-button-text {
+            transform: none;
+        }
+
+        .topbar-slides__wrapper {
+            padding-inline-start: 55px;
+        }
+
+        .navigation-merged {
+            margin-inline-start: -10px;
+        }
+    }
+}

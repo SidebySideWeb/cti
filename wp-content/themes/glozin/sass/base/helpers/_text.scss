@@ -1,0 +1,27 @@
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+.text-capitalize {
+	text-transform: capitalize;
+}
+
+.text-transform-inherit {
+	text-transform: inherit;
+}
+
+.text-nowrap {
+	white-space: nowrap;
+}
+
+.text-pre-wrap {
+	white-space: pre-wrap;
+}
+
+.text-ellipsis {
+	display: -webkit-box;
+	-webkit-line-clamp: var(--gz-line-clamp-count, 1);
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}

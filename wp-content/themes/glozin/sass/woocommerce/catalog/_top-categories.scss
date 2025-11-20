@@ -1,0 +1,16 @@
+.catalog-top-categories {
+    --gz-ratio-percent: 131%;
+    --gz-swiper-pagination-spacing: 20px;
+}
+
+.catalog-top-categories__text {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.catalog-top-categories__image {
+    border-radius: calc(min(10px, var(--gz-image-rounded)));
+
+}

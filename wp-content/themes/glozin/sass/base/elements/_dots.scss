@@ -1,0 +1,9 @@
+.dot-between:after {
+    content: '';
+    display: inline-block;
+    width: var(--dot-width, 3px);
+    height: var(--dot-width, 3px);
+    border-radius: 50%;
+    margin: var(--dot-space, 0 8px);
+    background-color: #cbcbcb;
+}

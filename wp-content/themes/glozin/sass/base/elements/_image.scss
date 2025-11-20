@@ -1,0 +1,24 @@
+.gz-image-rounded,
+.elementor .elementor-element img,
+img  {
+	border-radius: var(--gz-image-rounded);
+}
+
+.gz-image-rounded-md,
+.gz-image-rounded-md img {
+	border-radius: calc(min(10px, var(--gz-image-rounded)));
+}
+
+.rounded-product-image,
+.rounded-product-image img,
+.elementor .rounded-product-image,
+.elementor .rounded-product-image img {
+	border-radius: var(--gz-image-rounded-product-card);
+}
+
+.rounded-product-image-sm,
+.rounded-product-image-sm img,
+.elementor .rounded-product-image-sm,
+.elementor .rounded-product-image-sm img {
+	border-radius: var(--gz-rounded-product-image-sm);
+}

@@ -1,0 +1,29 @@
+.hidden {
+	display: none !important;
+}
+
+@media (min-width: 768px) {
+	.hidden-md {
+		display: none !important;
+	}
+}
+
+@media (min-width: 992px) {
+	.hidden-lg {
+		display: none !important;
+	}
+}
+
+@media (min-width: 1025px) {
+	.hidden-xl {
+		display: none !important;
+	}
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}
+
+.overflow-x-auto {
+	overflow-x: auto;
+}

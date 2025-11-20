@@ -1,0 +1,54 @@
+.navigation {
+    margin-top: clamp(35 / 16 * 1rem, 4.3vw, 50 / 16 * 1rem);
+    text-align: center;
+    width: 100%;
+
+    .nav-links {
+        > span,
+        a {
+            --gz-button-icon-size: 10px;
+            --gz-button-font-weight: 400;
+
+            @include button();
+            padding: 0;
+            width: 44 / 16 * 1rem;
+            height: 44 / 16 * 1rem;
+            margin: 0 5px;
+
+            &:first-child {
+                margin-inline-start: 0;
+            }
+
+            &:last-child {
+                margin-inline-end: 0;
+            }
+
+            &.current {
+                --gz-button-color: var(--gz-color-light);
+                --gz-button-bg-color: var(--gz-color-dark);
+                --gz-button-border-color: var(--gz-color-dark);
+            }
+
+            &:hover {
+                --gz-button-color-hover: var(--gz-color-light);
+                --gz-button-bg-color-hover: var(--gz-color-dark);
+                --gz-button-border-color-hover: var(--gz-color-dark);
+            }
+        }
+    }
+}
+
+.gz-progress__inner {
+    display: inline-block;
+    position: relative;
+	border-bottom: 2px solid var(--gz-border-color);
+	padding: 0 3.716em 10px;
+
+	.gz-progress__count-bar {
+		position: absolute;
+		bottom: -2px;
+		inset-inline-start: 0;
+		background-color: var(--gz-color-dark);
+		height: 2px;
+	}
+}

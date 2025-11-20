@@ -1,0 +1,39 @@
+.language-popover {
+    &.popover--open {
+        .currency-dropdown {
+            opacity: 1;
+            visibility: visible;
+            position: static;
+            box-shadow: none;
+        }
+    }
+
+    .popover__content {
+        .current {
+            display: none;
+        }
+    }
+
+    .popover__backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .currency-dropdown {
+        li {
+            a {
+                display: block;
+                width: auto;
+                height: auto;
+                margin: 0;
+                opacity: 1;
+            }
+
+            &.active {
+                a {
+                    font-weight: 600;
+                    color: var(--gz-color-dark);
+                }
+            }
+        }
+    }
+}

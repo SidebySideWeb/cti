@@ -1,0 +1,16 @@
+.clearfix {
+	@include clearfix();
+}
+
+.clear-both {
+	clear: both;
+}
+
+.last-0 {
+	&:last-child,
+	&:last-of-type {
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+}

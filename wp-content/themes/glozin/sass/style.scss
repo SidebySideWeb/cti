@@ -1,0 +1,45 @@
+/*!
+Theme Name: Glozin
+Theme URI: https://wpglozin.com/
+Author: UIXThemes
+Author URI: https://uix.store
+Description: Multipurpose WooCommerce WordPress Theme
+Version: 1.5.1
+Requires at least: 5.0
+Tested up to: 5.8
+Requires PHP: 7.0
+License: GNU General Public License v2+
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: glozin
+Tags: one-column, two-columns, left-sidebar, right-sidebar, full-width-template, post-formats, theme-options, threaded-comments, translation-ready
+
+Copyright: (c) 2025 UIXThemes. All rights reserved. 
+
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+## Layouts
+# Components
+
+
+--------------------------------------------------------------*/
+
+// Mixins.
+@import "abstracts/mixins/mixins";
+
+/*--------------------------------------------------------------
+# Layouts
+--------------------------------------------------------------*/
+@import "layouts/content-sidebar";
+
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+@import "components/components";
+
+/*--------------------------------------------------------------
+# Search
+--------------------------------------------------------------*/
+@import "pages/search";

@@ -1,0 +1,26 @@
+@import "base/elements/accessibility";
+.header-logo {
+	> a {
+		color: inherit;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		img {
+			--gz-image-rounded: 0;
+			vertical-align: middle;
+		}
+
+		svg {
+			fill: currentColor;
+			vertical-align: middle;
+			width: auto;
+			height: auto;
+		}
+	}
+
+	.logo-light {
+		display: none;
+	}
+}

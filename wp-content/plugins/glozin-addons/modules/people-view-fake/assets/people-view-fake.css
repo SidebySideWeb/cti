@@ -1,0 +1,24 @@
+.glozin-people-view {
+    margin-bottom: 20px;
+}
+
+.glozin-people-view__icon {
+    font-size: 30px;
+    color: var(--gz-color-light);
+    background-color: var(--gz-color-dark);
+    width: 30px;
+    height: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.glozin-people-view__numbers {
+    margin-inline-end: 3px;
+}
+
+.rtl .glozin-people-view__numbers {
+    margin-inline-start: 3px;
+    margin-inline-end: 0;
+}

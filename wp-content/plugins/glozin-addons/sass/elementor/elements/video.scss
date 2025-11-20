@@ -1,0 +1,30 @@
+.glozin-elementor-video {
+    &:not(.gz-ratio) {
+        video,
+        iframe {
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--gz-image-rounded);
+        }
+    }
+
+    &.gz-ratio {
+        video,
+        iframe {
+            display: block;
+            max-width: 100%;
+            position: absolute;
+            margin: 0;
+            top: 0;
+            inset-inline-start: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}
+
+.elementor .elementor-background-video-hosted {
+    height: 100% !important;
+}

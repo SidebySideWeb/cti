@@ -1,0 +1,32 @@
+.no-underline {
+    text-decoration-line: none;
+}
+
+.underline {
+	text-decoration-line: underline;
+}
+
+.underline-important {
+	text-decoration-line: underline !important;
+}
+
+.animate-underline {
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		inset-inline-start: 0;
+		width: 100%;
+		height: 1px;
+		background-color: currentColor;
+		transform-origin: left;
+		transform: scaleX(0);
+		transition: transform 0.3s ease-in-out;
+	}
+
+	&:hover::before {
+		transform: scaleX(1);
+	}
+}

@@ -1,0 +1,32 @@
+.wp-list-table .glozin_product_tab_type-default .check-column input[type="checkbox"] {
+	display: none;
+}
+
+.wp-list-table .glozin_product_tab_type-default .row-actions > *:not('.inline') {
+	display: none;
+}
+
+.post-type-glozin_product_tab .wp-list-table .column-date {
+	display: none;
+}
+
+.wp-list-table .inline-edit-glozin_product_tab .inline-edit-status,
+.wp-list-table .inline-edit-glozin_product_tab .inline-edit-date,
+.wp-list-table .inline-edit-glozin_product_tab .inline-edit-group {
+	display: none;
+}
+
+.glozin-product-tabs-settings .form-field > label {
+	min-width: 150px;
+	font-weight: 500;
+	display: inline-block;
+}
+
+.glozin-product-tabs-settings .glozin-product-tabs--type > label {
+	padding-inline-end: 30px;
+}
+
+.glozin-product-tabs-settings .glozin-product-tabs--categories,
+.glozin-product-tabs-settings .glozin-product-tabs--product {
+	display: none;
+}

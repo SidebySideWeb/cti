@@ -1,0 +1,210 @@
+.glozin-products-filters {
+	position: relative;
+}
+
+.glozin-products-filters .no-filter {
+	text-align: center;
+}
+
+.glozin-products-filter-add-new {
+	font-weight: 700;
+}
+
+.glozin-products-filter-fields * {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.glozin-products-filter-fields {
+	overflow: hidden;
+	margin-inline-start: -10px;
+	margin-inline-end: -10px;
+	margin-bottom: 20px;
+}
+
+.glozin-products-filter-fields .name,
+.glozin-products-filter-fields .source,
+.glozin-products-filter-fields .display,
+.glozin-products-filter-fields .actions {
+	float: left;
+	padding-inline-start: 10px;
+	padding-inline-end: 10px;
+}
+
+.glozin-products-filter-fields .name,
+.glozin-products-filter-fields .source,
+.glozin-products-filter-fields .display {
+	width: 32%;
+}
+
+.glozin-products-filter-fields .actions {
+	width: 4%;
+	padding-top: 26px;
+	text-align: right;
+}
+
+.glozin-products-filter-fields .remove-filter {
+	color: #b4b9be;
+}
+
+.glozin-products-filter-fields .remove-filter:hover {
+	color: #c00;
+}
+
+.glozin-products-filter-fields input,
+.glozin-products-filter-fields select {
+	margin: 5px 0;
+}
+
+.glozin-products-filter-form__sub-nav {
+	font-size: 14px;
+}
+
+.glozin-products-filter-form__sub-nav .button-link.active {
+	color: #444;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.glozin-products-filter-form__section {
+	display: none;
+}
+
+.glozin-products-filter-form__section.active {
+	display: block;
+}
+
+.glozin-products-filter-form__filter {
+	margin-bottom: 10px;
+}
+
+.glozin-products-filter-form__filter-top {
+	overflow: hidden;
+	border: 1px solid #ccd0d4;
+}
+
+.glozin-products-filter-form__filter-top:hover {
+	border-color: #999;
+}
+
+.glozin-products-filter-form__filter-actions {
+	float: right;
+	padding: 10px;
+}
+
+.glozin-products-filter-form__filter-actions .button-link-delete {
+	text-decoration: none;
+}
+
+.glozin-products-filter-form__filter-toggle {
+	float: left;
+	padding: 15px 10px;
+	margin: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
+	color: #111111;
+}
+
+.glozin-products-filter-form__filter-toggle:hover {
+	background-color: transparent;
+	color: #111111;
+}
+
+.glozin-products-filter-form__filter-toggle-indicator {
+	color: #999;
+	float: left;
+}
+
+.glozin-products-filter-form__filter-toggle-indicator:before {
+	content: "\f140";
+	font: normal 20px/1 dashicons;
+	speak: none;
+	display: block;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration: none;
+}
+
+.glozin-products-filter-form__filter-title {
+	font-size: 14px;
+	font-weight: 500;
+	padding: 12px 10px;
+	cursor: pointer;
+	user-select: none;
+}
+
+.glozin-products-filter-form__filter-options {
+	display: none;
+	padding: 5px 15px;
+	border: 1px solid #ccd0d4;
+	border-top: 0;
+}
+
+.glozin-products-filter-form__section-actions {
+	text-align: center;
+}
+
+.glozin-products-filter-form__section-actions button {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.glozin-products-filter-form__filter.open .glozin-products-filter-form__filter-top {
+	background: #fafafa;
+	border-color: #ccd0d4;
+}
+
+.glozin-products-filter-form__filter.open .glozin-products-filter-form__filter-toggle-indicator:before {
+	content: "\f142";
+}
+
+.glozin-products-filter-form__message {
+	text-align: center;
+}
+
+.glozin-products-filter-form__sort {
+	float: right;
+	display: inline-flex;
+	flex-direction: column;
+	gap: 5px;
+	padding: 3px 0 3px 10px;
+}
+
+.glozin-products-filter-form__sort .button-link-sort {
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.glozin-products-filter-form__sort-up-icon:before {
+	content: "\f343";
+	font: normal 20px/1 dashicons;
+	speak: none;
+	display: block;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration: none;
+}
+
+.glozin-products-filter-form__sort-down-icon:before {
+	content: "\f347";
+	font: normal 20px/1 dashicons;
+	speak: none;
+	display: block;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration: none;
+}
+
+.glozin-products-filter-form__sort-up-icon,
+.glozin-products-filter-form__sort-down-icon {
+	color: #999;
+}
+
+.glozin-products-filter-form__sort-up-icon:hover,
+.glozin-products-filter-form__sort-down-icon:hover {
+	color: #111111;
+}

@@ -1,0 +1,33 @@
+.glozin-svg-icon {
+	display: inline-block;
+	line-height: 1;
+
+	svg {
+		width: 1em;
+		height: 1em;
+		fill: currentColor;
+		display: inline-block;
+	}
+
+	&:not(.glozin-svg-icon__inline) {
+		svg {
+			vertical-align: -.125em;
+		}
+	}
+
+	&.has-vertical-align {
+		svg {
+			vertical-align: -.125em;
+		}
+	}
+
+	&.icon-fill-none {
+		svg {
+			fill: none;
+		}
+	}
+}
+
+.glozin-svg-icon-original {
+	display: inline-flex;
+}

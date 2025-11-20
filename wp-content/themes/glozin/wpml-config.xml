@@ -1,0 +1,28 @@
+<wpml-config>
+	<custom-fields>
+		<custom-field action="copy">_is_new</custom-field>
+		<custom-field action="copy">_is_pre_order</custom-field>
+		<custom-field action="copy">custom_badges_text</custom-field>
+		<custom-field action="copy">custom_badges_bg</custom-field>
+		<custom-field action="copy">custom_badges_color</custom-field>
+		<custom-field action="copy">glozin_product_attribute</custom-field>
+		<custom-field action="copy">glozin_product_attribute_number</custom-field>
+	</custom-fields>
+
+	<admin-texts>
+		<key name="theme_mods_glozin">
+			<key name="logo_text" />
+			<key name="mobile_logo_text" />
+			<key name="mobile_header_hamburger_menu_text" />
+			<key name="product_grid_banner_link" />
+			<key name="campaign_text" />
+			<key name="header_custom_html" />
+			<key name="upsells_products_description" />
+			<key name="related_products_description" />
+			<key name="recently_viewed_products_description" />
+			<key name="cart_information_box_content" />
+			<key name="checkout_information_box_content" />
+			<key name="product_guarantee_safe_checkout_html" />
+		</key>
+	</admin-texts>
+</wpml-config>

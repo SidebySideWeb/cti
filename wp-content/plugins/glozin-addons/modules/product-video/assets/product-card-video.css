@@ -1,0 +1,33 @@
+.product-video-loop-thumbnail video,
+.product-video-loop-thumbnail iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-video-loop-thumbnail .glozin-i-video {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--gz-button-rounded);
+}
+
+.product-video-loop-thumbnail .glozin-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.product-video-loop-thumbnail .glozin-video-thumbnail {
+    z-index: 2;
+}
+
+.product-video-loop-thumbnail .glozin-product-video-play .glozin-video-thumbnail {
+    z-index: 0;
+}
