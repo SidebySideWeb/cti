@@ -1,0 +1,36 @@
+{
+  "version": "0.2",
+  "words": [
+    "ABSPATH",
+    "absint",
+    "totalcount",
+    "ZOOMINFO",
+    "TRDR",
+    "CUSBRANCH",
+    "cusbranch",
+    "trdr",
+    "AFM",
+    "wc_create_new_customer",
+    "wp_json_encode",
+    "wp_remote_post",
+    "wp_options",
+    "usermeta",
+    "softone",
+    "Softone",
+    "SoftOne",
+    "MTRCATEGORY",
+    "MTRGROUP",
+    "MTRMARK",
+    "WEBNAME",
+    "ISACTIVE",
+    "UPDDATE",
+    "getBrowserInfo",
+    "getBrowserData",
+    "setData",
+    "SALDOC"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    ".git"
+  ]
+}
