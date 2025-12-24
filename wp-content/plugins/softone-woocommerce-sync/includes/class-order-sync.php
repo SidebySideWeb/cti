@@ -6,85 +6,37 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Order_Sync {
 
 	public static function init() {
-		// Push order async on thankyou (paid) - schedule for immediate execution
-		add_action( 'woocommerce_thankyou', [ __CLASS__, 'schedule_order_sync' ], 10, 1 );
-		// Hook for async order sync
-		add_action( 's1wc_push_order', [ __CLASS__, 'push_order_to_erp' ], 10, 1 );
-	}
-
-	/**
-	 * Schedule async order sync
-	 */
-	public static function schedule_order_sync( $order_id ) {
-		if ( ! $order_id ) return;
-		
-		// Schedule for immediate execution (in 1 minute to avoid blocking checkout)
-		wp_schedule_single_event( time() + 60, 's1wc_push_order', [ $order_id ] );
-		
-		Logger::log( "Order {$order_id} scheduled for async ERP sync" );
-	}
-
-	/**
-	 * Sync orders via cron - retry failed syncs
-	 */
-	public static function sync_orders() {
-		// Find orders that need syncing (completed but not synced to ERP)
-		$args = [
-			'status' => 'completed',
-			'limit' => 50, // Process in batches
-			'meta_query' => [
-				'relation' => 'OR',
-				[
-					'key' => '_s1wc_erp_sync_status',
-					'compare' => 'NOT EXISTS'
-				],
-				[
-					'key' => '_s1wc_erp_sync_status',
-					'value' => 'failed',
-					'compare' => '='
-				]
-			]
-		];
-		
-		$orders = wc_get_orders( $args );
-		$synced = 0;
-		
-		foreach ( $orders as $order ) {
-			$result = self::push_order_to_erp( $order->get_id() );
-			if ( $result ) {
-				$synced++;
-			}
-		}
-		
-		Logger::log( "Order sync cron completed: processed " . count($orders) . " orders, synced {$synced}" );
+		add_action( 'woocommerce_thankyou', [ __CLASS__, 'push_order_to_erp' ], 10, 1 );
 	}
 
 	public static function push_order_to_erp( $order_id ) {
-		if ( ! $order_id ) return false;
+		if ( ! $order_id ) return;
 		$order = wc_get_order( $order_id );
-		if ( ! $order ) return false;
-
-		// Check if already synced successfully
-		$sync_status = get_post_meta( $order_id, '_s1wc_erp_sync_status', true );
-		if ( $sync_status === 'success' ) {
-			Logger::log( "Order {$order_id} already synced to ERP successfully" );
-			return true;
-		}
+		if ( ! $order ) return;
 
 		$api = SoftOne_API::instance();
 
-		// Map Woo → ERP
-		$erp_trdr = get_user_meta( $order->get_user_id(), 's1_customer_code', true );
+		$erp_trdr = get_user_meta( $order->get_user_id(), 's1_customer_trdr', true );
 		if ( empty( $erp_trdr ) ) {
-			// fallback: you can implement a lookup by VAT/AFM or email against ERP if needed
-			Logger::log( "Order {$order_id}: missing ERP TRDR mapping; skipping." );
-			update_post_meta( $order_id, '_s1wc_erp_sync_status', 'failed' );
-			update_post_meta( $order_id, '_s1wc_erp_sync_error', 'Missing ERP TRDR mapping' );
-			return false;
+			$erp_trdr = get_user_meta( $order->get_user_id(), 's1_customer_code', true );
 		}
-
-		// Get TRDBRANCH if available
+		
+		if ( empty( $erp_trdr ) ) {
+			Logger::log( "Order {$order_id}: missing ERP TRDR mapping; skipping." );
+			return;
+		}
+		
 		$erp_trdbranch = get_user_meta( $order->get_user_id(), 's1_customer_trdbranch', true );
+		
+		if ( strpos( $erp_trdr, '.' ) !== false ) {
+			$parts = explode( '.', $erp_trdr );
+			$erp_trdr = $parts[0];
+			if ( empty( $erp_trdbranch ) && isset( $parts[1] ) ) {
+				$erp_trdbranch = $parts[1];
+			}
+		}
+		
+		$erp_trdr = (string) intval( $erp_trdr );
 
 		$payment_map = [
 			'cod'        => '12',  // αντικαταβολή
@@ -95,63 +47,264 @@ class Order_Sync {
 		];
 		$pay_code = $payment_map[ $order->get_payment_method() ] ?? '10';
 
-		$lines = [];
-		$linenum = 1;
-		foreach ( $order->get_items() as $item ) {
-			/** @var \WC_Order_Item_Product $item */
-			$product = $item->get_product();
-			if ( ! $product ) continue;
-			$sku = $product->get_sku();
-			if ( ! $sku ) continue;
+			$lines = [];
+			$linenum = 1;
+			foreach ( $order->get_items() as $item ) {
+				$product = $item->get_product();
+				if ( ! $product ) continue;
+				$sku = $product->get_sku();
+				if ( ! $sku ) continue;
 
-			// In many setups MTRL equals ERP Item internal id, but often we post with CODE instead.
-			// Here we send CODE in a VARCHAR field (COMMENTS1 in ITELINES not available), so we prefer PRICE + QTY,
-			// and the ERP can map by CODE through a custom trigger. For generic approach we assume MTRL is known == SKU numeric.
-			$mtrl = is_numeric($sku) ? intval($sku) : 0;
+				$product_id = $product->get_id();
+				$mtrl = get_post_meta( $product_id, '_softone_mtrl', true );
+				
+				if ( empty( $mtrl ) && is_numeric( $sku ) ) {
+					$mtrl = intval( $sku );
+				}
+				
+				if ( empty( $mtrl ) ) {
+					Logger::warning( "Order {$order_id}: Product SKU {$sku} (ID: {$product_id}) has no MTRL; skipping line item." );
+					continue;
+				}
+				
+				$mtrl = (int) $mtrl;
 
 			$lines[] = [
 				'LINENUM'  => $linenum++,
 				'VAT'      => '24',
 				'MTRUNIT4' => '101',
-				'MTRL'     => $mtrl, // adapt if you need CODE-based post (custom WS)
+				'MTRL'     => $mtrl,
 				'QTY1'     => (float) $item->get_quantity(),
 				'PRICE'    => (float) $order->get_item_total( $item, false, false ),
 			];
 		}
 
+		$saldoc_header = [
+			'SERIES'    => '600',
+			'TRDR'      => $erp_trdr,
+			'PAYMENT'   => (string) $pay_code,
+			'COMMENTS'  => 'From WooCommerce',
+			'CCCFINDOC' => (string) $order_id,
+			'COMMENTS1' => 'WEB-' . $order->get_order_number(),
+		];
+		
+		if ( ! empty( $erp_trdbranch ) ) {
+			$saldoc_header['TRDBRANCH'] = (string) intval( $erp_trdbranch );
+		}
+		
+		if ( $order->get_billing_phone() ) {
+			$saldoc_header['VARCHAR02'] = $order->get_billing_phone();
+		}
+
 		$data = [
-			'SALDOC' => [[
+			'SALDOC' => [ $saldoc_header ],
+			'ITELINES' => $lines,
+		];
+
+		$res = $api->set_data( 'SALDOC', $data, '', true );
+		if ( is_wp_error( $res ) || empty( $res['success'] ) ) {
+			if ( is_wp_error( $res ) ) {
+				$error_msg = $res->get_error_message();
+				$error_code = $res->get_error_code();
+				$error_data = $res->get_error_data();
+			} else {
+				$error_msg = $res['message'] ?? $res['error'] ?? 'Unknown error';
+				$error_code = $res['code'] ?? 'unknown';
+				$error_data = $res;
+			}
+			
+			Logger::error( "Order {$order_id} ERP post failed", [
+				'error_message' => $error_msg,
+				'error_code' => $error_code,
+				'error_data' => $error_data,
+				'order_id' => $order_id,
+				'order_number' => $order->get_order_number(),
+			] );
+			
+			// Store failure status
+			update_post_meta( $order_id, '_s1wc_erp_sync_status', 'failed' );
+			update_post_meta( $order_id, '_s1wc_erp_sync_error', $error_msg );
+			update_post_meta( $order_id, '_s1wc_erp_sync_error_code', $error_code );
+			update_post_meta( $order_id, '_s1wc_erp_sync_time', time() );
+			return;
+		}
+		
+		$erp_id = $res['id'] ?? '';
+		Logger::log( sprintf( 'Order %d posted to ERP. ERP id: %s', $order_id, $erp_id ) );
+		
+		update_post_meta( $order_id, '_s1wc_erp_sync_status', 'success' );
+		update_post_meta( $order_id, '_s1wc_erp_sync_erp_id', $erp_id );
+		update_post_meta( $order_id, '_s1wc_erp_sync_time', time() );
+		delete_post_meta( $order_id, '_s1wc_erp_sync_error' );
+		delete_post_meta( $order_id, '_s1wc_erp_sync_error_code' );
+	}
+
+	public static function sync_orders( $force_full_sync = false ) {
+		$args = [
+			'limit' => -1,
+			'status' => [ 'wc-processing', 'wc-completed', 'wc-on-hold' ],
+			'orderby' => 'date',
+			'order' => 'DESC',
+		];
+
+		if ( ! $force_full_sync ) {
+			$args['date_created'] = date( 'Y-m-d', strtotime( '-30 days' ) ) . '...' . date( 'Y-m-d' );
+		}
+
+		$orders = wc_get_orders( $args );
+		$total = 0;
+		$synced = 0;
+		$failed = 0;
+		$sync_start_time = time();
+
+		foreach ( $orders as $order ) {
+			$order_id = $order->get_id();
+			
+			if ( ! $force_full_sync ) {
+				$synced_meta = get_post_meta( $order_id, '_s1wc_erp_sync_status', true );
+				if ( $synced_meta === 'success' ) {
+					continue;
+				}
+			}
+
+			$erp_trdr = get_user_meta( $order->get_user_id(), 's1_customer_trdr', true );
+			if ( empty( $erp_trdr ) ) {
+				$erp_trdr = get_user_meta( $order->get_user_id(), 's1_customer_code', true );
+			}
+			
+			if ( empty( $erp_trdr ) ) {
+				Logger::log( "Order {$order_id}: missing ERP TRDR mapping; skipping." );
+				update_post_meta( $order_id, '_s1wc_erp_sync_status', 'skipped' );
+				update_post_meta( $order_id, '_s1wc_erp_sync_error', 'Missing ERP customer code' );
+				$failed++;
+				continue;
+			}
+			
+			$erp_trdbranch = get_user_meta( $order->get_user_id(), 's1_customer_trdbranch', true );
+			
+			if ( strpos( $erp_trdr, '.' ) !== false ) {
+				$parts = explode( '.', $erp_trdr );
+				$erp_trdr = $parts[0];
+				if ( empty( $erp_trdbranch ) && isset( $parts[1] ) ) {
+					$erp_trdbranch = $parts[1];
+				}
+			}
+			
+			$erp_trdr = (string) intval( $erp_trdr );
+
+			$api = SoftOne_API::instance();
+
+			$payment_map = [
+				'cod'        => '12',
+				'irispay'    => '199',
+				'card'       => '19',
+				'bacs'       => '11',
+				'cheque'     => '10',
+			];
+			$pay_code = $payment_map[ $order->get_payment_method() ] ?? '10';
+
+			$lines = [];
+			$linenum = 1;
+			foreach ( $order->get_items() as $item ) {
+				$product = $item->get_product();
+				if ( ! $product ) continue;
+				$sku = $product->get_sku();
+				if ( ! $sku ) continue;
+
+				$product_id = $product->get_id();
+				$mtrl = get_post_meta( $product_id, '_softone_mtrl', true );
+				
+				if ( empty( $mtrl ) && is_numeric( $sku ) ) {
+					$mtrl = intval( $sku );
+				}
+				
+				if ( empty( $mtrl ) ) {
+					Logger::warning( "Order {$order_id}: Product SKU {$sku} (ID: {$product_id}) has no MTRL; skipping line item." );
+					continue;
+				}
+				
+				$mtrl = (int) $mtrl;
+
+				$lines[] = [
+					'LINENUM'  => $linenum++,
+					'VAT'      => '24',
+					'MTRUNIT4' => '101',
+					'MTRL'     => $mtrl,
+					'QTY1'     => (float) $item->get_quantity(),
+					'PRICE'    => (float) $order->get_item_total( $item, false, false ),
+				];
+			}
+
+			if ( empty( $lines ) ) {
+				Logger::log( "Order {$order_id}: no line items; skipping." );
+				update_post_meta( $order_id, '_s1wc_erp_sync_status', 'skipped' );
+				update_post_meta( $order_id, '_s1wc_erp_sync_error', 'No line items' );
+				$failed++;
+				continue;
+			}
+
+			$saldoc_header = [
 				'SERIES'    => '600',
-				'TRDR'      => (string) $erp_trdr,
+				'TRDR'      => $erp_trdr,
 				'PAYMENT'   => (string) $pay_code,
 				'COMMENTS'  => 'From WooCommerce',
 				'CCCFINDOC' => (string) $order_id,
 				'COMMENTS1' => 'WEB-' . $order->get_order_number(),
-				'VARCHAR02' => $order->get_billing_phone(),
-			]],
-			'ITELINES' => $lines,
-		];
+			];
+			
+			if ( ! empty( $erp_trdbranch ) ) {
+				$saldoc_header['TRDBRANCH'] = (string) intval( $erp_trdbranch );
+			}
+			
+			if ( $order->get_billing_phone() ) {
+				$saldoc_header['VARCHAR02'] = $order->get_billing_phone();
+			}
 
-		// Conditionally add TRDBRANCH if available
-		if ( ! empty( $erp_trdbranch ) ) {
-			$data['SALDOC'][0]['TRDBRANCH'] = (string) $erp_trdbranch;
+			$data = [
+				'SALDOC' => [ $saldoc_header ],
+				'ITELINES' => $lines,
+			];
+
+			$res = $api->set_data( 'SALDOC', $data, '', true );
+			if ( is_wp_error( $res ) || empty( $res['success'] ) ) {
+				if ( is_wp_error( $res ) ) {
+					$error_msg = $res->get_error_message();
+					$error_code = $res->get_error_code();
+					$error_data = $res->get_error_data();
+				} else {
+					$error_msg = $res['message'] ?? $res['error'] ?? 'Unknown error';
+					$error_code = $res['code'] ?? 'unknown';
+					$error_data = $res;
+				}
+				
+				Logger::error( "Order {$order_id} sync failed", [
+					'error_message' => $error_msg,
+					'error_code' => $error_code,
+					'error_data' => $error_data,
+					'order_id' => $order_id,
+					'order_number' => $order->get_order_number(),
+					'erp_trdr' => $erp_trdr,
+					'payment_method' => $order->get_payment_method(),
+					'line_items_count' => count( $lines ),
+				] );
+				
+				update_post_meta( $order_id, '_s1wc_erp_sync_status', 'failed' );
+				update_post_meta( $order_id, '_s1wc_erp_sync_error', $error_msg );
+				update_post_meta( $order_id, '_s1wc_erp_sync_error_code', $error_code );
+				update_post_meta( $order_id, '_s1wc_erp_sync_time', time() );
+				$failed++;
+			} else {
+				Logger::log( sprintf( 'Order %d posted to ERP. ERP id: %s', $order_id, $res['id'] ?? '-' ) );
+				update_post_meta( $order_id, '_s1wc_erp_sync_status', 'success' );
+				update_post_meta( $order_id, '_s1wc_erp_sync_erp_id', $res['id'] ?? '' );
+				update_post_meta( $order_id, '_s1wc_erp_sync_time', time() );
+				delete_post_meta( $order_id, '_s1wc_erp_sync_error' );
+				$synced++;
+			}
+			$total++;
 		}
 
-		$res = $api->set_data( 'SALDOC', $data, '', true );
-		if ( is_wp_error( $res ) || empty( $res['success'] ) ) {
-			$error_msg = is_wp_error($res) ? implode('; ', $res->get_error_messages()) : (isset($res['error']) ? $res['error'] : 'Unknown error');
-			Logger::error( 'ERP order post failed', [ 'order_id' => $order_id, 'error' => $error_msg ] );
-			update_post_meta( $order_id, '_s1wc_erp_sync_status', 'failed' );
-			update_post_meta( $order_id, '_s1wc_erp_sync_error', $error_msg );
-			return false;
-		}
-		
-		// Success
-		Logger::log( sprintf( 'Order %d posted to ERP. ERP id: %s', $order_id, $res['id'] ?? '-' ) );
-		update_post_meta( $order_id, '_s1wc_erp_sync_status', 'success' );
-		update_post_meta( $order_id, '_s1wc_erp_sync_erp_id', $res['id'] ?? '' );
-		update_post_meta( $order_id, '_s1wc_erp_sync_time', current_time('mysql') );
-		delete_post_meta( $order_id, '_s1wc_erp_sync_error' ); // Clear any previous error
-		return true;
+		$duration = time() - $sync_start_time;
+		Logger::log( sprintf( 'Orders sync completed. Processed: %d, Synced: %d, Failed: %d in %d seconds', $total, $synced, $failed, $duration ) );
 	}
 }

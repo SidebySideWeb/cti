@@ -13,11 +13,15 @@ class Logger {
 		}
 	}
 	public static function error( $message, $context = [] ) {
+		$log_message = is_string($message) ? $message : wp_json_encode($message);
+		if ( ! empty( $context ) ) {
+			$log_message .= ' | Context: ' . wp_json_encode( $context, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT );
+		}
 		if ( function_exists( 'wc_get_logger' ) ) {
 			$logger = wc_get_logger();
-			$logger->error( is_string($message) ? $message : wp_json_encode($message), ['source' => 'softone-sync'] );
+			$logger->error( $log_message, ['source' => 'softone-sync'] );
 		} else {
-			error_log( '[SoftOne Sync ERROR] ' . ( is_string($message) ? $message : wp_json_encode($message) ) );
+			error_log( '[SoftOne Sync ERROR] ' . $log_message );
 		}
 	}
 	public static function warning( $message, $context = [] ) {

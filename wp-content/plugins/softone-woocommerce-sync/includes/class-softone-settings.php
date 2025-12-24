@@ -10,14 +10,10 @@ class Settings {
 		add_action( 'admin_menu', [ __CLASS__, 'menu' ] );
 		register_setting( 's1wc', self::OPTION, [ __CLASS__, 'sanitize' ] );
 		add_filter( 'cron_schedules', [ __CLASS__, 'cron_schedules' ] );
-		// Cron scheduling only happens on activation and when settings are saved
-		// No longer runs on every page load to improve performance
 		
-		// Enable query monitor if setting is enabled
-		$opt = self::get();
-		if ( ! empty( $opt['enable_query_monitor'] ) ) {
-			update_option( \S1WC\Query_Monitor::OPTION_ENABLED, true, false );
-		}
+		add_action( 'wp_ajax_s1wc_sync_products', [ __CLASS__, 'ajax_sync_products' ] );
+		add_action( 'wp_ajax_s1wc_sync_customers', [ __CLASS__, 'ajax_sync_customers' ] );
+		add_action( 'wp_ajax_s1wc_sync_orders', [ __CLASS__, 'ajax_sync_orders' ] );
 	}
 
 	public static function menu() {
@@ -45,21 +41,16 @@ class Settings {
 		$out['active_field'] = sanitize_text_field( $input['active_field'] ?? 'ITEM.ISACTIVE' );
 		$out['browser_items'] = sanitize_text_field( $input['browser_items'] ?? 'CtiWSItems' );
 		$out['browser_customers'] = sanitize_text_field( $input['browser_customers'] ?? 'CtiWSCustomers' );
-		// ERP lookup object names (optional) - allow admins to provide exact object/list names
 		$out['lookup_category_object'] = sanitize_text_field( $input['lookup_category_object'] ?? '' );
 		$out['lookup_group_object'] = sanitize_text_field( $input['lookup_group_object'] ?? '' );
 		$out['lookup_brand_object'] = sanitize_text_field( $input['lookup_brand_object'] ?? '' );
 		$out['enable_query_monitor'] = ! empty( $input['enable_query_monitor'] );
-		// Sync intervals
 		$allowed = [ 'every_15_minutes', 'every_30_minutes', 'hourly', 'every_3_hours', 'every_4_hours', 'every_8_hours', 'twicedaily', 'daily' ];
 		$out['sync_products_interval'] = in_array( $input['sync_products_interval'] ?? 'every_4_hours', $allowed, true ) ? $input['sync_products_interval'] : 'every_4_hours';
 		$out['sync_customers_interval'] = in_array( $input['sync_customers_interval'] ?? 'every_8_hours', $allowed, true ) ? $input['sync_customers_interval'] : 'every_8_hours';
 		$out['sync_orders_interval'] = in_array( $input['sync_orders_interval'] ?? 'every_3_hours', $allowed, true ) ? $input['sync_orders_interval'] : 'every_3_hours';
 
-		// After saving, reschedule crons to match new settings
-		// Note: schedule_crons is safe to call here as files are loaded.
 		if ( method_exists( __CLASS__, 'schedule_crons' ) ) {
-			// use shutdown action to avoid scheduling during settings api internals
 			add_action( 'shutdown', [ __CLASS__, 'schedule_crons' ] );
 		}
 		return $out;
@@ -141,15 +132,90 @@ class Settings {
 				</table>
 				<?php submit_button(); ?>
 			</form>
+			
+			<hr style="margin: 30px 0;">
+			
+			<h2>Manual Sync</h2>
+			<p class="description">Run manual syncs for products, customers, and orders. Incremental sync only processes items updated since the last sync, while full sync processes all items.</p>
+			
+			<table class="form-table">
+				<tr>
+					<th><label>Products Sync</label></th>
+					<td>
+						<button type="button" id="s1wc-sync-products-incremental" class="button button-secondary" data-type="products" data-mode="incremental">Run Incremental Sync</button>
+						<button type="button" id="s1wc-sync-products-full" class="button button-primary" data-type="products" data-mode="full" style="margin-left: 10px;">Run Full Sync</button>
+						<span id="s1wc-products-status" style="margin-left: 15px;"></span>
+					</td>
+				</tr>
+				<tr>
+					<th><label>Customers Sync</label></th>
+					<td>
+						<button type="button" id="s1wc-sync-customers-incremental" class="button button-secondary" data-type="customers" data-mode="incremental">Run Incremental Sync</button>
+						<button type="button" id="s1wc-sync-customers-full" class="button button-primary" data-type="customers" data-mode="full" style="margin-left: 10px;">Run Full Sync</button>
+						<span id="s1wc-customers-status" style="margin-left: 15px;"></span>
+					</td>
+				</tr>
+				<tr>
+					<th><label>Orders Sync</label></th>
+					<td>
+						<button type="button" id="s1wc-sync-orders-incremental" class="button button-secondary" data-type="orders" data-mode="incremental">Run Incremental Sync</button>
+						<button type="button" id="s1wc-sync-orders-full" class="button button-primary" data-type="orders" data-mode="full" style="margin-left: 10px;">Run Full Sync</button>
+						<span id="s1wc-orders-status" style="margin-left: 15px;"></span>
+					</td>
+				</tr>
+			</table>
 		</div>
+		
+		<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			function handleSync(type, mode) {
+				var buttonId = '#s1wc-sync-' + type + '-' + mode;
+				var statusId = '#s1wc-' + type + '-status';
+				var $button = $(buttonId);
+				var $status = $(statusId);
+				
+				// Disable all buttons for this type
+				$('[data-type="' + type + '"]').prop('disabled', true);
+				$status.html('<span class="spinner is-active" style="float:none;margin:0 5px;"></span> Running ' + mode + ' sync...');
+				
+				$.ajax({
+					url: ajaxurl,
+					type: 'POST',
+					data: {
+						action: 's1wc_sync_' + type,
+						mode: mode,
+						nonce: '<?php echo wp_create_nonce( 's1wc_manual_sync' ); ?>'
+					},
+					success: function(response) {
+						if (response.success) {
+							$status.html('<span style="color: green;">✓ ' + (response.data.message || 'Sync completed successfully') + '</span>');
+						} else {
+							$status.html('<span style="color: red;">✗ Error: ' + (response.data.message || 'Sync failed') + '</span>');
+						}
+					},
+					error: function(xhr, status, error) {
+						$status.html('<span style="color: red;">✗ Error: ' + error + '</span>');
+					},
+					complete: function() {
+						// Re-enable all buttons for this type
+						$('[data-type="' + type + '"]').prop('disabled', false);
+					}
+				});
+			}
+			
+			$('[id^="s1wc-sync-"]').on('click', function() {
+				var type = $(this).data('type');
+				var mode = $(this).data('mode');
+				handleSync(type, mode);
+			});
+		});
+		</script>
 		<?php
 	}
 
 	public static function cron_schedules( $schedules ) {
-		// Add custom intervals
 		$schedules['every_15_minutes'] = [ 'interval' => 15 * 60, 'display' => 'Every 15 Minutes' ];
 		$schedules['every_30_minutes'] = [ 'interval' => 30 * 60, 'display' => 'Every 30 Minutes' ];
-		// 'hourly' exists by default
 		$schedules['every_3_hours'] = [ 'interval' => 3 * 60 * 60, 'display' => 'Every 3 Hours' ];
 		$schedules['every_4_hours'] = [ 'interval' => 4 * 60 * 60, 'display' => 'Every 4 Hours' ];
 		$schedules['every_8_hours'] = [ 'interval' => 8 * 60 * 60, 'display' => 'Every 8 Hours' ];
@@ -158,26 +224,73 @@ class Settings {
 		return $schedules;
 	}
 
-	/**
-	 * Schedule or reschedule product/customer/order cron events to match settings.
-	 * Only called on activation and when settings are saved.
-	 */
 	public static function schedule_crons() {
 		$opt = self::get();
 		$prod_interval = $opt['sync_products_interval'] ?? 'every_4_hours';
 		$cust_interval = $opt['sync_customers_interval'] ?? 'every_8_hours';
 		$orders_interval = $opt['sync_orders_interval'] ?? 'every_3_hours';
 
-		// Products - clear and reschedule to ensure correct interval
 		wp_clear_scheduled_hook( 's1wc_sync_products' );
 		wp_schedule_event( time() + 60, $prod_interval, 's1wc_sync_products' );
 
-		// Customers - clear and reschedule to ensure correct interval
 		wp_clear_scheduled_hook( 's1wc_sync_customers' );
 		wp_schedule_event( time() + 120, $cust_interval, 's1wc_sync_customers' );
 
-		// Orders - clear and reschedule to ensure correct interval
 		wp_clear_scheduled_hook( 's1wc_sync_orders' );
 		wp_schedule_event( time() + 180, $orders_interval, 's1wc_sync_orders' );
+	}
+
+	public static function ajax_sync_products() {
+		check_ajax_referer( 's1wc_manual_sync', 'nonce' );
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+			wp_send_json_error( [ 'message' => 'Insufficient permissions' ] );
+			return;
+		}
+
+		$mode = sanitize_text_field( $_POST['mode'] ?? 'incremental' );
+		$force_full = ( $mode === 'full' );
+
+		try {
+			\S1WC\Product_Sync::sync_products( $force_full );
+			wp_send_json_success( [ 'message' => 'Products sync completed. Check logs for details.' ] );
+		} catch ( \Exception $e ) {
+			wp_send_json_error( [ 'message' => $e->getMessage() ] );
+		}
+	}
+
+	public static function ajax_sync_customers() {
+		check_ajax_referer( 's1wc_manual_sync', 'nonce' );
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+			wp_send_json_error( [ 'message' => 'Insufficient permissions' ] );
+			return;
+		}
+
+		$mode = sanitize_text_field( $_POST['mode'] ?? 'incremental' );
+		$force_full = ( $mode === 'full' );
+
+		try {
+			\S1WC\Customer_Sync::sync_customers( $force_full );
+			wp_send_json_success( [ 'message' => 'Customers sync completed. Check logs for details.' ] );
+		} catch ( \Exception $e ) {
+			wp_send_json_error( [ 'message' => $e->getMessage() ] );
+		}
+	}
+
+	public static function ajax_sync_orders() {
+		check_ajax_referer( 's1wc_manual_sync', 'nonce' );
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+			wp_send_json_error( [ 'message' => 'Insufficient permissions' ] );
+			return;
+		}
+
+		$mode = sanitize_text_field( $_POST['mode'] ?? 'incremental' );
+		$force_full = ( $mode === 'full' );
+
+		try {
+			\S1WC\Order_Sync::sync_orders( $force_full );
+			wp_send_json_success( [ 'message' => 'Orders sync completed. Check logs for details.' ] );
+		} catch ( \Exception $e ) {
+			wp_send_json_error( [ 'message' => $e->getMessage() ] );
+		}
 	}
 }
