@@ -1,12 +1,12 @@
 === WCBoost - Wishlist ===
 Contributors: wcboost
 Tags: woocommerce wishlist, wishlist, products, e-commerce, woocommerce
-Tested up to: 6.8
-Stable tag: 1.2.2
+Tested up to: 6.9
+Stable tag: 1.2.3
 Requires PHP: 7.0
 Requires at least: 4.5
 WC requires at least: 3.0.0
-WC tested up to: 10.2
+WC tested up to: 10.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -93,6 +93,13 @@ Following the standards of WordPress and WooCommerce, you can find all the setti
 6. Visual options can be found in the Customizer
 
 == Changelog ==
+
+= 1.2.3 =
+- Enhancement - Update Wishlist edit template to allow title customization.
+- Tweak - WordPress 6.9 compatibility.
+- Tweak – WooCommerce 10.4 compatibility.
+- Dev - Add filter to modify page title and heading for wishlist endpoints.
+- Dev - Add filter for endpoint settings.
 
 = 1.2.2 =
 - Fix - Cannot restore the last item.

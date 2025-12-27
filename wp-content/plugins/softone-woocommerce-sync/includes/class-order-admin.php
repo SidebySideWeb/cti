@@ -5,9 +5,32 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 class Order_Admin {
 
+	private static $hpos_enabled = null;
+
+	private static function is_hpos_enabled() {
+		if ( self::$hpos_enabled === null ) {
+			self::$hpos_enabled = class_exists( '\Automattic\WooCommerce\Utilities\OrderUtil' ) && 
+			                      \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled();
+		}
+		return self::$hpos_enabled;
+	}
+
 	public static function init() {
-		$hpos_enabled = class_exists( '\Automattic\WooCommerce\Utilities\OrderUtil' ) && 
-		                \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled();
+		add_action( 'current_screen', [ __CLASS__, 'maybe_init' ] );
+	}
+
+	public static function maybe_init() {
+		$screen = get_current_screen();
+		if ( ! $screen ) {
+			return;
+		}
+
+		$is_order_screen = in_array( $screen->id, [ 'edit-shop_order', 'shop_order', 'woocommerce_page_wc-orders' ], true );
+		if ( ! $is_order_screen ) {
+			return;
+		}
+
+		$hpos_enabled = self::is_hpos_enabled();
 		
 		if ( $hpos_enabled ) {
 			add_filter( 'manage_woocommerce_page_wc-orders_columns', [ __CLASS__, 'add_order_column' ], 20 );
@@ -129,8 +152,7 @@ class Order_Admin {
 	}
 
 	public static function add_meta_box() {
-		$hpos_enabled = class_exists( '\Automattic\WooCommerce\Utilities\OrderUtil' ) && 
-		                \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled();
+		$hpos_enabled = self::is_hpos_enabled();
 		
 		if ( $hpos_enabled ) {
 			add_meta_box(

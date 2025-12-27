@@ -4,7 +4,7 @@
  * Description: Our WooCommerce Wishlist plugin enables customers to create personalized collections of products that they like but aren't ready to purchase immediately. Enhance the shopping experience by saving products for further consideration, making decisions easier than ever.
  * Plugin URI: https://wcboost.com/plugin/woocommerce-wishlist/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * Author: WCBoost
- * Version: 1.2.2
+ * Version: 1.2.3
  * Author URI: https://wcboost.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash
  *
  * Text Domain: wcboost-wishlist
@@ -12,9 +12,9 @@
  *
  * Requires PHP: 7.0
  * Requires at least: 4.5
- * Tested up to: 6.8.3
+ * Tested up to: 6.9
  * WC requires at least: 3.0.0
- * WC tested up to: 10.2.2
+ * WC tested up to: 10.4
  * License: GPLv3 or later
  *
  * @package Wishlist
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'WCBOOST_WISHLIST_VERSION' ) ) {
-	define( 'WCBOOST_WISHLIST_VERSION', '1.2.2' );
+	define( 'WCBOOST_WISHLIST_VERSION', '1.2.3' );
 }
 
 if ( ! defined( 'WCBOOST_WISHLIST_FILE' ) ) {
@@ -42,7 +42,7 @@ if ( ! class_exists( '\WCBoost\Wishlist\Plugin' ) ) {
 }
 
 // Declare compatibility with WooCommerce features.
-add_action( 'before_woocommerce_init', function() {
+add_action( 'before_woocommerce_init', function () {
 	if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
 		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
 	}
@@ -102,5 +102,5 @@ if ( ! function_exists( 'wcboost_wishlist_activate' ) ) {
 		}
 	}
 
-	register_activation_hook( __FILE__,  'wcboost_wishlist_activate' );
+	register_activation_hook( __FILE__, 'wcboost_wishlist_activate' );
 }

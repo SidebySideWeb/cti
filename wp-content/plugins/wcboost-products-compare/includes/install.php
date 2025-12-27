@@ -1,6 +1,8 @@
 <?php
 /**
  * Handle plugin installation.
+ *
+ * @package WCBoost\ProductsCompare
  */
 
 namespace WCBoost\ProductsCompare;

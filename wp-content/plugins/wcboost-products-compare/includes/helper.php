@@ -1,6 +1,8 @@
 <?php
 /**
  * Helper functions for the plugin.
+ *
+ * @package WCBoost\ProductsCompare
  */
 
 namespace WCBoost\ProductsCompare;
@@ -35,67 +37,63 @@ class Helper {
 	 * @return bool True if user can view the site, false if restricted by coming soon mode.
 	 */
 	public static function can_user_view_site() {
-		// If WooCommerce's Coming Soon classes don't exist, assume site is viewable
+		// If WooCommerce's Coming Soon classes don't exist, assume site is viewable.
 		if ( ! class_exists( 'Automattic\WooCommerce\Internal\ComingSoon\ComingSoonHelper' ) ) {
 			return true;
 		}
 
-		// Check if Launch Your Store feature is enabled
+		// Check if Launch Your Store feature is enabled.
 		if ( class_exists( 'Automattic\WooCommerce\Admin\Features\Features' ) ) {
 			if ( ! \Automattic\WooCommerce\Admin\Features\Features::is_enabled( 'launch-your-store' ) ) {
 				return true;
 			}
 		}
 
-		// Initialize coming soon helper
+		// Initialize coming soon helper.
 		$coming_soon_helper = wc_get_container()->get( \Automattic\WooCommerce\Internal\ComingSoon\ComingSoonHelper::class );
 
-		// If site is live, everyone can view
 		if ( $coming_soon_helper->is_site_live() ) {
 			return true;
 		}
 
-		// Administrators and shop managers can always view
 		if ( current_user_can( 'manage_woocommerce' ) ) {
 			return true;
 		}
 
-		// Check if the current page is in coming soon mode
 		if ( ! $coming_soon_helper->is_current_page_coming_soon() ) {
 			return true;
 		}
 
-		// Check for coming soon exclusion filter
+		// Check for coming soon exclusion filter.
 		if ( apply_filters( 'woocommerce_coming_soon_exclude', false ) ) {
 			return true;
 		}
 
-		// Check private link access
+		// Check private link access.
 		if ( get_option( 'woocommerce_private_link' ) === 'yes' ) {
 			$share_key = get_option( 'woocommerce_share_key' );
 
-			// Check URL parameter
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if ( isset( $_GET['woo-share'] ) && $share_key === $_GET['woo-share'] ) {
 				return true;
 			}
 
-			// Check cookie
+			// Check cookie.
 			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-			if ( isset( $_COOKIE['woo-share'] ) && $share_key === wp_unslash( $_COOKIE['woo-share'] ) ) {
+			if ( isset( $_COOKIE['woo-share'] ) && wp_unslash( $_COOKIE['woo-share'] ) === $share_key ) {
 				return true;
 			}
 		}
 
-		// User is restricted by coming soon mode
 		return false;
 	}
 
 	/**
 	 * Get SVG icon
 	 *
-	 * @param  string $icon Icon name
-	 * @param  int    $size
+	 * @param  string $icon Icon name.
+	 * @param  int    $size Icon size.
+	 *
 	 * @return string
 	 */
 	public static function get_icon( $icon, $size = 24 ) {
@@ -145,8 +143,9 @@ class Helper {
 	/**
 	 * Get compare icon for the button
 	 *
-	 * @param  bool $added
-	 * @param  int  $size
+	 * @param bool $added Is this for the added product.
+	 * @param int  $size  Icon size.
+	 *
 	 * @return string
 	 */
 	public static function get_compare_icon( $added = false, $size = 24 ) {
@@ -170,11 +169,11 @@ class Helper {
 	/**
 	 * Get button text
 	 *
-	 * @param string $type
+	 * @param string $type Button type.
 	 * @return string
 	 */
 	public static function get_button_text( $type = 'add' ) {
-		$type = in_array( $type, [ 'add', 'remove', 'view' ] ) ? $type : 'add';
+		$type        = in_array( $type, [ 'add', 'remove', 'view' ], true ) ? $type : 'add';
 		$button_text = wp_parse_args( get_option( 'wcboost_products_compare_button_text', [] ), [
 			'add'    => __( 'Compare', 'wcboost-products-compare' ),
 			'remove' => __( 'Remove compare', 'wcboost-products-compare' ),
@@ -189,7 +188,8 @@ class Helper {
 	/**
 	 * Get the URL of adding action
 	 *
-	 * @param  \WC_Product | int $product
+	 * @param \WC_Product|int $product Product object or product ID.
+	 *
 	 * @return string
 	 */
 	public static function get_add_url( $product = false ) {
@@ -204,7 +204,8 @@ class Helper {
 	/**
 	 * Get the URL of removing a product from the compare list
 	 *
-	 * @param \WC_Product $product
+	 * @param \WC_Product $product Product object.
+	 *
 	 * @return string
 	 */
 	public static function get_remove_url( $product = false ) {
@@ -213,7 +214,7 @@ class Helper {
 		$referer = is_feed() || is_404() ? $product->get_permalink() : '';
 		$params  = [
 			'remove_compare_item' => self::generate_item_key( $product ),
-			'_wpnonce' => wp_create_nonce( 'wcboost-products-compare-remove-item' ),
+			'_wpnonce'            => wp_create_nonce( 'wcboost-products-compare-remove-item' ),
 		];
 
 		if ( empty( $referer ) && self::is_compare_page() ) {
@@ -235,7 +236,8 @@ class Helper {
 	/**
 	 * Get the URL of clearing the list
 	 *
-	 * @param  string $list_id
+	 * @param  string $list_id List ID.
+	 *
 	 * @return string
 	 */
 	public static function get_clear_url( $list_id = false ) {
@@ -265,7 +267,8 @@ class Helper {
 	/**
 	 * Generate the unique key for the adding product.
 	 *
-	 * @param  int | \WC_Product $product_id
+	 * @param  \WC_Product|int $product Product object or product ID.
+	 *
 	 * @return string
 	 */
 	public static function generate_item_key( $product ) {
@@ -277,9 +280,11 @@ class Helper {
 	/**
 	 * Display the compare field content of a product
 	 *
-	 * @param  string $field
-	 * @param  \WC_Product $product
-	 * @param  string $key
+	 * @deprecated 1.0.4. Use `Frontend::field_content` instead.
+	 *
+	 * @param  string      $field Field name.
+	 * @param  \WC_Product $product Product object.
+	 * @param  string      $key   Field key.
 	 *
 	 * @return void
 	 */
@@ -292,17 +297,20 @@ class Helper {
 	/**
 	 * Compare widget content
 	 *
+	 * @param array $args Widget arguments.
+	 *
 	 * @return void
 	 */
 	public static function widget_content( $args = [] ) {
-
 		$args = wp_parse_args( $args, [
 			'list_class'    => '',
 			'show_rating'   => wc_review_ratings_enabled(),
 			'compare_items' => Plugin::instance()->list->get_items(),
 		] );
 
-		echo '<div class="wcboost-products-compare-widget-content">';
+		$count = is_array( $args['compare_items'] ) ? count( $args['compare_items'] ) : 0;
+
+		echo '<div class="wcboost-products-compare-widget-content" data-count="' . esc_attr( $count ) . '">';
 		wc_get_template( 'compare/compare-widget.php', $args, '', Plugin::instance()->plugin_path() . '/templates/' );
 		echo '</div>';
 	}

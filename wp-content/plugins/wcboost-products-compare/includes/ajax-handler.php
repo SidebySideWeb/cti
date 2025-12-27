@@ -1,6 +1,8 @@
 <?php
 /**
  * Handle AJAX actions.
+ *
+ * @package WCBoost\ProductsCompare
  */
 
 namespace WCBoost\ProductsCompare;
@@ -44,7 +46,7 @@ class Ajax_Handler {
 		$product        = wc_get_product( $product_id );
 		$product_status = get_post_status( $product_id );
 
-		if ( ! $product || 'publish' != $product_status ) {
+		if ( ! $product || 'publish' !== $product_status ) {
 			wp_send_json_error();
 			exit;
 		}
@@ -52,7 +54,7 @@ class Ajax_Handler {
 		$added = Plugin::instance()->list->add_item( $product_id );
 
 		if ( $added ) {
-			if ( 'redirect' == get_option( 'wcboost_products_compare_added_behavior' ) ) {
+			if ( 'redirect' === get_option( 'wcboost_products_compare_added_behavior' ) ) {
 				/* translators: %s: product name */
 				$message = sprintf( esc_html__( '%s has been added to the compare list', 'wcboost-products-compare' ), '&ldquo;' . $product->get_title() . '&rdquo;' );
 
@@ -77,7 +79,7 @@ class Ajax_Handler {
 	 */
 	public static function remove_compare_item() {
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$item_key = isset( $_POST['item_key'] ) ? wc_clean( wp_unslash( $_POST['item_key'] ) ) : '';
+		$item_key   = isset( $_POST['item_key'] ) ? wc_clean( wp_unslash( $_POST['item_key'] ) ) : '';
 		$product_id = Plugin::instance()->list->remove_item( $item_key );
 
 		if ( false !== $product_id ) {
@@ -107,7 +109,7 @@ class Ajax_Handler {
 			foreach ( $product_ids as $id ) {
 				if ( $id ) {
 					$button = do_shortcode( '[wcboost_compare_button product_id="' . $id . '"]' );
-					$fragments['.wcboost-products-compare-button[data-product_id="' . $id . '"]'] = $button;
+					$fragments[ '.wcboost-products-compare-button[data-product_id="' . $id . '"]' ] = $button;
 				}
 			}
 		}
@@ -138,11 +140,11 @@ class Ajax_Handler {
 	}
 
 	/**
-	 * Get contents of the compare list
+	 * Get the compare items data
 	 *
 	 * @since 1.0.6
 	 *
-	 * @return void
+	 * @return array
 	 */
 	protected static function get_compare_items() {
 		$items = Plugin::instance()->list->get_items();

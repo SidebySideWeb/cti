@@ -335,4 +335,69 @@ class SoftOne_API {
 		}
 		return $this->call( $payload );
 	}
+
+	public function get_sales_status( $findoc ) {
+		$base_endpoint = rtrim( $this->endpoint, '/' );
+		$status_endpoint = $base_endpoint . '/JS/b2bwebservices/getsalesstatus';
+		
+		$args = [
+			'headers' => [
+				'Content-Type' => 'application/json; charset=utf-8',
+			],
+			'timeout' => 30,
+			'body'    => wp_json_encode( [ 'findoc' => (string) $findoc ] ),
+		];
+
+		if ( $this->is_debug_enabled() ) {
+			$this->debug_log( 'Sales Status Request', ['endpoint' => $status_endpoint, 'findoc' => $findoc] );
+		}
+
+		$response = wp_remote_post( $status_endpoint, $args );
+		if ( is_wp_error( $response ) ) {
+			Logger::error( 'HTTP error getting sales status: ' . $response->get_error_message() );
+			return $response;
+		}
+
+		$raw = wp_remote_retrieve_body( $response );
+		if ( ! $raw ) {
+			return new \WP_Error( 'empty_body', 'Empty response from SoftOne status API' );
+		}
+
+		if ( $this->is_debug_enabled() ) {
+			$this->debug_log( 'Sales Status Response', ['raw_prefix' => mb_substr( $raw, 0, 500 )] );
+		}
+
+		$raw = preg_replace( '/^\xEF\xBB\xBF|\xFE\xFF|\xFF\xFE/', '', $raw );
+
+		if ( function_exists( 'mb_check_encoding' ) && ! mb_check_encoding( $raw, 'UTF-8' ) ) {
+			$possible_encodings = [ 'UTF-16BE', 'UTF-16LE', 'ISO-8859-7', 'CP1253' ];
+			$converted = false;
+			foreach ( $possible_encodings as $enc ) {
+				try {
+					if ( ! in_array( $enc, mb_list_encodings(), true ) ) {
+						continue;
+					}
+					$test = mb_convert_encoding( $raw, 'UTF-8', $enc );
+					if ( $test && json_decode( $test ) ) {
+						$raw = $test;
+						$converted = true;
+						break;
+					}
+				} catch ( \Throwable $e ) {
+					continue;
+				}
+			}
+			if ( ! $converted && function_exists( 'utf8_encode' ) ) {
+				$raw = utf8_encode( $raw );
+			}
+		}
+
+		$data = json_decode( $raw, true );
+		if ( json_last_error() !== JSON_ERROR_NONE ) {
+			Logger::error( 'Invalid JSON from status API: ' . json_last_error_msg(), ['raw' => mb_substr( $raw, 0, 1000 )] );
+			return new \WP_Error( 'invalid_json', json_last_error_msg() );
+		}
+
+		return $data;
+	}
 }

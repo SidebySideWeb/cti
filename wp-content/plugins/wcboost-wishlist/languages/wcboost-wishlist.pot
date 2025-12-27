@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WCBoost - Wishlist 1.2.2\n"
+"Project-Id-Version: WCBoost - Wishlist 1.2.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wcboost-wishlist\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-01T05:16:50+00:00\n"
+"POT-Creation-Date: 2025-12-15T03:03:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: wcboost-wishlist\n"
@@ -174,7 +174,7 @@ msgstr ""
 #: includes/admin/settings.php:157
 #: includes/customizer/customizer.php:341
 #: includes/form-handler.php:111
-#: includes/frontend.php:521
+#: includes/frontend.php:525
 #: includes/helper.php:208
 msgid "View wishlist"
 msgstr ""
@@ -385,7 +385,8 @@ msgid "Endpoints are appended to the page URL to handle specific actions on the 
 msgstr ""
 
 #: includes/admin/settings.php:408
-#: includes/frontend.php:338
+#: includes/frontend.php:342
+#: includes/frontend.php:597
 msgid "Edit wishlist"
 msgstr ""
 
@@ -645,29 +646,33 @@ msgstr[1] ""
 msgid "All items in the temporary wishlist have been added to your wishlist"
 msgstr ""
 
-#: includes/frontend.php:151
+#: includes/frontend.php:155
 msgid "The wishlist link is copied to clipboard"
 msgstr ""
 
-#: includes/frontend.php:152
+#: includes/frontend.php:156
 msgid "Close"
 msgstr ""
 
-#: includes/frontend.php:316
+#: includes/frontend.php:320
 msgid "Share"
 msgstr ""
 
-#: includes/frontend.php:369
+#: includes/frontend.php:373
 #: templates/wishlist/form-delete-wishlist.php:31
 msgid "Delete wishlist"
 msgstr ""
 
-#: includes/frontend.php:370
+#: includes/frontend.php:374
 msgid "Delete the wishlist and all items it contains"
 msgstr ""
 
-#: includes/frontend.php:391
+#: includes/frontend.php:395
 msgid "Delete"
+msgstr ""
+
+#: includes/frontend.php:577
+msgid "Edit Wishlist"
 msgstr ""
 
 #: includes/helper.php:278
@@ -821,39 +826,35 @@ msgstr ""
 msgid "Invalid wishlist item"
 msgstr ""
 
-#: templates/wishlist/form-edit-wishlist.php:21
-msgid "Edit Wishlist"
-msgstr ""
-
-#: templates/wishlist/form-edit-wishlist.php:30
+#: templates/wishlist/form-edit-wishlist.php:29
 msgid "Wishlist name"
 msgstr ""
 
-#: templates/wishlist/form-edit-wishlist.php:42
+#: templates/wishlist/form-edit-wishlist.php:41
 msgid "Description"
 msgstr ""
 
-#: templates/wishlist/form-edit-wishlist.php:57
+#: templates/wishlist/form-edit-wishlist.php:56
 msgid "Privacy settings"
 msgstr ""
 
-#: templates/wishlist/form-edit-wishlist.php:59
+#: templates/wishlist/form-edit-wishlist.php:58
 msgid "Public - Anyone can view this list. Everyone can share this list."
 msgstr ""
 
-#: templates/wishlist/form-edit-wishlist.php:60
+#: templates/wishlist/form-edit-wishlist.php:59
 msgid "Shared - Only people with the link can view this list. Only you can share this list."
 msgstr ""
 
-#: templates/wishlist/form-edit-wishlist.php:61
+#: templates/wishlist/form-edit-wishlist.php:60
 msgid "Private - Only you can view this list."
 msgstr ""
 
-#: templates/wishlist/form-edit-wishlist.php:71
+#: templates/wishlist/form-edit-wishlist.php:70
 msgid "Save changes"
 msgstr ""
 
-#: templates/wishlist/form-edit-wishlist.php:72
+#: templates/wishlist/form-edit-wishlist.php:71
 msgid "Cancel"
 msgstr ""
 

@@ -6,6 +6,20 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Customer_Admin {
 
 	public static function init() {
+		add_action( 'current_screen', [ __CLASS__, 'maybe_init' ] );
+	}
+
+	public static function maybe_init() {
+		$screen = get_current_screen();
+		if ( ! $screen ) {
+			return;
+		}
+
+		$is_user_screen = in_array( $screen->id, [ 'users', 'user', 'profile' ], true );
+		if ( ! $is_user_screen ) {
+			return;
+		}
+
 		add_filter( 'manage_users_columns', [ __CLASS__, 'add_user_columns' ], 20 );
 		add_filter( 'manage_users_custom_column', [ __CLASS__, 'render_user_column' ], 10, 3 );
 		add_filter( 'manage_users_sortable_columns', [ __CLASS__, 'make_columns_sortable' ] );
@@ -15,16 +29,21 @@ class Customer_Admin {
 	}
 
 	private static function is_customer( $user_id ) {
-		if ( ! function_exists( 'wc_get_orders' ) ) {
-			return false;
-		}
-		
 		$user = get_userdata( $user_id );
 		if ( ! $user ) {
 			return false;
 		}
 		
 		if ( in_array( 'customer', $user->roles, true ) ) {
+			return true;
+		}
+
+		if ( ! function_exists( 'wc_get_orders' ) ) {
+			return false;
+		}
+		
+		$trdr = get_user_meta( $user_id, 's1_customer_trdr', true );
+		if ( ! empty( $trdr ) ) {
 			return true;
 		}
 		

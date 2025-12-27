@@ -1,6 +1,8 @@
 <?php
 /**
  * Products compare shortcodes
+ *
+ * @package WCBoost\ProductsCompare
  */
 
 namespace WCBoost\ProductsCompare;
@@ -26,7 +28,7 @@ class Shortcodes {
 	/**
 	 * Compare page shortcode
 	 *
-	 * @param  array $atts
+	 * @param  array $atts Shortcode attributes.
 	 * @return string
 	 */
 	public static function compare_page( $atts ) {
@@ -68,7 +70,7 @@ class Shortcodes {
 	/**
 	 * Compare button shortcode
 	 *
-	 * @param  array $atts
+	 * @param  array $atts Shortcode attributes.
 	 * @return string
 	 */
 	public static function compare_button( $atts ) {
@@ -87,7 +89,7 @@ class Shortcodes {
 			return '';
 		}
 
-		/** @var \WC_Product | \WC_Product_Variable $_product */
+		/* @var \WC_Product | \WC_Product_Variable $_product Product object. */
 		$_product = wc_get_product( $atts['product_id'] );
 
 		if ( ! $_product ) {
@@ -96,7 +98,7 @@ class Shortcodes {
 
 		$list = Plugin::instance()->list;
 
-		if ( $list && $list->has_item( $_product ) && 'hide' == get_option( 'wcboost_products_compare_exists_item_button_behaviour' ) ) {
+		if ( $list && $list->has_item( $_product ) && 'hide' === get_option( 'wcboost_products_compare_exists_item_button_behaviour' ) ) {
 			return '';
 		}
 
@@ -114,7 +116,7 @@ class Shortcodes {
 	/**
 	 * Shortcode of similar products which are calculated from comparison data.
 	 *
-	 * @param  array $atts
+	 * @param array $atts Shortcode attributes.
 	 *
 	 * @return string
 	 */

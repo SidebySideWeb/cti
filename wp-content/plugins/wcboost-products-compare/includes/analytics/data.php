@@ -1,6 +1,8 @@
 <?php
 /**
  * Analytics usage data.
+ *
+ * @package WCBoost\ProductsCompare
  */
 
 namespace WCBoost\ProductsCompare\Analytics;
@@ -29,7 +31,7 @@ class Data {
 	/**
 	 * Get the compare count
 	 *
-	 * @param  int $product_id
+	 * @param  int $product_id Product ID.
 	 *
 	 * @return int The comparision count
 	 */
@@ -46,7 +48,7 @@ class Data {
 	/**
 	 * Get number of times a product has been added to the compare list
 	 *
-	 * @param  int  $product_id
+	 * @param  int $product_id Product ID.
 	 *
 	 * @return int
 	 */
@@ -63,7 +65,7 @@ class Data {
 	/**
 	 * Get the number of times a product has been removed from the compare list
 	 *
-	 * @param  int  $product_id
+	 * @param  int $product_id Product ID.
 	 *
 	 * @return int
 	 */
@@ -80,7 +82,7 @@ class Data {
 	/**
 	 * Get compared data of a product
 	 *
-	 * @param  int $product_id
+	 * @param  int $product_id Product ID.
 	 *
 	 * @return array
 	 */
@@ -100,7 +102,7 @@ class Data {
 	/**
 	 * Get user data for comparison
 	 *
-	 * @param  int  $user_id
+	 * @param  int $user_id User ID.
 	 *
 	 * @return array
 	 */
@@ -126,7 +128,7 @@ class Data {
 	/**
 	 * Get counter of times a product was added to cart from the compare list.
 	 *
-	 * @param  int  $product_id
+	 * @param  int $product_id Product ID.
 	 *
 	 * @return int
 	 */
@@ -143,7 +145,7 @@ class Data {
 	/**
 	 * Get IDs of similar products for a given product
 	 *
-	 * @param  int  $product_id
+	 * @param  int $product_id Product ID.
 	 *
 	 * @return array
 	 */
@@ -161,7 +163,7 @@ class Data {
 		}
 
 		// Sort compared products by count.
-		usort( $compare_data['products'], function( $a, $b ) {
+		usort( $compare_data['products'], function ( $a, $b ) {
 			return $b['count'] - $a['count'];
 		} );
 

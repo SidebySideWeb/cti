@@ -30,7 +30,8 @@ define( 'DB_USER', 'root' );
 define( 'DB_PASSWORD', 'root' );
 
 /** Database hostname */
-define( 'DB_HOST', 'localhost' );
+// Use 127.0.0.1 instead of localhost to force IPv4, and specify port 10030
+define( 'DB_HOST', '127.0.0.1:10030' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -73,6 +74,23 @@ $table_prefix = 'wp_';
 
 /* Add any custom values between this line and the "stop editing" line. */
 
+// Fix HTTPS detection for local development
+if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ) {
+	$_SERVER['HTTPS'] = 'on';
+}
+// Detect HTTPS from port 443
+if ( isset( $_SERVER['SERVER_PORT'] ) && $_SERVER['SERVER_PORT'] == 443 ) {
+	$_SERVER['HTTPS'] = 'on';
+}
+// Force SSL for admin if using HTTPS
+//if ( isset( $_SERVER['HTTPS'] ) && ( $_SERVER['HTTPS'] === 'on' || $_SERVER['HTTPS'] === '1' ) ) {
+//	if ( ! defined( 'FORCE_SSL_ADMIN' ) ) {
+//		define( 'FORCE_SSL_ADMIN', true );
+//	}
+//	// Ensure cookies work with HTTPS
+//	$_SERVER['HTTPS'] = 'on';
+//}
+
 
 
 /**
@@ -88,11 +106,21 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 if ( ! defined( 'WP_DEBUG' ) ) {
-	define( 'WP_DEBUG', false );
+	define( 'WP_DEBUG', true );
+	define( 'WP_DEBUG_LOG', true );
+	define( 'WP_DEBUG_DISPLAY', false );
 }
 
 define( 'WP_ENVIRONMENT_TYPE', 'local' );
+
+define('FORCE_SSL_ADMIN', false);
+define( 'WP_HOME', 'http://cti.local/' );
+define( 'WP_SITEURL', 'http://cti.local/' );
+define('COOKIE_DOMAIN', false);
+
 /* That's all, stop editing! Happy publishing. */
+
+
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {

@@ -1,6 +1,8 @@
 <?php
 /**
  * Handle Customizer settings for plugin.
+ *
+ * @package WCBoost\ProductsCompare
  */
 
 namespace WCBoost\ProductsCompare;
@@ -35,7 +37,7 @@ class Customizer {
 	/**
 	 * Register the section inside the Customizer.
 	 *
-	 * @param  \WP_Customize_Manager $wp_customize
+	 * @param  \WP_Customize_Manager $wp_customize Theme Customizer object.
 	 * @return void
 	 */
 	private function register_section( $wp_customize ) {
@@ -56,7 +58,7 @@ class Customizer {
 	/**
 	 * Register settings in the Customizer.
 	 *
-	 * @param  \WP_Customize_Manager $wp_customize
+	 * @param  \WP_Customize_Manager $wp_customize Theme Customizer object.
 	 * @return void
 	 */
 	private function register_settings( $wp_customize ) {
@@ -164,6 +166,24 @@ class Customizer {
 		);
 
 		$wp_customize->add_setting(
+			'wcboost_products_compare_bar_hide_if_single',
+			[
+				'default'    => '',
+				'type'       => 'option',
+				'capability' => 'manage_woocommerce',
+			]
+		);
+
+		$wp_customize->add_control(
+			'wcboost_products_compare_bar_hide_if_single',
+			[
+				'label'   => __( 'Hide bar if less than 2 products', 'wcboost-products-compare' ),
+				'section' => self::SECTION_ID,
+				'type'    => 'checkbox',
+			]
+		);
+
+		$wp_customize->add_setting(
 			'wcboost_products_compare_bar_button_behavior',
 			[
 				'default'    => 'page',
@@ -189,7 +209,7 @@ class Customizer {
 	/**
 	 * Check and register the WCBoost panel if WooCommerce panel doesn't exist.
 	 *
-	 * @param  \WP_Customize_Manager $wp_customize
+	 * @param  \WP_Customize_Manager $wp_customize Theme Customizer object.
 	 * @return void
 	 */
 	private function maybe_register_panel( $wp_customize ) {

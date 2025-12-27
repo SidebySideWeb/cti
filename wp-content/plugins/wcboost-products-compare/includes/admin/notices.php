@@ -3,7 +3,10 @@
  * Admin notices
  *
  * @version 1.0.4
+ *
+ * @package WCBoost\ProductsCompare
  */
+
 namespace WCBoost\ProductsCompare\Admin;
 
 defined( 'ABSPATH' ) || exit;

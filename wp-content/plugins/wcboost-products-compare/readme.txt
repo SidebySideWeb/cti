@@ -1,12 +1,12 @@
 === WCBoost - Products Compare ===
 Contributors: wcboost
 Tags: woocommerce, compare, product, product compare, woocommerce compare
-Tested up to: 6.8
-Stable tag: 1.0.9
+Tested up to: 6.9
+Stable tag: 1.1.0
 Requires PHP: 7.0
 Requires at least: 4.5
 WC requires at least: 3.0
-WC tested up to: 10.2
+WC tested up to: 10.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -109,6 +109,11 @@ Following the standards of WordPress and WooCommerce, you can find all the setti
 
 
 == Changelog ==
+
+= 1.1.0 =
+* New - Add option to hide the compare bar when there are less than 2 products to compare.
+* Tweak - WordPress 6.9 compatibility.
+* Tweak - WooCommerce 10.4 compatibility.
 
 = 1.0.9 =
 * Fixed - Do not show the compare bar if the user is restricted by coming soon mode.

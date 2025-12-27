@@ -806,7 +806,7 @@ class Wishlist extends \WC_Data {
 	 * Save should create or update based on object existence.
 	 * Also set the session id for guests.
 	 *
-	 * @return void
+	 * @return int
 	 */
 	public function save() {
 		$this->set_date_modified( time() );
@@ -816,6 +816,8 @@ class Wishlist extends \WC_Data {
 		if ( ! is_user_logged_in() ) {
 			Session::set_session_id( $this->get_session_id() );
 		}
+
+		return $this->get_id();
 	}
 
 	/**
@@ -1047,7 +1049,7 @@ class Wishlist extends \WC_Data {
 			$merged = $this->add_item( $merging_item );
 
 			if ( $merged && ! is_wp_error( $merged ) ) {
-				$merged_count++;
+				++$merged_count;
 			}
 		}
 

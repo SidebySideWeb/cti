@@ -620,11 +620,22 @@
 
 		self.$bar = $( node );
 		self.isOpen = self.$bar.hasClass( 'wcboost-products-compare-bar--open' );
+		self.hideIfSingle = self.$bar.hasClass( 'hide-if-single' );
+		self.shouldHide = false;
 
 		self.open = self.open.bind( self );
 		self.close = self.close.bind( self );
+		self.maybeHideIfSingle = self.maybeHideIfSingle.bind( self );
 
 		self.$bar.on( 'click', '.wcboost-products-compare-bar__toggle-button', { compareBar: self }, self.toggleCompareBar );
+
+		// Listen for fragment updates to handle hide-if-single feature.
+		if ( self.hideIfSingle ) {
+			$( document.body ).on( 'products_compare_fragments_loaded', { compareBar: self }, self.maybeHideIfSingle );
+
+			// Initial check.
+			self.maybeHideIfSingle();
+		}
 	}
 
 	WCBoostCompareBar.prototype.toggleCompareBar = function( event ) {
@@ -647,6 +658,29 @@
 		this.$bar.attr( 'aria-hidden', 'true' );
 
 		this.isOpen = false;
+
+		// Hide the bar after closing if it should be hidden.
+		if ( this.hideIfSingle && this.shouldHide ) {
+			this.$bar.removeClass( 'is-visible' );
+		}
+	}
+
+	WCBoostCompareBar.prototype.maybeHideIfSingle = function() {
+		var self = this;
+		var $content = self.$bar.find( '.wcboost-products-compare-widget-content' );
+		var count = parseInt( $content.attr( 'data-count' ), 10 ) || 0;
+
+		if ( count < 2 ) {
+			self.shouldHide = true;
+
+			// Only hide immediately if the bar is not open.
+			if ( ! self.isOpen ) {
+				self.$bar.removeClass( 'is-visible' );
+			}
+		} else {
+			self.shouldHide = false;
+			self.$bar.addClass( 'is-visible' );
+		}
 	}
 
 	// Document ready.

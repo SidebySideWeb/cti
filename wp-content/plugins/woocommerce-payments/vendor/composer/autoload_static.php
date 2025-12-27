@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit82ae2b86cd431fd736751ad4c4460abb
+class ComposerStaticInit52d66753a7442fbfca11ae0c2605af2c
 {
     public static $files = array (
         '3773ef3f09c37da5478d578e32b03a4b' => __DIR__ . '/..' . '/automattic/jetpack-assets/actions.php',
@@ -13,45 +13,45 @@ class ComposerStaticInit82ae2b86cd431fd736751ad4c4460abb
     );
 
     public static $prefixLengthsPsr4 = array (
-        'W' => 
+        'W' =>
         array (
             'WCPay\\Vendor\\' => 13,
             'WCPay\\PaymentMethods\\Configs\\' => 29,
             'WCPay\\MultiCurrency\\' => 20,
             'WCPay\\' => 6,
         ),
-        'C' => 
+        'C' =>
         array (
             'Composer\\Installers\\' => 20,
         ),
-        'A' => 
+        'A' =>
         array (
             'Automattic\\Jetpack\\Autoloader\\' => 30,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'WCPay\\Vendor\\' => 
+        'WCPay\\Vendor\\' =>
         array (
             0 => __DIR__ . '/../..' . '/lib/packages',
         ),
-        'WCPay\\PaymentMethods\\Configs\\' => 
+        'WCPay\\PaymentMethods\\Configs\\' =>
         array (
             0 => __DIR__ . '/../..' . '/includes/payment-methods/Configs',
         ),
-        'WCPay\\MultiCurrency\\' => 
+        'WCPay\\MultiCurrency\\' =>
         array (
             0 => __DIR__ . '/../..' . '/includes/multi-currency',
         ),
-        'WCPay\\' => 
+        'WCPay\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'Composer\\Installers\\' => 
+        'Composer\\Installers\\' =>
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
         ),
-        'Automattic\\Jetpack\\Autoloader\\' => 
+        'Automattic\\Jetpack\\Autoloader\\' =>
         array (
             0 => __DIR__ . '/..' . '/automattic/jetpack-autoloader/src',
         ),
@@ -394,9 +394,9 @@ class ComposerStaticInit82ae2b86cd431fd736751ad4c4460abb
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit82ae2b86cd431fd736751ad4c4460abb::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit82ae2b86cd431fd736751ad4c4460abb::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit82ae2b86cd431fd736751ad4c4460abb::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit52d66753a7442fbfca11ae0c2605af2c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit52d66753a7442fbfca11ae0c2605af2c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit52d66753a7442fbfca11ae0c2605af2c::$classMap;
 
         }, null, ClassLoader::class);
     }

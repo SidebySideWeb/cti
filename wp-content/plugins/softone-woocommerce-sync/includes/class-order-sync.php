@@ -9,6 +9,140 @@ class Order_Sync {
 		add_action( 'woocommerce_thankyou', [ __CLASS__, 'push_order_to_erp' ], 10, 1 );
 	}
 
+	public static function sync_order_statuses() {
+		$api = SoftOne_API::instance();
+		
+		$total = 0;
+		$updated = 0;
+		$failed = 0;
+		$skipped = 0;
+		$sync_start_time = time();
+		$batch_size = 50;
+		$page = 1;
+
+		$status_map = [
+			'4'  => 'pending',
+			'11' => 'processing',
+			'12' => 'completed',
+			'13' => 'cancelled',
+		];
+
+		do {
+			$args = [
+				'limit' => $batch_size,
+				'page' => $page,
+				'status' => [ 'wc-pending', 'wc-processing' ],
+				'orderby' => 'date',
+				'order' => 'DESC',
+				'meta_query' => [
+					[
+						'key' => '_s1wc_erp_sync_status',
+						'value' => 'success',
+						'compare' => '=',
+					],
+					[
+						'key' => '_s1wc_erp_sync_erp_id',
+						'compare' => 'EXISTS',
+					],
+				],
+			];
+
+			$orders = wc_get_orders( $args );
+			
+			if ( empty( $orders ) ) {
+				break;
+			}
+
+			foreach ( $orders as $order ) {
+			$order_id = $order->get_id();
+			$erp_id = get_post_meta( $order_id, '_s1wc_erp_sync_erp_id', true );
+			
+			if ( empty( $erp_id ) ) {
+				continue;
+			}
+
+			$res = $api->get_sales_status( $erp_id );
+			
+			if ( is_wp_error( $res ) ) {
+				Logger::error( "Order {$order_id} status check failed", [
+					'error' => $res->get_error_message(),
+					'erp_id' => $erp_id,
+				] );
+				$failed++;
+				continue;
+			}
+
+			if ( empty( $res['success'] ) || empty( $res['products'] ) || ! is_array( $res['products'] ) ) {
+				Logger::warning( "Order {$order_id} status check returned invalid response", [
+					'response' => $res,
+					'erp_id' => $erp_id,
+				] );
+				$failed++;
+				continue;
+			}
+
+			$product = $res['products'][0] ?? null;
+			if ( ! $product || ! isset( $product['cccstate'] ) ) {
+				Logger::warning( "Order {$order_id} status check missing cccstate", [
+					'response' => $res,
+					'erp_id' => $erp_id,
+				] );
+				$failed++;
+				continue;
+			}
+
+			$erp_status = (string) $product['cccstate'];
+			$wc_status = $status_map[ $erp_status ] ?? null;
+
+			if ( ! $wc_status ) {
+				Logger::warning( "Order {$order_id} unknown ERP status code: {$erp_status}", [
+					'erp_id' => $erp_id,
+					'erp_status' => $erp_status,
+				] );
+				$skipped++;
+				$total++;
+				continue;
+			}
+
+			$current_status = $order->get_status();
+			
+			if ( $current_status === $wc_status ) {
+				$skipped++;
+				$total++;
+				continue;
+			}
+
+			if ( in_array( $wc_status, [ 'completed', 'cancelled' ], true ) ) {
+				$order->update_status( $wc_status, sprintf( 'Order status updated from ERP (Status: %s - %s)', $erp_status, $product['name'] ?? 'Unknown' ) );
+				update_post_meta( $order_id, '_s1wc_erp_status_code', $erp_status );
+				update_post_meta( $order_id, '_s1wc_erp_status_name', $product['name'] ?? '' );
+				update_post_meta( $order_id, '_s1wc_erp_status_sync_time', time() );
+				Logger::log( sprintf( 'Order %d status updated to %s (ERP status: %s)', $order_id, $wc_status, $erp_status ) );
+				$updated++;
+			} elseif ( $wc_status === 'processing' && $current_status === 'pending' ) {
+				$order->update_status( $wc_status, sprintf( 'Order status updated from ERP (Status: %s - %s)', $erp_status, $product['name'] ?? 'Unknown' ) );
+				update_post_meta( $order_id, '_s1wc_erp_status_code', $erp_status );
+				update_post_meta( $order_id, '_s1wc_erp_status_name', $product['name'] ?? '' );
+				update_post_meta( $order_id, '_s1wc_erp_status_sync_time', time() );
+				Logger::log( sprintf( 'Order %d status updated to %s (ERP status: %s)', $order_id, $wc_status, $erp_status ) );
+				$updated++;
+			}
+
+			$total++;
+		}
+
+			$page++;
+			
+			if ( count( $orders ) < $batch_size ) {
+				break;
+			}
+			
+		} while ( true );
+
+		$duration = time() - $sync_start_time;
+		Logger::log( sprintf( 'Order status sync completed. Checked: %d, Updated: %d, Failed: %d, Skipped: %d in %d seconds', $total, $updated, $failed, $skipped, $duration ) );
+	}
+
 	public static function push_order_to_erp( $order_id ) {
 		if ( ! $order_id ) return;
 		$order = wc_get_order( $order_id );

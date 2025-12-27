@@ -1,9 +1,11 @@
 <?php
 /**
  * Uninstall plugin
+ *
+ * @package WCBoost\VariationSwatches
  */
 
-// If uninstall not called from WordPress then exit
+// If uninstall not called from WordPress then exit.
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
 global $wpdb;

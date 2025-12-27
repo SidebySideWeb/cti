@@ -6,7 +6,7 @@
  *
  * @author  WCBoost
  * @package WCBoost\Wishlist\Templates
- * @version 1.2.2
+ * @version 1.2.3
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -18,7 +18,6 @@ if ( ! isset( $wishlist ) ) {
 do_action( 'wcboost_wishlist_before_edit_form', $wishlist ); ?>
 
 <form class="wcboost-wishlist-form-edit" method="post">
-	<h3><?php esc_html_e( 'Edit Wishlist', 'wcboost-wishlist' ); ?></h3>
 
 	<?php
 	if ( $show_title_field ) {

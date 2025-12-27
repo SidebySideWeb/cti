@@ -4,7 +4,7 @@
  * Description: Transform boring dropdown variants into attractive and intuitive swatches, improving user experience and simplifying product selection.
  * Plugin URI: https://wcboost.com/plugin/woocommerce-variation-swatches/
  * Author: WCBoost
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author URI: https://wcboost.com/
  *
  * Text Domain: wcboost-variation-swatches
@@ -12,9 +12,9 @@
  *
  * Requires PHP: 7.0
  * Requires at least: 4.5
- * Tested up to: 6.8
+ * Tested up to: 6.9
  * WC requires at least: 3.0.0
- * WC tested up to: 9.9
+ * WC tested up to: 10.4
  * License: GPLv3 or later
  *
  * @package WCBoost\VariationSwatches
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'WCBOOST_VARIATION_SWATCHES_VERSION', '1.1.2' );
+define( 'WCBOOST_VARIATION_SWATCHES_VERSION', '1.1.3' );
 define( 'WCBOOST_VARIATION_SWATCHES_FREE', plugin_basename( __FILE__ ) );
 
 if ( ! defined( 'WCBOOST_VARIATION_SWATCHES_FILE' ) ) {
@@ -36,7 +36,7 @@ if ( ! class_exists( '\WCBoost\VariationSwatches\Plugin' ) ) {
 }
 
 // Declare compatibility with WooCommerce features.
-add_action( 'before_woocommerce_init', function() {
+add_action( 'before_woocommerce_init', function () {
 	if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
 		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
 	}

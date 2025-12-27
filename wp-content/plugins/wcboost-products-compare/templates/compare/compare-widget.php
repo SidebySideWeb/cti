@@ -29,7 +29,7 @@ do_action( 'wcboost_products_compare_widget_before_contents' );
 				$product_permalink = $_product->is_visible() ? $_product->get_permalink() : '';
 				?>
 				<li class="wcboost-products-compare-widget__item wcboost-products-compare-widget-item">
-					<a href="<?php echo esc_url( \WCBoost\ProductsCompare\Helper::get_remove_url( $_product ) ) ?>" class="wcboost-products-compare-widget-item__remove remove" rel="nofollow">&times;</a>
+					<a href="<?php echo esc_url( \WCBoost\ProductsCompare\Helper::get_remove_url( $_product ) ); ?>" class="wcboost-products-compare-widget-item__remove remove" rel="nofollow">&times;</a>
 					<?php if ( $_product->is_visible() ) : ?>
 						<a href="<?php echo esc_url( $_product->get_permalink() ); ?>">
 							<?php echo wp_kses_post( $_product->get_image() ); ?>

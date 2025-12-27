@@ -249,7 +249,7 @@ class Query {
 	/**
 	 * Get all wishlits of current user
 	 *
-	 * @return array
+	 * @return \WCBoost\Wishlist\Wishlist[] Array of wishlists
 	 */
 	public function get_user_wishlists() {
 		$wishlist_ids = \WC_Data_Store::load( 'wcboost_wishlist' )->get_wishlist_ids();

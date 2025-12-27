@@ -269,7 +269,7 @@ table.compare_table {
 .wcboost-products-compare-bar {
 	position: fixed;
 	background-color: #f9f9f9;
-	transition: transform 250ms ease-out;
+	transition: transform 250ms ease-out, visibility 0s linear 0s;
 	z-index: 99;
 
 	.wcboost-products-compare-widget__products {
@@ -286,6 +286,16 @@ table.compare_table {
 		transform: none;
 	}
 
+	&.hide-if-single {
+		visibility: hidden;
+		transition: transform 250ms ease-out, visibility 0s linear 250ms;
+
+		&.is-visible {
+			visibility: visible;
+			transition: transform 250ms ease-out, visibility 0s linear 0s;
+		}
+	}
+
 	.wcboost-products-compare-widget__buttons {
 		margin: 10px 0 20px 0;
 	}
@@ -298,6 +308,7 @@ table.compare_table {
 	border-radius: 3px 3px 0 0;
 	user-select: none;
 	cursor: pointer;
+	transition: 0.25s ease;
 
 	svg {
 		width: 1em;
@@ -308,6 +319,14 @@ table.compare_table {
 
 	.wcboost-products-compare-bar--open & svg {
 		transform: rotate(180deg);
+	}
+
+	.hide-if-single & {
+		transform: translateY(100%);
+	}
+
+	.hide-if-single.is-visible & {
+		transform: translateY(0);
 	}
 }
 

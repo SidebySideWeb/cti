@@ -1,6 +1,8 @@
 <?php
 /**
  * Handle form actions.
+ *
+ * @package WCBoost\ProductsCompare
  */
 
 namespace WCBoost\ProductsCompare;
@@ -48,7 +50,7 @@ class Form_Handler {
 			/* translators: %s: product name */
 			$message = sprintf( esc_html__( '%s has been added to the compare list', 'wcboost-products-compare' ), '&ldquo;' . $adding_product->get_title() . '&rdquo;' );
 
-			if ( 'redirect' == get_option( 'wcboost_products_compare_added_behavior' ) ) {
+			if ( 'redirect' === get_option( 'wcboost_products_compare_added_behavior' ) ) {
 				$return_to = apply_filters( 'wcboost_products_compare_continue_shopping_redirect', wc_get_raw_referer() ? wp_validate_redirect( wc_get_raw_referer(), false ) : wc_get_page_permalink( 'shop' ) );
 				$button    = sprintf( '<a href="%s" tabindex="1" class="button wc-forward">%s</a>', esc_url( $return_to ), esc_html__( 'Continue shopping', 'wcboost-products-compare' ) );
 			} else {
@@ -63,7 +65,7 @@ class Form_Handler {
 			if ( $url ) {
 				wp_safe_redirect( $url );
 				exit;
-			} elseif ( 'redirect' == get_option( 'wcboost_products_compare_added_behavior' ) ) {
+			} elseif ( 'redirect' === get_option( 'wcboost_products_compare_added_behavior' ) ) {
 				wp_safe_redirect( wc_get_page_permalink( 'compare' ) );
 				exit;
 			}
@@ -94,7 +96,7 @@ class Form_Handler {
 			$removing_product = wc_get_product( $was_removed );
 
 			/* translators: %s: product name */
-			$removed_notice  = sprintf( __( '%s is removed from the compare list.', 'wcboost-products-compare' ), '&ldquo;' . $removing_product->get_title() . '&rdquo;' );
+			$removed_notice = sprintf( __( '%s is removed from the compare list.', 'wcboost-products-compare' ), '&ldquo;' . $removing_product->get_title() . '&rdquo;' );
 
 			wc_add_notice( $removed_notice, 'success' );
 
@@ -105,7 +107,6 @@ class Form_Handler {
 			$message = esc_html__( 'Failed to remove the product from the compare list', 'wcboost-products-compare' );
 			wc_add_notice( $message, 'error' );
 		}
-
 	}
 
 	/**
@@ -123,7 +124,7 @@ class Form_Handler {
 
 		$list_id = sanitize_text_field( wp_unslash( $_GET['clear_compare_list'] ) );
 
-		if ( $list_id != Plugin::instance()->list->get_id() ) {
+		if ( Plugin::instance()->list->get_id() !== $list_id ) {
 			return;
 		}
 

@@ -87,6 +87,10 @@ class Frontend {
 
 		// Display buttons in the wishlist widget.
 		add_action( 'wcboost_wishlist_widget_buttons', [ $this, 'widget_buttons' ], 10, 2 );
+
+		// Change the page title and heading for the wishlist endpoints.
+		add_filter( 'document_title_parts', [ $this, 'wishlist_endpoints_page_title' ] );
+		add_filter( 'the_title', [ $this, 'wishlist_endpoints_page_heading' ] );
 	}
 
 	/**
@@ -551,5 +555,48 @@ class Frontend {
 	public function maybe_set_cookies() {
 		_deprecated_function( __METHOD__, '1.1.2', '\WCBoost\Wishlist\Session\maybe_set_cookies' );
 		Session::instance()->maybe_set_cookies();
+	}
+
+	/**
+	 * Filter the page title for wishlist endpoints
+	 *
+	 * Changes the page title when viewing manage-wishlists or add-wishlist endpoints.
+	 * Similar to how WooCommerce handles My Account page endpoints.
+	 *
+	 * @since 1.2.3
+	 *
+	 * @param array $title_parts The document title parts.
+	 * @return array Modified title parts.
+	 */
+	public function wishlist_endpoints_page_title( $title_parts ) {
+		if ( ! Helper::is_wishlist() ) {
+			return $title_parts;
+		}
+
+		if ( get_query_var( 'edit-wishlist' ) ) {
+			$title_parts['title'] = __( 'Edit Wishlist', 'wcboost-wishlist' );
+		}
+
+		return $title_parts;
+	}
+
+	/**
+	 * Filter the page heading for wishlist endpoints
+	 *
+	 * @since 1.2.3
+	 *
+	 * @param string $title The page title.
+	 * @return string Modified page title.
+	 */
+	public function wishlist_endpoints_page_heading( $title ) {
+		if ( ! in_the_loop() || ! is_main_query() || ! Helper::is_wishlist() ) {
+			return $title;
+		}
+
+		if ( get_query_var( 'edit-wishlist' ) ) {
+			$title = esc_html__( 'Edit wishlist', 'wcboost-wishlist' );
+		}
+
+		return $title;
 	}
 }

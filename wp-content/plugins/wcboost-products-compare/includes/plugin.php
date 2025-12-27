@@ -1,6 +1,8 @@
 <?php
 /**
  * Main plugin class
+ *
+ * @package WCBoost\ProductsCompare
  */
 
 namespace WCBoost\ProductsCompare;
@@ -24,7 +26,7 @@ final class Plugin {
 	 *
 	 * @var \WCBoost\ProductsCompare\Plugin
 	 */
-	protected static $_instance = null;
+	protected static $_instance = null; // phpcs:ignore PSR2.Classes.PropertyDeclaration.Underscore
 
 	/**
 	 * Main instance. Ensures only one instance of the plugin class is loaded or can be loaded.
@@ -59,15 +61,13 @@ final class Plugin {
 	 *
 	 * @since 1.0.5
 	 *
-	 * @param  string $prop
+	 * @param string $prop Property name.
 	 *
 	 * @return mixed
 	 */
 	public function __get( $prop ) {
-		switch ( $prop ) {
-			case 'version':
-				return WCBOOST_PRODUCTS_COMPARE_VERSION;
-				break;
+		if ( 'version' === $prop ) {
+			return WCBOOST_PRODUCTS_COMPARE_VERSION;
 		}
 	}
 
@@ -82,11 +82,12 @@ final class Plugin {
 	/**
 	 * Plugin URL getter.
 	 *
+	 * @param string $path Path to the file.
+	 *
 	 * @return string
 	 */
 	public function plugin_url( $path = '/' ) {
 		return untrailingslashit( plugins_url( $path, WCBOOST_PRODUCTS_COMPARE_FILE ) );
-
 	}
 
 	/**
@@ -152,7 +153,6 @@ final class Plugin {
 	 */
 	protected function init_hooks() {
 		add_action( 'init', [ $this, 'load_translation' ] );
-		// add_action( 'init', [ $this, 'initialize_list' ] );
 
 		add_action( 'widgets_init', [ $this, 'register_widgets' ] );
 
@@ -171,7 +171,7 @@ final class Plugin {
 	/**
 	 * Initialize the list of compare products
 	 *
-	 * @param bool $force Force initialization
+	 * @param bool $force Force initialization.
 	 *
 	 * @return void
 	 */
@@ -187,7 +187,8 @@ final class Plugin {
 	 * Empty product list.
 	 * Initialize a new list of compare products.
 	 *
-	 * @param  bool $reset_db
+	 * @param bool $reset_db Reset database.
+	 *
 	 * @return void
 	 */
 	public function empty_list( $reset_db = false ) {

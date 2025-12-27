@@ -194,9 +194,6 @@ class Templates {
 			$args['variations_data'] = $data;
 		}
 
-		$args = apply_filters( 'wcboost_wishlist_button_template_args', $args, $wishlist, $product );
-		$args['class'] = implode( ' ', (array) $args['class'] );
-
 		// Add a new key "attributes",
 		// but must keep orginal keys to ensure backwards compatibility.
 		$args['attributes'] = [
@@ -209,6 +206,9 @@ class Templates {
 		if ( isset( $args['variations_data'] ) ) {
 			$args['attributes']['data-variations'] = wp_json_encode( $args['variations_data'] );
 		}
+
+		$args = apply_filters( 'wcboost_wishlist_button_template_args', $args, $wishlist, $product );
+		$args['class'] = implode( ' ', (array) $args['class'] );
 
 		return $args;
 	}

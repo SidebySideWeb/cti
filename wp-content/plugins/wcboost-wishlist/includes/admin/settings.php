@@ -26,7 +26,7 @@ class Settings extends \WC_Settings_Page {
 		$this->label = __( 'Wishlist', 'wcboost-wishlist' );
 
 		// Add settings of endpoints to the Advanced tab.
-		add_filter( 'woocommerce_settings_pages', [ $this, 'get_endpoint_settings' ] );
+		add_filter( 'woocommerce_get_settings_advanced', [ $this, 'get_endpoint_settings' ] );
 
 		parent::__construct();
 	}
@@ -417,6 +417,8 @@ class Settings extends \WC_Settings_Page {
 				'id'   => 'wcboost_wishlist_enpoints_section',
 			],
 		];
+
+		$endpoint_settings = apply_filters( 'wcboost_wishlist_endpoint_settings', $endpoint_settings );
 
 		return array_merge( $settings, $endpoint_settings );
 	}

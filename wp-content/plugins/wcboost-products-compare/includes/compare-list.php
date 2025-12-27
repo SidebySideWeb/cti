@@ -1,7 +1,10 @@
 <?php
 /**
  * Compare products list
+ *
+ * @package WCBoost\ProductsCompare
  */
+
 namespace WCBoost\ProductsCompare;
 
 /**
@@ -27,6 +30,8 @@ class Compare_List {
 
 	/**
 	 * Class constructor
+	 *
+	 * @param array $product_ids Array of product IDs.
 	 */
 	public function __construct( $product_ids = [] ) {
 		if ( ! empty( $product_ids ) ) {
@@ -79,9 +84,9 @@ class Compare_List {
 			return;
 		}
 
-		$data = WC()->session->get( self::SESSION_KEY, null );
+		$data           = WC()->session->get( self::SESSION_KEY, null );
 		$update_session = false;
-		$merge_list = (bool) get_user_meta( get_current_user_id(), '_wcboost_products_compare_load_after_login', true );
+		$merge_list     = (bool) get_user_meta( get_current_user_id(), '_wcboost_products_compare_load_after_login', true );
 
 		if ( null === $data || $merge_list ) {
 			$saved          = $this->get_saved_list();
@@ -94,7 +99,7 @@ class Compare_List {
 		}
 
 		foreach ( $data['items'] as $product_id ) {
-			$key = Helper::generate_item_key( $product_id );
+			$key                 = Helper::generate_item_key( $product_id );
 			$this->items[ $key ] = $product_id;
 		}
 
@@ -115,7 +120,8 @@ class Compare_List {
 	 * Set the list data manually.
 	 * Manully add products to the list.
 	 *
-	 * @param  array $product_ids
+	 * @param  array $product_ids Array of product IDs.
+	 *
 	 * @return void
 	 */
 	protected function load_products_manually( $product_ids ) {
@@ -127,6 +133,7 @@ class Compare_List {
 			}
 
 			$key = Helper::generate_item_key( $product_id );
+
 			$this->items[ $key ] = $product_id;
 		}
 	}
@@ -161,7 +168,8 @@ class Compare_List {
 	/**
 	 * Add a new product to the list and update the session
 	 *
-	 * @param  int | WC_Product $product
+	 * @param  int | WC_Product $product Product ID or object.
+	 *
 	 * @return int | bool TRUE if successful, FALSE otherwise
 	 */
 	public function add_item( $product ) {
@@ -185,7 +193,7 @@ class Compare_List {
 	/**
 	 * Remove a product from the list.
 	 *
-	 * @param string $key
+	 * @param string $key Item key.
 	 *
 	 * @return int|bool The removed product ID if successful, FALSE otherwise.
 	 */
@@ -208,7 +216,8 @@ class Compare_List {
 	 * Empty the list.
 	 * Also reset the ID to create a new list.
 	 *
-	 * @param  bool $reset_db Reset data in the database
+	 * @param  bool $reset_db Reset data in the database.
+	 *
 	 * @return void
 	 */
 	public function empty( $reset_db = false ) {
@@ -224,7 +233,8 @@ class Compare_List {
 	/**
 	 * Check if a product exist in the list
 	 *
-	 * @param  int | \WC_Product $product
+	 * @param  int | \WC_Product $product Product ID or object.
+	 *
 	 * @return bool
 	 */
 	public function has_item( $product ) {
@@ -259,6 +269,7 @@ class Compare_List {
 	 * Get the list contents for session
 	 *
 	 * @since 1.0.6
+	 *
 	 * @return array
 	 */
 	public function get_list_for_session() {
@@ -384,7 +395,7 @@ class Compare_List {
 	 *
 	 * @return void
 	 */
-	private function set_cookies( $set = true )  {
+	private function set_cookies( $set = true ) {
 		if ( $set ) {
 			wc_setcookie( 'wcboost_compare_hash', $this->get_hash() );
 		} else {

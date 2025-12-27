@@ -1,6 +1,8 @@
 <?php
 /**
  * Manage settings for the plugin.
+ *
+ * @package WCBoost\ProductsCompare
  */
 
 namespace WCBoost\ProductsCompare\Admin;
@@ -22,7 +24,7 @@ class Settings {
 	/**
 	 * Register settings to the section General of Products tab.
 	 *
-	 * @param  array $settings
+	 * @param  array $settings Settings array.
 	 * @return array
 	 */
 	public function register_settings( $settings ) {
@@ -94,7 +96,7 @@ class Settings {
 			[
 				'type' => 'sectionend',
 				'id'   => 'wcboost_products_compare_options',
-			]
+			],
 		];
 
 		$settings = array_merge( $settings, $compare_settings );

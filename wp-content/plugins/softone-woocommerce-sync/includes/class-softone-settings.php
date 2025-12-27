@@ -218,6 +218,7 @@ class Settings {
 		$schedules['every_30_minutes'] = [ 'interval' => 30 * 60, 'display' => 'Every 30 Minutes' ];
 		$schedules['every_3_hours'] = [ 'interval' => 3 * 60 * 60, 'display' => 'Every 3 Hours' ];
 		$schedules['every_4_hours'] = [ 'interval' => 4 * 60 * 60, 'display' => 'Every 4 Hours' ];
+		$schedules['every_6_hours'] = [ 'interval' => 6 * 60 * 60, 'display' => 'Every 6 Hours' ];
 		$schedules['every_8_hours'] = [ 'interval' => 8 * 60 * 60, 'display' => 'Every 8 Hours' ];
 		$schedules['twicedaily'] = [ 'interval' => 12 * 60 * 60, 'display' => 'Twice Daily' ];
 		$schedules['daily'] = [ 'interval' => 24 * 60 * 60, 'display' => 'Daily' ];
@@ -238,6 +239,9 @@ class Settings {
 
 		wp_clear_scheduled_hook( 's1wc_sync_orders' );
 		wp_schedule_event( time() + 180, $orders_interval, 's1wc_sync_orders' );
+
+		wp_clear_scheduled_hook( 's1wc_sync_order_statuses' );
+		wp_schedule_event( time() + 240, 'every_6_hours', 's1wc_sync_order_statuses' );
 	}
 
 	public static function ajax_sync_products() {

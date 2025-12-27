@@ -1,6 +1,8 @@
 <?php
 /**
  * Classic widget for products compare.
+ *
+ * @package WCBoost\ProductsCompare
  */
 
 namespace WCBoost\ProductsCompare\Widget;
@@ -57,8 +59,9 @@ class Products_Compare_Widget extends \WP_Widget {
 
 		echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
+		// phpcs:ignore Squiz.PHP.DisallowMultipleAssignments
 		if ( $title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) ) {
-			echo $args['before_title'] . $title . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $args['before_title'] . esc_html( $title ) . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 		$wrapper_class = 'wcboost-products-compare-widget__content-wrapper';
@@ -90,15 +93,15 @@ class Products_Compare_Widget extends \WP_Widget {
 		</p>
 
 		<p>
-			<input id="<?php echo esc_attr( $this->get_field_id( 'hide_if_empty' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'hide_if_empty' ) ); ?>" type="checkbox" value="1" <?php checked( 1, $instance['hide_if_empty'] ) ?> />
+			<input id="<?php echo esc_attr( $this->get_field_id( 'hide_if_empty' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'hide_if_empty' ) ); ?>" type="checkbox" value="1" <?php checked( 1, $instance['hide_if_empty'] ); ?> />
 			<label for="<?php echo esc_attr( $this->get_field_id( 'hide_if_empty' ) ); ?>"><?php esc_html_e( 'Hide if the compare list empty', 'wcboost-products-compare' ); ?></label>
 		</p>
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'compare_behaviour' ) ); ?>"><?php esc_html_e( 'Compare button behaviour', 'wcboost-products-compare' ); ?></label>
 			<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'compare_behaviour' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'compare_behaviour' ) ); ?>">
-				<option value="page" <?php selected( 'page', $instance['compare_behaviour'] ) ?>><?php esc_attr_e( 'Open the compare page', 'wcboost-products-compare' ); ?></option>
-				<option value="popup" <?php selected( 'popup', $instance['compare_behaviour'] ) ?>><?php esc_attr_e( 'Open the compare popup', 'wcboost-products-compare' ); ?></option>
+				<option value="page" <?php selected( 'page', $instance['compare_behaviour'] ); ?>><?php esc_attr_e( 'Open the compare page', 'wcboost-products-compare' ); ?></option>
+				<option value="popup" <?php selected( 'popup', $instance['compare_behaviour'] ); ?>><?php esc_attr_e( 'Open the compare popup', 'wcboost-products-compare' ); ?></option>
 			</select>
 		</p>
 
@@ -108,8 +111,8 @@ class Products_Compare_Widget extends \WP_Widget {
 	/**
 	 * Update widget
 	 *
-	 * @param array $new_instance New widget settings
-	 * @param array $old_instance Old widget settings
+	 * @param array $new_instance New widget settings.
+	 * @param array $old_instance Old widget settings.
 	 *
 	 * @return array
 	 */
@@ -117,7 +120,7 @@ class Products_Compare_Widget extends \WP_Widget {
 		$new_instance['title']         = wp_strip_all_tags( $new_instance['title'] );
 		$new_instance['hide_if_empty'] = isset( $new_instance['hide_if_empty'] );
 
-		if( ! in_array( $new_instance['compare_behaviour'], [ 'page', 'popup' ] ) ) {
+		if ( ! in_array( $new_instance['compare_behaviour'], [ 'page', 'popup' ] ) ) {
 			$new_instance['compare_behaviour'] = isset( $old_instance['compare_behaviour'] ) ? $old_instance['compare_behaviour'] : $this->defaults['compare_behaviour'];
 		}
 

@@ -24,6 +24,18 @@ require_once S1WC_PATH . 'includes/class-order-sync.php';
 require_once S1WC_PATH . 'includes/class-order-admin.php';
 require_once S1WC_PATH . 'includes/class-customer-admin.php';
 
+add_action( 'init', function() {
+	if ( ! defined( 'DOING_CRON' ) && ! defined( 'WP_CLI' ) && ! wp_doing_ajax() ) {
+		$request_uri = $_SERVER['REQUEST_URI'] ?? '';
+		$is_admin = is_admin() || strpos( $request_uri, '/wp-admin/' ) !== false || strpos( $request_uri, '/wp-login.php' ) !== false;
+		
+		if ( $is_admin ) {
+			remove_action( 'shutdown', '_wp_cron' );
+			add_filter( 'cron_request', '__return_false', 999 );
+		}
+	}
+}, 1 );
+
 function s1wc_activate() {
 	if ( method_exists( '\S1WC\Settings', 'schedule_crons' ) ) {
 		\S1WC\Settings::schedule_crons();
@@ -34,6 +46,9 @@ function s1wc_activate() {
 		if ( ! wp_next_scheduled( 's1wc_sync_customers' ) ) {
 			wp_schedule_event( time() + 180, 'twicedaily', 's1wc_sync_customers' );
 		}
+		if ( ! wp_next_scheduled( 's1wc_sync_order_statuses' ) ) {
+			wp_schedule_event( time() + 240, 'every_6_hours', 's1wc_sync_order_statuses' );
+		}
 	}
 }
 register_activation_hook( __FILE__, 's1wc_activate' );
@@ -41,6 +56,7 @@ register_activation_hook( __FILE__, 's1wc_activate' );
 function s1wc_deactivate() {
 	wp_clear_scheduled_hook( 's1wc_sync_products' );
 	wp_clear_scheduled_hook( 's1wc_sync_customers' );
+	wp_clear_scheduled_hook( 's1wc_sync_order_statuses' );
 }
 register_deactivation_hook( __FILE__, 's1wc_deactivate' );
 
@@ -58,7 +74,35 @@ add_action( 'plugins_loaded', function () {
 	\S1WC\Order_Sync::init();
 	\S1WC\Order_Admin::init();
 	\S1WC\Customer_Admin::init();
+
+	add_filter( 'woocommerce_email_bcc_recipient_customer_processing_order', 's1wc_add_admin_bcc', 10, 3 );
+	add_filter( 'woocommerce_email_bcc_recipient_customer_completed_order', 's1wc_add_admin_bcc', 10, 3 );
+	add_filter( 'woocommerce_email_bcc_recipient_customer_cancelled_order', 's1wc_add_admin_bcc', 10, 3 );
+	
+	add_action( 'woocommerce_email_sent', 's1wc_log_email_sent', 10, 3 );
 });
+
+function s1wc_add_admin_bcc( $bcc, $object, $email ) {
+	$admin_email = get_option( 'admin_email' );
+	if ( ! empty( $admin_email ) && is_email( $admin_email ) ) {
+		$existing_bcc = ! empty( $bcc ) ? $bcc : '';
+		$bcc_list = array_filter( array_map( 'trim', explode( ',', $existing_bcc ) ) );
+		if ( ! in_array( $admin_email, $bcc_list, true ) ) {
+			$bcc_list[] = $admin_email;
+		}
+		return implode( ', ', $bcc_list );
+	}
+	return $bcc;
+}
+
+function s1wc_log_email_sent( $return, $email_id, $email ) {
+	if ( in_array( $email_id, [ 'customer_processing_order', 'customer_completed_order', 'customer_cancelled_order' ], true ) ) {
+		$order_id = $email->object && is_a( $email->object, 'WC_Order' ) ? $email->object->get_id() : 0;
+		$recipient = $email->get_recipient();
+		$bcc = $email->get_bcc_recipient();
+		\S1WC\Logger::log( sprintf( 'Email sent: %s for order %d to %s%s', $email_id, $order_id, $recipient, ! empty( $bcc ) ? ' (BCC: ' . $bcc . ')' : '' ) );
+	}
+}
 
 add_action( 'init', function() {
 	$labels = [
@@ -104,12 +148,16 @@ add_action( 'admin_menu', function () {
 				} elseif ( $type === 'customers' ) {
 					\S1WC\Customer_Sync::sync_customers();
 					echo '<div class="updated notice"><p>Manual customer sync finished. Check Logs.</p></div>';
+				} elseif ( $type === 'orders' ) {
+					\S1WC\Order_Sync::sync_orders( true );
+					echo '<div class="updated notice"><p>Manual orders full sync finished. Check Logs.</p></div>';
 				}
 			}
 			echo '<form method="post">';
 			wp_nonce_field('s1wc_manual_sync');
 			echo '<p><button name="s1wc_manual" class="button button-primary" value="products">Run Products Sync</button></p>';
 			echo '<p><button name="s1wc_manual" class="button" value="customers">Run Customers Sync</button></p>';
+			echo '<p><button name="s1wc_manual" class="button button-secondary" value="orders">Run Orders Full Sync</button></p>';
 			echo '</form>';
 			echo '</div>';
 		}
@@ -118,6 +166,7 @@ add_action( 'admin_menu', function () {
 
 add_action( 's1wc_sync_products', ['\\S1WC\\Product_Sync', 'sync_products'] );
 add_action( 's1wc_sync_customers', ['\\S1WC\\Customer_Sync', 'sync_customers'] );
+add_action( 's1wc_sync_order_statuses', ['\\S1WC\\Order_Sync', 'sync_order_statuses'] );
 
 add_action( 'wp_ajax_s1wc_manual_sync_single_order', function() {
 	check_ajax_referer( 's1wc_manual_sync_single_order', 'nonce' );

@@ -1,6 +1,8 @@
 <?php
 /**
- * Compatible with other plugins/themes
+ * Compatible with other plugins/themes.
+ *
+ * @package WCBoost\ProductsCompare
  */
 
 namespace WCBoost\ProductsCompare;
@@ -17,7 +19,7 @@ class Compatibility {
 	 *
 	 * @var WCBoost\ProductsCompare\Compatibility
 	 */
-	protected static $_instance = null;
+	protected static $_instance = null; // phpcs:ignore PSR2.Classes.PropertyDeclaration.Underscore
 
 	/**
 	 * Main instance
@@ -25,7 +27,7 @@ class Compatibility {
 	 * @return WCBoost\ProductsCompare\Compatibility
 	 */
 	public static function instance() {
-		if ( null == self::$_instance ) {
+		if ( null === self::$_instance ) {
 			self::$_instance = new self();
 		}
 
